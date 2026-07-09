@@ -2,7 +2,6 @@ build/
 crash-reports/
 libraries/
 lib/
-*.jar
 *.exe
 logs/
 saves/
