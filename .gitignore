@@ -1,34 +1,19 @@
-### IntelliJ IDEA ###
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-!**/src/net/minecraft/client/main/
-
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-assets/
+build/
+crash-reports/
+libraries/
+lib/
+*.jar
+*.exe
+logs/
 saves/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-
-### VS Code ###
-.vscode/
-
-### Mac OS ###
-.DS_Store
-
-
+screenshots/
+resourcepacks/
+shaderpacks/
+server-resource-packs/
+usercache.json
+servers.dat
+servers.dat_old
+options.txt
+optionsof.txt
+loader_config.json
+.idea/

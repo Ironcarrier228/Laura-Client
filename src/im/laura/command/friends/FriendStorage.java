@@ -21,6 +21,7 @@ public class FriendStorage implements IMinecraft {
 
     @Getter
     private final Set<String> friends = new HashSet<>();
+
     private final File file = new File(mc.gameDir, separator + "laura" + separator + "files" + separator + "friends.cfg");
 
     @SneakyThrows
@@ -28,7 +29,13 @@ public class FriendStorage implements IMinecraft {
         if (file.exists()) {
             friends.addAll(Files.readAllLines(file.toPath()));
         } else {
-            file.createNewFile();
+            // Исправлено: добавлены проверки для успешного создания папок и файла
+            boolean dirsCreated = file.getParentFile().mkdirs();
+            boolean fileCreated = file.createNewFile();
+
+            if (!fileCreated && !file.exists()) {
+                System.err.println("Не удалось создать файл конфигурации друзей: " + file.getAbsolutePath());
+            }
         }
     }
 
