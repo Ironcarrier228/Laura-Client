@@ -1,0 +1,1221 @@
+[23:38:25] [main/INFO]: [OptiFine] (Reflector) Field not found: World.tileEntitiesToBeRemoved
+[23:38:25] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.eventbus.api.Event$Result
+[23:38:25] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.common.extensions.IForgeBlockState.hasTileEntity
+[23:38:25] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.extensions.IForgeEntity
+[23:38:25] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.CrashReportExtender
+[23:38:25] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tags.ItemTags.createOptional
+[23:38:27] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
+[23:38:27] [main/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[23:38:28] [main/INFO]: Setting user: halaldeveloper
+[23:38:28] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.settings.KeyConflictContext
+[23:38:28] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.settings.KeyModifier
+[23:38:28] [main/INFO]: Backend library: LWJGL version 3.2.2 build 10
+[23:38:29] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.fml.loading.progress.EarlyProgressVisualization.handOffWindow
+[23:38:29] [main/INFO]: [OptiFine] 
+[23:38:29] [main/INFO]: [OptiFine] OptiFine_1.16.5_HD_U_G8
+[23:38:29] [main/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineResourceLocator
+[23:38:29] [main/INFO]: [OptiFine] Build: null
+[23:38:29] [main/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
+[23:38:29] [main/INFO]: [OptiFine] Java: 17.0.8.1, Amazon.com Inc.
+[23:38:29] [main/INFO]: [OptiFine] VM: OpenJDK 64-Bit Server VM (mixed mode, sharing), Amazon.com Inc.
+[23:38:29] [main/INFO]: [OptiFine] LWJGL: 3.3.0 Win32 WGL EGL OSMesa VisualC DLL
+[23:38:29] [main/INFO]: [OptiFine] OpenGL: NVIDIA GeForce GTX 1660 SUPER/PCIe/SSE2, version 4.6.0 NVIDIA 536.23, NVIDIA Corporation
+[23:38:29] [main/INFO]: [OptiFine] OpenGL Version: 4.6.0
+[23:38:29] [main/INFO]: [OptiFine] Maximum texture size: 32768x32768
+[23:38:29] [VersionCheck/INFO]: [OptiFine] Checking for new version
+[23:38:29] [main/INFO]: [Shaders] OpenGL Version: 4.6.0 NVIDIA 536.23
+[23:38:29] [main/INFO]: [Shaders] Vendor:  NVIDIA Corporation
+[23:38:29] [main/INFO]: [Shaders] Renderer: NVIDIA GeForce GTX 1660 SUPER/PCIe/SSE2
+[23:38:29] [main/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
+[23:38:29] [main/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
+[23:38:29] [main/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
+[23:38:29] [main/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
+[23:38:29] [main/INFO]: [Shaders] Load shaders configuration.
+[23:38:29] [main/INFO]: [Shaders] No shaderpack loaded.
+[23:38:29] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.Loader
+[23:38:29] [main/WARN]: [OptiFine] java.lang.ClassNotFoundException: sun.misc.SharedSecrets
+[23:38:29] [main/WARN]: [OptiFine] java.lang.ClassNotFoundException: jdk.internal.misc.SharedSecrets
+[23:38:29] [main/WARN]: [OptiFine] java.lang.ClassNotFoundException: sun.misc.VM
+[23:38:29] [main/WARN]: [OptiFine] java.lang.reflect.InaccessibleObjectException: Unable to make public static long jdk.internal.misc.VM.maxDirectMemory() accessible: module java.base does not "exports jdk.internal.misc" to unnamed module @4923ab24
+[23:38:29] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
+[23:38:30] [VersionCheck/INFO]: [OptiFine] Version found: G7
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.ForgeBlockModelRenderer
+[23:38:30] [main/INFO]: Narrator library for x64 successfully loaded
+[23:38:30] [main/INFO]: [STDOUT]: C:\Users\salam4ik'\expensive\scripts\test.lua
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.gui.screen.ModListScreen
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.gui.NotificationModUpdateScreen
+[23:38:30] [main/INFO]: Reloading ResourceManager: Default, !              §bAnglerfish.zip
+[23:38:30] [main/INFO]: [OptiFine] *** Reloading textures ***
+[23:38:30] [main/INFO]: [OptiFine] Resource packs: !              §bAnglerfish.zip
+[23:38:30] [Worker-Main-7/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoaderRegistry
+[23:38:30] [Worker-Main-6/INFO]: [OptiFine] Multitexture: false
+[23:38:30] [Worker-Main-5/INFO]: [OptiFine] Multitexture: false
+[23:38:30] [Worker-Main-2/INFO]: [OptiFine] Multitexture: false
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.RenderTypeLookup.canRenderInLayer
+[23:38:30] [main/INFO]: [OptiFine] *** Reflector Forge ***
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.BrandingControl
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.capabilities.ICapabilityProvider
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.capabilities.CapabilityProvider
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.ClientModLoader
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkDataEvent$Save
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkEvent$Load
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkEvent$Unload
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.ClientHooks
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.entity.EntityLeaveWorldEvent
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$RenderFogEvent
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.entity.EntityJoinWorldEvent
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.eventbus.api.Event.isCanceled
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.eventbus.api.Event.getResult
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.eventbus.api.IEventBus
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.extensions.IForgeBlock
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.BlockModelShapes.getTexture
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.common.extensions.IForgeBlockState.addDestroyEffects
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.common.extensions.IForgeBlockState.addHitEffects
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.common.extensions.IForgeBlockState.getLightValue
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.common.extensions.IForgeBlockState.getSoundType
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.common.extensions.IForgeBlockState.getStateAtViewpoint
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.common.extensions.IForgeBlockState.isAir
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.common.extensions.IForgeBlockState.shouldDisplayFluidOverlay
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.extensions.IForgeFluid
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fluids.FluidAttributes
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.EntityType.getTags
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.fluid.Fluid.getTags
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeConfig
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeConfig$Client
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeConfigSpec
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeConfigSpec$ConfigValue
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.chunk.IChunk.getWorldForge
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.extensions.IForgeItem
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.extensions.IForgeItemStack
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.ForgeI18n
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.settings.KeyBinding.setKeyConflictContext
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.settings.KeyBinding.setKeyModifierAndCode
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.settings.KeyBinding.getKeyModifier
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.extensions.IForgeEffectInstance
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.registries.ForgeRegistryEntry
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.RenderTypeLookup.canRenderInLayer
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Constructor not present: net.minecraft.world.server.Ticket, params: class net.minecraft.world.server.TicketType, int, class java.lang.Object, boolean
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.server.Ticket.isForceTicks
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.extensions.IForgeTileEntity
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.world.DimensionRenderInfo.getCloudRenderHandler
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.world.DimensionRenderInfo.getSkyRenderHandler
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.world.DimensionRenderInfo.getWeatherParticleRenderHandler
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.world.DimensionRenderInfo.getWeatherRenderHandler
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.ModContainer
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.entity.PartEntity
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.entity.PlaySoundAtEntityEvent
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderGameOverlayEvent$BossInfo
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderNameplateEvent
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.ScreenshotEvent
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.server.ServerLifecycleHooks
+[23:38:30] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
+[23:38:30] [main/INFO]: [OptiFine] *** Reflector Vanilla ***
+[23:38:30] [Realms Notification Availability checker #1/INFO]: Could not authorize you against Realms server: Invalid session id
+[23:38:34] [Worker-Main-7/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@4a25190f
+[23:38:34] [Worker-Main-7/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@4a25190f
+[23:38:34] [Worker-Main-7/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@4a25190f
+[23:38:34] [Worker-Main-7/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@4a25190f
+[23:38:34] [Worker-Main-7/INFO]: [OptiFine] Multitexture: false
+[23:38:34] [Worker-Main-7/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@14217924
+[23:38:34] [Worker-Main-7/INFO]: [OptiFine] Multipass connected textures: false
+[23:38:34] [Worker-Main-7/INFO]: [OptiFine] Multipass connected textures: false
+[23:38:34] [Worker-Main-7/INFO]: [OptiFine] BetterGrass: Parsing default configuration optifine/bettergrass.properties
+[23:38:35] [Worker-Main-7/INFO]: [OptiFine] Mipmap levels: 4
+[23:38:35] [Worker-Main-7/INFO]: [OptiFine] Multitexture: false
+[23:38:35] [Worker-Main-7/INFO]: [OptiFine] Sprite size: 64
+[23:38:35] [Worker-Main-7/INFO]: [OptiFine] Mipmap levels: 6
+[23:38:35] [Worker-Main-7/INFO]: [OptiFine] Multitexture: false
+[23:38:35] [Worker-Main-7/INFO]: [OptiFine] Sprite size: 64
+[23:38:35] [Worker-Main-7/INFO]: [OptiFine] Mipmap levels: 6
+[23:38:35] [Worker-Main-7/INFO]: [OptiFine] Multitexture: false
+[23:38:35] [Worker-Main-7/INFO]: [OptiFine] Sprite size: 64
+[23:38:35] [Worker-Main-7/INFO]: [OptiFine] Mipmap levels: 6
+[23:38:35] [Worker-Main-7/INFO]: [OptiFine] Multitexture: false
+[23:38:36] [Worker-Main-7/INFO]: [OptiFine] Sprite size: 64
+[23:38:36] [Worker-Main-7/INFO]: [OptiFine] Mipmap levels: 6
+[23:38:36] [Worker-Main-7/INFO]: [OptiFine] Multitexture: false
+[23:38:36] [Worker-Main-7/INFO]: [OptiFine] Sprite size: 64
+[23:38:36] [Worker-Main-7/INFO]: [OptiFine] Mipmap levels: 6
+[23:38:36] [Worker-Main-7/INFO]: [OptiFine] Multitexture: false
+[23:38:36] [Worker-Main-7/INFO]: [OptiFine] Sprite size: 64
+[23:38:36] [Worker-Main-7/INFO]: [OptiFine] Mipmap levels: 6
+[23:38:36] [main/INFO]: OpenAL initialized.
+[23:38:36] [main/INFO]: Sound engine started
+[23:38:36] [main/INFO]: Created: 2048x1024x4 minecraft:textures/atlas/blocks.png-atlas
+[23:38:36] [main/INFO]: [OptiFine] Animated sprites: 47
+[23:38:36] [main/INFO]: Created: 256x128x4 minecraft:textures/atlas/signs.png-atlas
+[23:38:36] [main/INFO]: [OptiFine] Animated sprites: 0
+[23:38:36] [main/INFO]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[23:38:36] [main/INFO]: [OptiFine] Animated sprites: 0
+[23:38:36] [main/INFO]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[23:38:36] [main/INFO]: [OptiFine] Animated sprites: 0
+[23:38:36] [main/INFO]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[23:38:36] [main/INFO]: [OptiFine] Animated sprites: 0
+[23:38:36] [main/INFO]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[23:38:36] [main/INFO]: [OptiFine] Animated sprites: 0
+[23:38:36] [main/INFO]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[23:38:36] [main/INFO]: [OptiFine] Animated sprites: 0
+[23:38:37] [main/INFO]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[23:38:37] [main/INFO]: [OptiFine] Animated sprites: 0
+[23:38:37] [main/INFO]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[23:38:37] [main/INFO]: [OptiFine] Animated sprites: 0
+[23:38:37] [main/INFO]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[23:38:37] [main/INFO]: [OptiFine] Animated sprites: 0
+[23:38:37] [main/INFO]: [OptiFine] *** Reloading custom textures ***
+[23:38:37] [main/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@39b58f7d
+[23:38:37] [main/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@6e4c5d88
+[23:38:37] [main/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@57d9b564
+[23:38:40] [main/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@112e72ea
+[23:38:40] [main/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@378e50b9
+[23:38:40] [main/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@c512269
+[23:38:40] [main/INFO]: [OptiFine] Disable Forge light pipeline
+[23:38:49] [main/INFO]: Connecting to 37.220.86.47, 25565
+[23:38:56] [main/ERROR]: Can't ping 2.tcp.eu.ngrok.io:15177: Internal Exception: java.net.SocketException: Connection reset
+[23:38:56] [main/ERROR]: Can't ping 7.tcp.eu.ngrok.io:16832: Internal Exception: java.net.SocketException: Connection reset
+[23:38:56] [main/ERROR]: Can't ping 6.tcp.eu.ngrok.io:17552: Internal Exception: java.net.SocketException: Connection reset
+[23:38:57] [main/INFO]: Connecting to 37.220.86.47, 25565
+[23:38:57] [main/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[23:38:57] [main/WARN]: Unknown custom packed identifier: minecraft:register
+[23:38:59] [main/INFO]: [CHAT] Grim » Оповещения включены
+[23:38:59] [main/INFO]: Loaded 50 advancements
+[23:38:59] [main/INFO]: [CHAT] Welcome, halaldeveloper!
+[23:38:59] [main/INFO]: [CHAT] Type /help for a list of commands.
+[23:38:59] [main/INFO]: [CHAT] Type /list to see who else is online.
+[23:38:59] [main/INFO]: [CHAT] Players online: 1 - World time: 6:21 AM
+[23:38:59] [main/INFO]: [CHAT] You have no new mail.
+[23:38:59] [main/INFO]: [CHAT] You're 2 EssentialsX dev build(s) out of date!
+[23:38:59] [main/INFO]: [CHAT] Download it here: https://essentialsx.net/downloads.html
+[23:38:59] [main/INFO]: [CHAT] Please log in using /login <password>
+[23:39:00] [main/INFO]: [CHAT] Please log in using /login <password>
+[23:39:02] [main/INFO]: [CHAT] Successfully logged in.
+[23:39:06] [main/INFO]: [CHAT] §b[Expensive] §fLoaded!
+[23:39:06] [main/INFO]: [CHAT] §b[Expensive] §fКонфигурация sa была загружена!
+[23:39:08] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$RotationPacket@2675a92c
+[23:39:08] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 31ms
+[23:39:08] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@719e1c26
+[23:39:08] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@25ea076d
+[23:39:08] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@55dea9a4
+[23:39:08] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5e6956fa
+[23:39:08] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5f971e3d
+[23:39:08] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2a33abcd
+[23:39:08] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@a00b4a6
+[23:39:08] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@4e11dfaf
+[23:39:08] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@413bf74f
+[23:39:08] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@8d464df
+[23:39:08] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$RotationPacket@6ae52aa2
+[23:39:08] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@747a393e
+[23:39:08] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$RotationPacket@7d5fdd54
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$RotationPacket@58c9a808
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1de0963a
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$RotationPacket@4110a187
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$RotationPacket@4226618c
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@57ba1828
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4e7215a3
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CEntityActionPacket@aaa9973
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@7b71a3ab
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7c0d8fb5
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@7cb326a9
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@a29be6f
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1a49f8b8
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5a11f1e9
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CEntityActionPacket@3f72126c
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@786f192b
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@57b30c41
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5715e1dd
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4f2e5a0b
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5b45bcae
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@145b7283
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@517b8342
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@272df50f
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CEntityActionPacket@682d5403
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@47ac6558
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4ac08f7c
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@20d9ea6
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@24fa8
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@24206c55
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6a55acc2
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@443f780
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@31cb03fb
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@763f8abc
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@f2aede7
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@6697f322
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6cf7ef26
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@5dfdb548
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@5602ec5
+[23:39:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5c37d3a8
+[23:39:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@773e1a11
+[23:39:10] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 36ms
+[23:39:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@35bdd0d2
+[23:39:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@5f430c5a
+[23:39:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@7025cd74
+[23:39:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@774caff3
+[23:39:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2cacda88
+[23:39:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6bca329b
+[23:39:10] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 36ms
+[23:39:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@355a0cfb
+[23:39:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@277b0e94
+[23:39:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6dc9e869
+[23:39:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@32f5a26b
+[23:39:11] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 39ms
+[23:39:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6f2d3666
+[23:39:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@5230426b
+[23:39:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@4dc944bc
+[23:39:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@28019d67
+[23:39:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2e191007
+[23:39:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@7e6a2cb5
+[23:39:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@79016b60
+[23:39:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@5d4f3b82
+[23:39:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@3b308104
+[23:39:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@14101d53
+[23:39:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@66b83eda
+[23:39:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@420f8aa4
+[23:39:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7d081b40
+[23:39:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@69e66b37
+[23:39:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4e0fc63f
+[23:39:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@4d84f8a6
+[23:39:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@e5220bd
+[23:39:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@3cc27ab4
+[23:39:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@6b0f06b9
+[23:39:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@17d28608
+[23:39:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@38ea499c
+[23:39:12] [Netty Client IO #18/INFO]: [STDOUT]: net.minecraft.network.play.client.CKeepAlivePacket@7c9a6f34
+[23:39:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@4e4c85e1
+[23:39:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@27e1be76
+[23:39:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@5123b41a
+[23:39:12] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 31ms
+[23:39:12] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 36ms
+[23:39:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@298d4230
+[23:39:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@20ff109
+[23:39:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5d7ca8ce
+[23:39:20] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 30ms
+[23:39:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@28d52ecb
+[23:39:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@6b0a6523
+[23:39:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@167046f2
+[23:39:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2ef2a62a
+[23:39:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2f506649
+[23:39:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@17cb2dfd
+[23:39:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@318be20
+[23:39:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@38e09b9f
+[23:39:20] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 30ms
+[23:39:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@14aec0e4
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@1cebff9f
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@206bb3fe
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@4220fef7
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@3d01c301
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7ed5d439
+[23:39:21] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 36ms
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@35c7c5e
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@464efd84
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@75642787
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2540410e
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@459e7774
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@20014987
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@76e34b8
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@31fdc6f6
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@2de829a7
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@78f00ec
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@71322f51
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2ea78df7
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@42ee2c95
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3d99cc44
+[23:39:21] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 34ms
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5db13401
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@4febd275
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@7c52d599
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@fdacdbb
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5b9fe17d
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@20e202db
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@798cb469
+[23:39:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5dbc262c
+[23:39:21] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 32ms
+[23:39:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@30315a1c
+[23:39:22] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 31ms
+[23:39:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2b065bdb
+[23:39:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@21b48fb7
+[23:39:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@29bbbcd7
+[23:39:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1360f246
+[23:39:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@aa1bb72
+[23:39:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@fed54a6
+[23:39:22] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 31ms
+[23:39:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@6fa23374
+[23:39:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@685f7fd9
+[23:39:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@d725e10
+[23:39:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@5689b37a
+[23:39:22] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 30ms
+[23:39:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@539f603f
+[23:39:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1c100314
+[23:39:23] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 35ms
+[23:39:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@75b1d734
+[23:39:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@64ee43bd
+[23:39:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@4c585987
+[23:39:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@50ccebbb
+[23:39:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2bbf9ee1
+[23:39:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3ddac380
+[23:39:23] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 35ms
+[23:39:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@334021dd
+[23:39:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@4e6953d
+[23:39:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@53795bd6
+[23:39:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@a28d4f4
+[23:39:23] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 36ms
+[23:40:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@1dd8abb0
+[23:40:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@3ecae84c
+[23:40:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@3d669179
+[23:40:09] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 32ms
+[23:40:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@54878611
+[23:40:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@a9313af
+[23:40:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@368ea8a3
+[23:40:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3fea0a52
+[23:40:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@57b5b4b0
+[23:40:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4529cb82
+[23:40:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@621b834
+[23:40:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@69f68a38
+[23:40:09] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 32ms
+[23:40:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@139cb382
+[23:40:09] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@18e20fa8
+[23:40:09] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 73ms
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@3805a174
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@30127693
+[23:40:10] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 36ms
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6ce3e92d
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@3a1a08f9
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@2f0100cf
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@c844d52
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7fdd676e
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@156ae5ac
+[23:40:10] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 36ms
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@324a98b6
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@8785f98
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4a7d9cbe
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@2c94326f
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@653cfba0
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2f72ec00
+[23:40:10] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 31ms
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@94c0d3c
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@4c64130
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@6a54bf3
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3e8fb5cb
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@57c37acb
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@4d6c4bd5
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@e0e9e5e
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4257b876
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@70298290
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@5fb44da3
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@25b2d465
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5a595cad
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@66d87874
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1bfcf859
+[23:40:10] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 33ms
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@28de06bf
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@38729b3d
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@1dcc4f9f
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@618e424f
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@393d5b3f
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@6a7581c9
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@79fa2af2
+[23:40:10] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2acd6251
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@6b94db6a
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@2d296418
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@52c66f5
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@443253eb
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@9b08f8c
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6f5f2306
+[23:40:10] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 35ms
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@922ebd6
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@5fd95c12
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@5298648a
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@44c93acc
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5a2b15d8
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4f07fb43
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@5338244e
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@513f7e24
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@21125aa3
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@2c65a61e
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3eeded88
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@14096a2f
+[23:40:10] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 61ms
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@277dfd4f
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2629fae8
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7779d208
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@28fe86da
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@60a1910f
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@936c949
+[23:40:10] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@30e6a3f5
+[23:40:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@3a08eec3
+[23:40:11] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:40:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@475c43e4
+[23:40:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@7864521c
+[23:40:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@6751f450
+[23:40:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1a52608f
+[23:40:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3f345342
+[23:40:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@651a020a
+[23:40:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@d81898d
+[23:40:11] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:40:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@196d2b30
+[23:40:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@2cd27045
+[23:40:11] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2d1e49b3
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1b939f3f
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6e0fdd47
+[23:40:12] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@20a72653
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@4a778615
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@4d9a8203
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5d6f9b12
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@44e3ab52
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@2bc1cc26
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@ad77547
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@53b7e674
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@77961b85
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@521359ad
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@635f73e5
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@f37adbc
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@483ad5ec
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@ac3377
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1874a8dc
+[23:40:12] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 33ms
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2a9cbc23
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@34978929
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@55c13347
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@684e436b
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@277c87e5
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@2f2a8ce2
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@732dd94b
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@69e2995e
+[23:40:12] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 35ms
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2ae26828
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@51d4ac0a
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@4c2ed0fa
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@31fb8848
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@8e10577
+[23:40:12] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4632eae3
+[23:40:12] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 60ms
+[23:40:14] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@3aae1d17
+[23:40:14] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@317d2866
+[23:40:14] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@5dd94cfd
+[23:40:14] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@2ac0ceae
+[23:40:14] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@7923fb86
+[23:40:14] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 32ms
+[23:40:14] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7b3c0cc
+[23:40:14] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@101ada63
+[23:40:14] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@3c83d370
+[23:40:14] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5a9ae0ad
+[23:40:14] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@43b6ee92
+[23:40:14] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5b9ed45
+[23:40:14] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 32ms
+[23:40:14] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2783b6d1
+[23:40:14] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2a11b504
+[23:40:14] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 32ms
+[23:40:14] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@14be01ee
+[23:40:14] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 35ms
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@9af31c1
+[23:40:15] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 30ms
+[23:40:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 30ms
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6f0bae12
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@b5e736c
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@2d0dbf29
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5ddca270
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6f15fce7
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@1728277a
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@579c3641
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6f6bc1e0
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2f59ea2e
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@799c0b48
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@4f840404
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7e51b8d5
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1eb925ab
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@766bb7f
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@682d2bb3
+[23:40:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1b49a173
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@4c8a5bcc
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@7e85bc61
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7ff470b1
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@29600405
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@37aa7ede
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@649faafe
+[23:40:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 35ms
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@11db540b
+[23:40:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 29ms
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@75e38460
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@6cb21878
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@45d041c5
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@e602e78
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@67c96b50
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@1bc4ce09
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5c5d7add
+[23:40:15] [main/INFO]: [CHAT] [Grim] TimerA / setback: no / 35ms
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@53418cc0
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@7ffefe13
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@4277c363
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@754bd262
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2a336787
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@5e25a95a
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7556a83e
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4468f64c
+[23:40:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4e8224cf
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@3d1e2b3c
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@7dc963f9
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7e10309a
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@216bd7cb
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@5b803fff
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@246b40f5
+[23:40:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 32ms
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5bc11e3c
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@3436da82
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@6e13743c
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1001ede3
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@43623121
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@41820105
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@34453f9d
+[23:40:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 35ms
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2bb4b203
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@798d656d
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@28d6d970
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@35f2b220
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3b582a37
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@296c863c
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@37efd738
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@17ac0057
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@6d5f9907
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@20cfbff6
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@69d0fac0
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1e09e115
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@f8fd472
+[23:40:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@52e2ea7a
+[23:40:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 33ms
+[23:40:17] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@732a5516
+[23:40:17] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 31ms
+[23:40:17] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@c889c1f
+[23:40:17] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@550ae683
+[23:40:17] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@56f061da
+[23:40:17] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@77530cf7
+[23:40:17] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3f730e66
+[23:40:17] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3d4fc9f5
+[23:40:17] [main/INFO]: [CHAT] [Grim] TimerA / setback: no / 31ms
+[23:40:17] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@68648137
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7bf1c78
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@201822d7
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@635b5740
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2ffa1f25
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@50599a7e
+[23:40:18] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 56ms
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@31361438
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@8eeb409
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@77129106
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@6b847ff0
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@6a12316c
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@17a18edb
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@74d8a788
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@4789e2bc
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5cc57bc0
+[23:40:18] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6d907337
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@8762054
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@62afe4
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@770ecf53
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1969034e
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2024f4b7
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@352c62d8
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@34594779
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@657b41cf
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@62fd809b
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@349114be
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4a0dffda
+[23:40:18] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 58ms
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@7bb00516
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4738ca3a
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@626e1e28
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@2ab254ca
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@51516c3f
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@50b90535
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@42b4ce54
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7a98c6cc
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@20f27d34
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@5c58fb97
+[23:40:18] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 32ms
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@53e23286
+[23:40:18] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 36ms
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3957a38c
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@22487372
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@15763605
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5742402f
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@530dc288
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@32bff878
+[23:40:18] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 36ms
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@16dd2634
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@234e9716
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5cddf9cd
+[23:40:18] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@5570d921
+[23:40:19] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@447cb6af
+[23:40:19] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@34137044
+[23:40:19] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@193db46d
+[23:40:19] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@5bb0de2a
+[23:40:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@55e60c72
+[23:40:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@218c547f
+[23:40:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@40e5736f
+[23:40:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2585729d
+[23:40:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@66e9f5fe
+[23:40:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1e7e5906
+[23:40:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@75eb3fad
+[23:40:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@7bf4ba17
+[23:40:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@529bf692
+[23:40:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3e4123ae
+[23:40:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@4c8141c6
+[23:40:20] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@412311a2
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@1f2fa123
+[23:40:21] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 65ms
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1f2f3133
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@7b386293
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@40308cf8
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@22740b64
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@443410b0
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7c20ce5f
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3833da6f
+[23:40:21] [main/INFO]: [CHAT] [Grim] TimerA / setback: no / 65ms
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@3a1ed926
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5e4bff45
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@246380e5
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@225d6a4
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@4e3ee82f
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4f0e977a
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@77d252d6
+[23:40:21] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@6228deac
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@59a630d4
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3c878dd4
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@16107de0
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@32691c30
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5aa1ba39
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5ac87594
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@4fa2ec50
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@35d0f108
+[23:40:21] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 33ms
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@62f7e5f9
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@7b0a48e6
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@2392ebbb
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@11f80670
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4c7df19b
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@6519cd8a
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@51623da1
+[23:40:21] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@786a7b
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@232ab2c6
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@8f44eb4
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@48bbf53e
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@b5375e0
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@57323a37
+[23:40:21] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@505ba679
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6723c986
+[23:40:21] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 32ms
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2106b4d7
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@58f7cf6a
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@5592d263
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2c045eae
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@38b0f7f5
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5e5ae316
+[23:40:21] [main/INFO]: [CHAT] [Grim] TimerA / setback: no / 32ms
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@1d182374
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@13e7ff57
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@2c57ad81
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@259ca94e
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@79432d0a
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@55726832
+[23:40:21] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 54ms
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@44efba4
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6485ad5a
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@22f07a00
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@21ce7fca
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@522e238c
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1b08abee
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3a09f2f5
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@68ebea51
+[23:40:21] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4b7a8683
+[23:40:21] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 61ms
+[23:40:22] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 33ms
+[23:40:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@579612f8
+[23:40:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@4847d817
+[23:40:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@45a7770d
+[23:40:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@63b7dc64
+[23:40:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4d10338
+[23:40:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7220e4d5
+[23:40:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@cc1ea83
+[23:40:22] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@51485383
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5d0c5251
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@287f0369
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2b697117
+[23:40:23] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 29ms
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@38aeebb2
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@78fa82c
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@57bb97ff
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@373aa5d6
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@78863bf8
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2b2220c
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6bcb493e
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@225be644
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@316a1241
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@527afebf
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@63c9df77
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@1edd6c8c
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7f449d0c
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7ace0b5d
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@229dfe7e
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@79eaabdc
+[23:40:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@73f4c35f
+[23:40:24] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2e7075d4
+[23:41:55] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@4735e7d9
+[23:41:56] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 33ms
+[23:41:56] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@454f2ac7
+[23:41:56] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@2958c9d7
+[23:41:56] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@3633642f
+[23:41:56] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5e50461f
+[23:41:56] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@62754600
+[23:41:56] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@d8c2de8
+[23:41:56] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 33ms
+[23:41:56] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@7c8fe8cd
+[23:41:56] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3402f41a
+[23:41:56] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@580d7c1f
+[23:41:56] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@6114a516
+[23:41:56] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@625ee079
+[23:41:56] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 37ms
+[23:41:57] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@e6f8674
+[23:41:57] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@7fcd6585
+[23:41:57] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@39e723da
+[23:41:57] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@32429a73
+[23:41:57] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@26b730f3
+[23:41:57] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@27f8321c
+[23:41:57] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@27812cca
+[23:41:57] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 32ms
+[23:41:57] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@136bb4b
+[23:41:57] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@1e992336
+[23:41:57] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@78978a2b
+[23:41:57] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@565e0e8f
+[23:41:57] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@62061bec
+[23:41:57] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@35d10409
+[23:41:57] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 32ms
+[23:41:57] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@7153164a
+[23:41:57] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 114ms
+[23:41:58] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@5190e105
+[23:41:58] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 32ms
+[23:41:58] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7c461c22
+[23:41:58] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@5e57748b
+[23:41:58] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@243deeda
+[23:41:58] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7273bb91
+[23:41:58] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3e180ef1
+[23:41:58] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5b0ed695
+[23:41:58] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 32ms
+[23:41:58] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@108eb810
+[23:41:58] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@7f4e26a3
+[23:41:58] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1dfc03d
+[23:41:58] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@49e3675c
+[23:41:58] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 37ms
+[23:41:59] [main/INFO]: [CHAT] [Grim] TimerA / setback: no / 34ms
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6bf95d0
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@70809f39
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@76991b36
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@45384c1
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7eb8908e
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@a35b137
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@34cb4bec
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2ca6b438
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@16206dc2
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@31bbca38
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5f4163c8
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@465f0b6c
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@53842018
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3c01ca5a
+[23:41:59] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@688ab131
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@56b0c327
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@2446bd09
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1627e0c1
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2b99c80d
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@7b609fa2
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6a5fcb32
+[23:41:59] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 40ms
+[23:41:59] [main/INFO]: [CHAT] [Grim] TimerA / setback: no / 33ms
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@26eb6e87
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@59096877
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@4d1b2e3f
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@36cd8553
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4baf4a5b
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@5977c989
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@17b48da1
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@26f8e09e
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@41244e49
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@47d9b32d
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@74b3e7f2
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@152e15ea
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@761b5700
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7cd1d235
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1736262a
+[23:41:59] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 35ms
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7252e063
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@5edd0a7e
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@2c6f2bea
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@ace5f3b
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6ffae7f9
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@59428e82
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@74e87f03
+[23:41:59] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 38ms
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4c159b48
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@1ee3ad6
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@338afad6
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4ad8bc3
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@64829fc5
+[23:41:59] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@144a3109
+[23:41:59] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 36ms
+[23:42:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@316a71b7
+[23:42:23] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 33ms
+[23:42:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@42602e0f
+[23:42:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@220f2885
+[23:42:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@66d9a929
+[23:42:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4dc9b8c
+[23:42:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@478fdd4e
+[23:42:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1c1f9e3a
+[23:42:23] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 33ms
+[23:42:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@574411f2
+[23:42:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@6e18d3f9
+[23:42:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@e967e4e
+[23:42:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1e414c99
+[23:42:23] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@41d294ff
+[23:42:23] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 36ms
+[23:44:04] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 40ms
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5a871e43
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@1cd3f6b3
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@3fbc0a37
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@256c45a6
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@477b324e
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@449e327c
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@425de255
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@776535b0
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@2cca83a4
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@29d52661
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@6c8c59b3
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@14a33025
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1b31ca2
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@155d4db
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1b7a35b5
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@4023e834
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@a3eba18
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@8d274f3
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@4c39d732
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@1384f4c9
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6c9572db
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@77fbe656
+[23:44:04] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 74ms
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@75f92fdc
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@416faf16
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6ab0e4a
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@2eca819f
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@1271cc55
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2e5ac612
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@705d44cd
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@ae1e520
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@6efcbdc4
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@749df7fa
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@71d0c4ac
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@13c65530
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@18dfd811
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3e6ded7
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@74e48fa3
+[23:44:04] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 76ms
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@55aa2bda
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@33537e2e
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6760ef5
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@563f000f
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@524f15e9
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7a45b380
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4cf20b9b
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4829f49a
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@1f2797ac
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4355f900
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3be5eccd
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@3c6f420f
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@1f5628d9
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@73275fca
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@67b056e7
+[23:44:04] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 76ms
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@21891f24
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@fb7eb2c
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@46273c1f
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@23c55d52
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@4adc0631
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@7a827acd
+[23:44:04] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@53a7646
+[23:44:05] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@193863aa
+[23:44:05] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 37ms
+[23:44:05] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 37ms
+[23:44:05] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@716f3b97
+[23:44:05] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@87f2a9e
+[23:44:05] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@72416b53
+[23:44:05] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@28be6382
+[23:44:05] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@20055681
+[23:44:05] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@51dfa3c5
+[23:44:05] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@283d515e
+[23:44:05] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 37ms
+[23:44:05] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@734485a8
+[23:44:05] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@79ff741f
+[23:44:06] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@6d91855
+[23:44:06] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@243171b6
+[23:44:06] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@a419bf5
+[23:44:06] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@6f450846
+[23:44:06] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@40d678d9
+[23:44:06] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@25e308f9
+[23:44:06] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 32ms
+[23:44:06] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@237bb183
+[23:44:06] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@643b9a92
+[23:44:06] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@17d8267c
+[23:44:06] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@2ac140be
+[23:44:06] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@54480bcc
+[23:44:06] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 32ms
+[23:44:06] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6c9ff4dd
+[23:44:06] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@3aa2c4f4
+[23:44:06] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@e44d951
+[23:44:06] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 104ms
+[23:45:14] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 36ms
+[23:45:14] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 36ms
+[23:45:14] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 39ms
+[23:45:14] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 39ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 35ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 35ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 35ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 35ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 35ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 35ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 34ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 81ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 81ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 34ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 38ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 38ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 80ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 80ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 34ms
+[23:45:15] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:45:17] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 43ms
+[23:45:17] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 43ms
+[23:45:17] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 43ms
+[23:45:17] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 43ms
+[23:45:17] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 81ms
+[23:45:17] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 81ms
+[23:45:17] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 81ms
+[23:45:17] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 81ms
+[23:45:18] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 37ms
+[23:45:18] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 37ms
+[23:45:18] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 34ms
+[23:45:18] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:45:18] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 80ms
+[23:45:18] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 80ms
+[23:45:18] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 33ms
+[23:45:18] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 33ms
+[23:45:19] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 33ms
+[23:45:19] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 57ms
+[23:45:19] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 57ms
+[23:45:19] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 36ms
+[23:45:19] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 36ms
+[23:45:19] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 73ms
+[23:45:19] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 73ms
+[23:45:19] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 83ms
+[23:45:19] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 83ms
+[23:45:22] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 49ms
+[23:45:22] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 49ms
+[23:45:22] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 67ms
+[23:45:22] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 67ms
+[23:45:22] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 89ms
+[23:45:22] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 89ms
+[23:45:22] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 83ms
+[23:45:22] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 83ms
+[23:45:25] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 34ms
+[23:45:25] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:45:28] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 41ms
+[23:45:28] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 41ms
+[23:45:32] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 32ms
+[23:45:32] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 32ms
+[23:45:32] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 32ms
+[23:45:34] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 37ms
+[23:45:34] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 37ms
+[23:45:34] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 81ms
+[23:45:34] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 81ms
+[23:45:34] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 65ms
+[23:45:34] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 65ms
+[23:45:34] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 88ms
+[23:45:34] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 88ms
+[23:45:34] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 77ms
+[23:45:34] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 77ms
+[23:45:43] [main/INFO]: Connecting to 37.220.86.47, 25565
+[23:45:43] [main/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[23:45:43] [main/WARN]: Unknown custom packed identifier: minecraft:register
+[23:45:44] [main/INFO]: [CHAT] Grim » Оповещения включены
+[23:45:44] [main/INFO]: [CHAT] Please log in using /login <password>
+[23:45:44] [main/INFO]: Loaded 50 advancements
+[23:45:44] [main/INFO]: [CHAT] Welcome, halaldeveloper!
+[23:45:44] [main/INFO]: [CHAT] Type /help for a list of commands.
+[23:45:44] [main/INFO]: [CHAT] Type /list to see who else is online.
+[23:45:44] [main/INFO]: [CHAT] Players online: 1 - World time: 6:21 AM
+[23:45:44] [main/INFO]: [CHAT] You have no new mail.
+[23:45:44] [main/INFO]: [CHAT] You're 2 EssentialsX dev build(s) out of date!
+[23:45:44] [main/INFO]: [CHAT] Download it here: https://essentialsx.net/downloads.html
+[23:45:47] [main/INFO]: [CHAT] Please log in using /login <password>
+[23:45:48] [main/INFO]: [CHAT] Successfully logged in.
+[23:46:05] [main/INFO]: [CHAT] [Grim] Post / setback: no / 34ms
+[23:46:12] [main/INFO]: [CHAT] [Grim] Post / setback: no / 33ms
+[23:46:15] [main/INFO]: [CHAT] Teleporting...
+[23:46:16] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 33ms
+[23:46:16] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 33ms
+[23:46:17] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 73ms
+[23:46:17] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 73ms
+[23:46:17] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 81ms
+[23:46:17] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 81ms
+[23:46:17] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 75ms
+[23:46:17] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 75ms
+[23:46:17] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 81ms
+[23:46:17] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 81ms
+[23:46:17] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 32ms
+[23:46:17] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 32ms
+[23:46:17] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 72ms
+[23:46:17] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 72ms
+[23:46:18] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 33ms
+[23:46:18] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 33ms
+[23:46:18] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 81ms
+[23:46:18] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 81ms
+[23:46:18] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 33ms
+[23:46:18] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 33ms
+[23:46:18] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 29ms
+[23:46:18] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 29ms
+[23:46:18] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 35ms
+[23:46:18] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 35ms
+[23:46:18] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 37ms
+[23:46:18] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 37ms
+[23:46:18] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 72ms
+[23:46:18] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 72ms
+[23:46:19] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 38ms
+[23:46:19] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 38ms
+[23:46:19] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 80ms
+[23:46:19] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 80ms
+[23:46:19] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 34ms
+[23:46:19] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:47:08] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 31ms
+[23:47:08] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 31ms
+[23:47:08] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 29ms
+[23:47:08] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 29ms
+[23:47:08] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 29ms
+[23:47:08] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 29ms
+[23:47:08] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: yes / 34ms
+[23:47:08] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:47:10] [main/INFO]: Connecting to 37.220.86.47, 25565
+[23:47:10] [main/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[23:47:10] [main/WARN]: Unknown custom packed identifier: minecraft:register
+[23:47:11] [main/INFO]: [CHAT] Grim » Оповещения включены
+[23:47:11] [main/INFO]: Loaded 50 advancements
+[23:47:11] [main/INFO]: [CHAT] Welcome, halaldeveloper!
+[23:47:11] [main/INFO]: [CHAT] Type /help for a list of commands.
+[23:47:11] [main/INFO]: [CHAT] Type /list to see who else is online.
+[23:47:11] [main/INFO]: [CHAT] Players online: 1 - World time: 6:21 AM
+[23:47:11] [main/INFO]: [CHAT] You have no new mail.
+[23:47:11] [main/INFO]: [CHAT] You're 2 EssentialsX dev build(s) out of date!
+[23:47:11] [main/INFO]: [CHAT] Download it here: https://essentialsx.net/downloads.html
+[23:47:11] [main/INFO]: [CHAT] Please log in using /login <password>
+[23:47:12] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 40ms
+[23:47:12] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 32ms
+[23:47:12] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 32ms
+[23:47:14] [main/INFO]: [CHAT] Please log in using /login <password>
+[23:47:15] [main/INFO]: [CHAT] Successfully logged in.
+[23:47:15] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@c3dfc39
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1986fae9
+[23:47:16] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 36ms
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@ff0375e
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@6ccfdead
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@6a20c1b6
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@44df2fa9
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4a1bbaab
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@58b33ff3
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@34f27822
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@96dab72
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@1e349616
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@5f397e84
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@782d2e29
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1cff2c65
+[23:47:16] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 41ms
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@26c19dca
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@23d526d4
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@462caacf
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@6c29500d
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@1e95c90a
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@147cbf8a
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@37a50518
+[23:47:16] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 34ms
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@11aa92d9
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@2147c47f
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@50b6bf32
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@4f24edf9
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@add929e
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@1526cb86
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@700cb93f
+[23:47:16] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 34ms
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@18afc9e2
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@5dd97fb6
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@57fe742a
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@414c95ac
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@46c1ef9e
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@169c7207
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@32671bda
+[23:47:16] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 80ms
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@172309cf
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5ed7b9aa
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@2baee43d
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@211d8359
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@2eff8bc4
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@4d867d58
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@11d5f7d9
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5c9fa9f1
+[23:47:16] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 35ms
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@eecb80d
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@4eab32cc
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@6f5acac9
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@41d3bff
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@7214489
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@100b3bf3
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@29bea7b9
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4491a3b2
+[23:47:16] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 35ms
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionPacket@4919b2a5
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@4ccd6
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@5c5b3000
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTeleportPacket@159e840a
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CPlayerPacket$PositionRotationPacket@11969086
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@37529c1e
+[23:47:16] [main/INFO]: [STDOUT]: net.minecraft.network.play.client.CConfirmTransactionPacket@320c71c4
+[23:47:16] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 36ms
+[23:47:16] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 36ms
+[23:47:16] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 33ms
+[23:47:16] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 33ms
+[23:47:16] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 39ms
+[23:47:16] [main/INFO]: [CHAT] [Grim] Simulation / setback: no / 39ms
+[23:47:17] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 34ms
+[23:47:17] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 34ms
+[23:47:17] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 38ms
+[23:47:17] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 38ms
+[23:47:17] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 84ms
+[23:47:17] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 84ms
+[23:47:17] [main/INFO]: [CHAT] [Grim] GroundSpoof / setback: no / 32ms
+[23:47:17] [main/INFO]: [CHAT] [Grim] Simulation / setback: yes / 32ms

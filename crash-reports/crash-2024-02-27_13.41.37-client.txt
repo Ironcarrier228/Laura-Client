@@ -1,0 +1,67 @@
+---- Minecraft Crash Report ----
+// This doesn't make any sense!
+
+Time: 27.02.2024, 13:41
+Description: Initializing game
+
+java.lang.ExceptionInInitializerError
+	at im.laura.functions.impl.render.HUD.<init>(HUD.java:94)
+	at im.laura.functions.api.FunctionRegistry.init(FunctionRegistry.java:101)
+	at im.laura.Laura.clientLoad(Expensive.java:165)
+	at im.laura.Laura.<init>(Expensive.java:147)
+	at net.minecraft.client.Minecraft.<init>(Minecraft.java:430)
+	at net.minecraft.client.main.Main.main(Main.java:156)
+	at Start.main(Start.java:11)
+Caused by: java.lang.NullPointerException: Cannot invoke "im.laura.Laura$UserData.getUser()" because "im.laura.Laura.userData" is null
+	at im.laura.ui.display.impl.FuntimeSchedulesRenderer.<clinit>(FuntimeSchedulesRenderer.java:33)
+	... 7 more
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at im.laura.functions.impl.render.HUD.<init>(HUD.java:94)
+	at im.laura.functions.api.FunctionRegistry.init(FunctionRegistry.java:101)
+	at im.laura.Laura.clientLoad(Expensive.java:165)
+	at im.laura.Laura.<init>(Expensive.java:147)
+	at net.minecraft.client.Minecraft.<init>(Minecraft.java:430)
+
+-- Initialization --
+Details:
+Stacktrace:
+	at net.minecraft.client.main.Main.main(Main.java:156)
+	at Start.main(Start.java:11)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.16.5
+	Minecraft Version ID: 1.16.5
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 17.0.9, Amazon.com Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Amazon.com Inc.
+	Memory: 54380344 bytes (51 MB) / 180355072 bytes (172 MB) up to 4263510016 bytes (4066 MB)
+	CPUs: 4
+	JVM Flags: 0 total; 
+	Launched Version: mcp
+	Backend library: LWJGL version 3.2.2 build 10
+	Backend API: Intel(R) HD Graphics 620 GL version 4.6.0 - Build 31.0.101.2127, Intel
+	GL Caps: Using framebuffer using OpenGL 3.0
+	Using VBOs: Yes
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	CPU: 4x Intel(R) Core(TM) i5-7300U CPU @ 2.60GHz
+	OptiFine Version: OptiFine_1.16.5_HD_U_G8
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 8
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 - Build 31.0.101.2127
+	OpenGlRenderer: Intel(R) HD Graphics 620
+	OpenGlVendor: Intel
+	CpuCount: 4

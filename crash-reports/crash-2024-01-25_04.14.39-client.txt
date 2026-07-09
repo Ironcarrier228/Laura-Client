@@ -1,0 +1,67 @@
+---- Minecraft Crash Report ----
+// You're mean.
+
+Time: 25.01.2024, 04:14
+Description: Initializing game
+
+java.lang.NoClassDefFoundError: im/expensive/functions/impl/player/InventoryMove
+	at im.laura.functions.api.FunctionRegistry.init(FunctionRegistry.java:101)
+	at im.laura.Laura.clientLoad(Expensive.java:194)
+	at im.laura.Laura.<init>(Expensive.java:147)
+	at net.minecraft.client.Minecraft.<init>(Minecraft.java:430)
+	at net.minecraft.client.main.Main.main(Main.java:195)
+	at Start.main(Start.java:10)
+Caused by: java.lang.ClassNotFoundException: im.laura.functions.impl.player.InventoryMove
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 6 more
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at im.laura.functions.api.FunctionRegistry.init(FunctionRegistry.java:101)
+	at im.laura.Laura.clientLoad(Expensive.java:194)
+	at im.laura.Laura.<init>(Expensive.java:147)
+	at net.minecraft.client.Minecraft.<init>(Minecraft.java:430)
+
+-- Initialization --
+Details:
+Stacktrace:
+	at net.minecraft.client.main.Main.main(Main.java:195)
+	at Start.main(Start.java:10)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.16.5
+	Minecraft Version ID: 1.16.5
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 17.0.8.1, Amazon.com Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Amazon.com Inc.
+	Memory: 148157480 bytes (141 MB) / 268435456 bytes (256 MB) up to 8547991552 bytes (8152 MB)
+	CPUs: 20
+	JVM Flags: 0 total; 
+	Launched Version: mcp
+	Backend library: LWJGL version 3.2.2 build 10
+	Backend API: NVIDIA GeForce GTX 1660/PCIe/SSE2 GL version 4.6.0 NVIDIA 546.29, NVIDIA Corporation
+	GL Caps: Using framebuffer using OpenGL 3.0
+	Using VBOs: Yes
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	CPU: 20x 12th Gen Intel(R) Core(TM) i7-12700KF
+	OptiFine Version: OptiFine_1.16.5_HD_U_G8
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 8
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 546.29
+	OpenGlRenderer: NVIDIA GeForce GTX 1660/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 20

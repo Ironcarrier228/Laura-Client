@@ -1,0 +1,101 @@
+---- Minecraft Crash Report ----
+// Surprise! Haha. Well, this is awkward.
+
+Time: 07.02.2026, 13:54
+Description: keyPressed event handler
+
+java.lang.NullPointerException: Cannot invoke "im.laura.Laura$UserData.getUid()" because "im.laura.Laura.userData" is null
+	at net.minecraft.client.gui.screen.inventory.ChestScreen.closeScreen(ChestScreen.java:62)
+	at net.minecraft.client.gui.screen.Screen.keyPressed(Screen.java:87)
+	at net.minecraft.client.gui.screen.inventory.ContainerScreen.keyPressed(ContainerScreen.java:618)
+	at net.minecraft.client.KeyboardListener.lambda$onKeyEvent$4(KeyboardListener.java:373)
+	at net.minecraft.client.gui.screen.Screen.wrapScreenError(Screen.java:510)
+	at net.minecraft.client.KeyboardListener.onKeyEvent(KeyboardListener.java:346)
+	at net.minecraft.client.KeyboardListener.lambda$setupCallbacks$7(KeyboardListener.java:491)
+	at net.minecraft.util.concurrent.ThreadTaskExecutor.execute(ThreadTaskExecutor.java:111)
+	at net.minecraft.client.KeyboardListener.lambda$setupCallbacks$8(KeyboardListener.java:490)
+	at org.lwjgl.glfw.GLFWKeyCallbackI.callback(GLFWKeyCallbackI.java:37)
+	at org.lwjgl.system.JNI.invokeV(Native Method)
+	at org.lwjgl.glfw.GLFW.glfwPollEvents(GLFW.java:3101)
+	at com.mojang.blaze3d.systems.RenderSystem.flipFrame(RenderSystem.java:109)
+	at net.minecraft.client.MainWindow.flipFrame(MainWindow.java:363)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1001)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:570)
+	at net.minecraft.client.main.Main.main(Main.java:189)
+	at Start.main(Start.java:11)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at net.minecraft.client.gui.screen.inventory.ChestScreen.closeScreen(ChestScreen.java:62)
+	at net.minecraft.client.gui.screen.Screen.keyPressed(Screen.java:87)
+	at net.minecraft.client.gui.screen.inventory.ContainerScreen.keyPressed(ContainerScreen.java:618)
+	at net.minecraft.client.KeyboardListener.lambda$onKeyEvent$4(KeyboardListener.java:373)
+
+-- Affected screen --
+Details:
+	Screen name: net.minecraft.client.gui.screen.inventory.ChestScreen
+Stacktrace:
+	at net.minecraft.client.gui.screen.Screen.wrapScreenError(Screen.java:510)
+	at net.minecraft.client.KeyboardListener.onKeyEvent(KeyboardListener.java:346)
+	at net.minecraft.client.KeyboardListener.lambda$setupCallbacks$7(KeyboardListener.java:491)
+	at net.minecraft.util.concurrent.ThreadTaskExecutor.execute(ThreadTaskExecutor.java:111)
+	at net.minecraft.client.KeyboardListener.lambda$setupCallbacks$8(KeyboardListener.java:490)
+	at org.lwjgl.glfw.GLFWKeyCallbackI.callback(GLFWKeyCallbackI.java:37)
+	at org.lwjgl.system.JNI.invokeV(Native Method)
+	at org.lwjgl.glfw.GLFW.glfwPollEvents(GLFW.java:3101)
+	at com.mojang.blaze3d.systems.RenderSystem.flipFrame(RenderSystem.java:109)
+
+-- Affected level --
+Details:
+	All players: 35 total; [ClientPlayerEntity['dedinside'/1771785, l='ClientLevel', x=-24.22, y=87.00, z=35.45], RemoteClientPlayerEntity['KavkazKraft'/1567792, l='ClientLevel', x=-0.52, y=90.00, z=0.55], RemoteClientPlayerEntity['Limoonchik'/1760329, l='ClientLevel', x=-1.62, y=88.00, z=12.29], RemoteClientPlayerEntity['Arturchick_UWU'/1600647, l='ClientLevel', x=-3.28, y=88.00, z=11.25], RemoteClientPlayerEntity['KTO_TIM_pvesher'/1750308, l='ClientLevel', x=-36.41, y=86.00, z=6.75], RemoteClientPlayerEntity['CryoNova27'/1493, l='ClientLevel', x=1.00, y=90.00, z=1.12], RemoteClientPlayerEntity['Nitzley'/1965, l='ClientLevel', x=4.75, y=89.50, z=8.07], RemoteClientPlayerEntity['SugiEr'/1743739, l='ClientLevel', x=0.50, y=90.00, z=0.50], RemoteClientPlayerEntity['puddicton'/1465167, l='ClientLevel', x=0.50, y=90.00, z=0.50], RemoteClientPlayerEntity['rippandre'/1579727, l='ClientLevel', x=0.50, y=90.00, z=0.50], RemoteClientPlayerEntity['filvamm'/1229988, l='ClientLevel', x=2.84, y=90.00, z=0.54], RemoteClientPlayerEntity['Orbeezz_'/1723475, l='ClientLevel', x=0.24, y=90.00, z=0.43], RemoteClientPlayerEntity['sanso_233'/1761302, l='ClientLevel', x=8.16, y=87.00, z=19.88], RemoteClientPlayerEntity['Bodua123'/1735614, l='ClientLevel', x=16.07, y=86.61, z=54.26], RemoteClientPlayerEntity['sidedcorn5830'/1449963, l='ClientLevel', x=0.04, y=89.00, z=23.28], RemoteClientPlayerEntity['dsfkrjkyl'/1766726, l='ClientLevel', x=-11.24, y=91.19, z=5.48], RemoteClientPlayerEntity['aswervivopoed'/1457353, l='ClientLevel', x=-25.45, y=87.00, z=26.32], RemoteClientPlayerEntity['HitMan898'/1704276, l='ClientLevel', x=-43.92, y=86.00, z=-3.11], RemoteClientPlayerEntity['TH0RNCAST3R'/1394647, l='ClientLevel', x=-43.50, y=86.00, z=-0.50], RemoteClientPlayerEntity['158'/158, l='ClientLevel', x=-35.50, y=87.00, z=17.50], RemoteClientPlayerEntity['209'/209, l='ClientLevel', x=-36.50, y=95.00, z=30.50], RemoteClientPlayerEntity['mkj5hb43'/1728360, l='ClientLevel', x=-58.71, y=86.00, z=0.44], RemoteClientPlayerEntity['koshara_zabyvaka'/1705716, l='ClientLevel', x=-2.66, y=89.50, z=7.92], RemoteClientPlayerEntity['Sweger4o7'/1773728, l='ClientLevel', x=-43.50, y=86.00, z=-0.50], RemoteClientPlayerEntity['mopbrokrutoi'/1767426, l='ClientLevel', x=-7.63, y=87.00, z=8.95], RemoteClientPlayerEntity['iziRush12'/1520748, l='ClientLevel', x=17.76, y=86.00, z=54.99], RemoteClientPlayerEntity['MISS3332'/1775047, l='ClientLevel', x=1.28, y=90.80, z=-13.92], RemoteClientPlayerEntity['SubZeraQW'/1775425, l='ClientLevel', x=-43.50, y=86.00, z=-0.50], RemoteClientPlayerEntity['nqwnemjnawnd13'/1776500, l='ClientLevel', x=0.37, y=90.00, z=1.19], RemoteClientPlayerEntity['wasap22'/1570156, l='ClientLevel', x=-45.83, y=81.00, z=-11.24], RemoteClientPlayerEntity['pomidor329'/1661825, l='ClientLevel', x=-47.69, y=81.00, z=-9.99], RemoteClientPlayerEntity['zxc_pomidorn1'/1772406, l='ClientLevel', x=24.61, y=86.00, z=10.84], RemoteClientPlayerEntity['fuckoctrs'/1582654, l='ClientLevel', x=3.98, y=128.23, z=-14.14], RemoteClientPlayerEntity['Hgdhytyea'/1779081, l='ClientLevel', x=0.47, y=90.00, z=0.50], RemoteClientPlayerEntity['Diego301'/1509342, l='ClientLevel', x=0.50, y=90.00, z=0.50]]
+	Chunk stats: Client Chunk Cache: 121, 49
+	Level dimension: minecraft:lobby
+	Level spawn location: World: (0,90,0), Chunk: (at 0,5,0 in 0,0; contains blocks 0,0,0 to 15,255,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 160497 game time, 13014 day time
+	Server brand: BotFilter (git:BungeeCord-Bootstrap:1.21-R0.5-SNAPSHOT:7f8b350:unknown) <- §6Fun§cCore 1.16.5
+	Server type: Non-integrated multiplayer server
+Stacktrace:
+	at net.minecraft.client.world.ClientWorld.fillCrashReport(ClientWorld.java:530)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2296)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:586)
+	at net.minecraft.client.main.Main.main(Main.java:189)
+	at Start.main(Start.java:11)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.16.5
+	Minecraft Version ID: 1.16.5
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 17.0.18, Amazon.com Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Amazon.com Inc.
+	Memory: 508453296 bytes (484 MB) / 1021313024 bytes (974 MB) up to 1021313024 bytes (974 MB)
+	CPUs: 4
+	JVM Flags: 0 total; 
+	Launched Version: mcp
+	Backend library: LWJGL version 3.2.2 build 10
+	Backend API: Intel(R) UHD Graphics GL version 4.6.0 - Build 27.20.100.9268, Intel
+	GL Caps: Using framebuffer using OpenGL 3.0
+	Using VBOs: Yes
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Graphics mode: fancy
+	Resource Packs: vanilla
+	Current Language: English (US)
+	CPU: 4x Intel(R) Core(TM) i3-10110U CPU @ 2.10GHz
+	OptiFine Version: OptiFine_1.16.5_HD_U_G8
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 2
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 - Build 27.20.100.9268
+	OpenGlRenderer: Intel(R) UHD Graphics
+	OpenGlVendor: Intel
+	CpuCount: 4

@@ -1,0 +1,385 @@
+[04:30:34] [main/INFO]: [OptiFine] (Reflector) Field not found: World.tileEntitiesToBeRemoved
+[04:30:34] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.eventbus.api.Event$Result
+[04:30:34] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.common.extensions.IForgeBlockState.hasTileEntity
+[04:30:34] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.extensions.IForgeEntity
+[04:30:34] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.CrashReportExtender
+[04:30:34] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tags.ItemTags.createOptional
+[04:30:36] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
+[04:30:37] [main/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[04:30:38] [main/INFO]: Setting user: halaldeveloper
+[04:30:38] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.settings.KeyConflictContext
+[04:30:38] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.settings.KeyModifier
+[04:30:38] [main/INFO]: Backend library: LWJGL version 3.2.2 build 10
+[04:30:38] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.fml.loading.progress.EarlyProgressVisualization.handOffWindow
+[04:30:39] [main/INFO]: [OptiFine] 
+[04:30:39] [main/INFO]: [OptiFine] OptiFine_1.16.5_HD_U_G8
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineResourceLocator
+[04:30:39] [main/INFO]: [OptiFine] Build: null
+[04:30:39] [main/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
+[04:30:39] [main/INFO]: [OptiFine] Java: 17.0.8.1, Amazon.com Inc.
+[04:30:39] [main/INFO]: [OptiFine] VM: OpenJDK 64-Bit Server VM (mixed mode, sharing), Amazon.com Inc.
+[04:30:39] [main/INFO]: [OptiFine] LWJGL: 3.3.0 Win32 WGL EGL OSMesa VisualC DLL
+[04:30:39] [main/INFO]: [OptiFine] OpenGL: NVIDIA GeForce GTX 1660 SUPER/PCIe/SSE2, version 4.6.0 NVIDIA 536.23, NVIDIA Corporation
+[04:30:39] [main/INFO]: [OptiFine] OpenGL Version: 4.6.0
+[04:30:39] [main/INFO]: [OptiFine] Maximum texture size: 32768x32768
+[04:30:39] [VersionCheck/INFO]: [OptiFine] Checking for new version
+[04:30:39] [main/INFO]: [Shaders] OpenGL Version: 4.6.0 NVIDIA 536.23
+[04:30:39] [main/INFO]: [Shaders] Vendor:  NVIDIA Corporation
+[04:30:39] [main/INFO]: [Shaders] Renderer: NVIDIA GeForce GTX 1660 SUPER/PCIe/SSE2
+[04:30:39] [main/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
+[04:30:39] [main/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
+[04:30:39] [main/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
+[04:30:39] [main/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
+[04:30:39] [main/INFO]: [Shaders] Load shaders configuration.
+[04:30:39] [main/INFO]: [Shaders] No shaderpack loaded.
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.Loader
+[04:30:39] [main/WARN]: [OptiFine] java.lang.ClassNotFoundException: sun.misc.SharedSecrets
+[04:30:39] [main/WARN]: [OptiFine] java.lang.ClassNotFoundException: jdk.internal.misc.SharedSecrets
+[04:30:39] [main/WARN]: [OptiFine] java.lang.ClassNotFoundException: sun.misc.VM
+[04:30:39] [main/WARN]: [OptiFine] java.lang.reflect.InaccessibleObjectException: Unable to make public static long jdk.internal.misc.VM.maxDirectMemory() accessible: module java.base does not "exports jdk.internal.misc" to unnamed module @4923ab24
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.ForgeBlockModelRenderer
+[04:30:39] [VersionCheck/INFO]: [OptiFine] Version found: G7
+[04:30:39] [main/INFO]: Narrator library for x64 successfully loaded
+[04:30:39] [main/INFO]: [STDOUT]: C:\Users\salam4ik'\expensive\scripts\test.lua
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.gui.screen.ModListScreen
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.gui.NotificationModUpdateScreen
+[04:30:39] [main/INFO]: Reloading ResourceManager: Default, !              §bAnglerfish.zip
+[04:30:39] [main/INFO]: [OptiFine] *** Reloading textures ***
+[04:30:39] [main/INFO]: [OptiFine] Resource packs: !              §bAnglerfish.zip
+[04:30:39] [Worker-Main-7/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoaderRegistry
+[04:30:39] [Worker-Main-6/INFO]: [OptiFine] Multitexture: false
+[04:30:39] [Worker-Main-2/INFO]: [OptiFine] Multitexture: false
+[04:30:39] [Worker-Main-1/INFO]: [OptiFine] Multitexture: false
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.RenderTypeLookup.canRenderInLayer
+[04:30:39] [main/INFO]: [OptiFine] *** Reflector Forge ***
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.BrandingControl
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.capabilities.ICapabilityProvider
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.capabilities.CapabilityProvider
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.ClientModLoader
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkDataEvent$Save
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkEvent$Load
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkEvent$Unload
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.ClientHooks
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.entity.EntityLeaveWorldEvent
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$RenderFogEvent
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.entity.EntityJoinWorldEvent
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.eventbus.api.Event.isCanceled
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.eventbus.api.Event.getResult
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.eventbus.api.IEventBus
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.extensions.IForgeBlock
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.BlockModelShapes.getTexture
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.common.extensions.IForgeBlockState.addDestroyEffects
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.common.extensions.IForgeBlockState.addHitEffects
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.common.extensions.IForgeBlockState.getLightValue
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.common.extensions.IForgeBlockState.getSoundType
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.common.extensions.IForgeBlockState.getStateAtViewpoint
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.common.extensions.IForgeBlockState.isAir
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraftforge.common.extensions.IForgeBlockState.shouldDisplayFluidOverlay
+[04:30:39] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.extensions.IForgeFluid
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fluids.FluidAttributes
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.EntityType.getTags
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.fluid.Fluid.getTags
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeConfig
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeConfig$Client
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeConfigSpec
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeConfigSpec$ConfigValue
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.chunk.IChunk.getWorldForge
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.extensions.IForgeItem
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.extensions.IForgeItemStack
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.ForgeI18n
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.settings.KeyBinding.setKeyConflictContext
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.settings.KeyBinding.setKeyModifierAndCode
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.settings.KeyBinding.getKeyModifier
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.extensions.IForgeEffectInstance
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.registries.ForgeRegistryEntry
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.RenderTypeLookup.canRenderInLayer
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Constructor not present: net.minecraft.world.server.Ticket, params: class net.minecraft.world.server.TicketType, int, class java.lang.Object, boolean
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.server.Ticket.isForceTicks
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.extensions.IForgeTileEntity
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.world.DimensionRenderInfo.getCloudRenderHandler
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.world.DimensionRenderInfo.getSkyRenderHandler
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.world.DimensionRenderInfo.getWeatherParticleRenderHandler
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.world.DimensionRenderInfo.getWeatherRenderHandler
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.ModContainer
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.entity.PartEntity
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.entity.PlaySoundAtEntityEvent
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderGameOverlayEvent$BossInfo
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderNameplateEvent
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.ScreenshotEvent
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.server.ServerLifecycleHooks
+[04:30:40] [main/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
+[04:30:40] [main/INFO]: [OptiFine] *** Reflector Vanilla ***
+[04:30:40] [Realms Notification Availability checker #1/INFO]: Could not authorize you against Realms server: Invalid session id
+[04:30:43] [Worker-Main-7/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@3d42e0f7
+[04:30:43] [Worker-Main-7/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@3d42e0f7
+[04:30:43] [Worker-Main-7/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@3d42e0f7
+[04:30:43] [Worker-Main-7/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@3d42e0f7
+[04:30:43] [Worker-Main-7/INFO]: [OptiFine] Multitexture: false
+[04:30:43] [Worker-Main-7/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@6469e0e4
+[04:30:43] [Worker-Main-7/INFO]: [OptiFine] Multipass connected textures: false
+[04:30:43] [Worker-Main-7/INFO]: [OptiFine] Multipass connected textures: false
+[04:30:43] [Worker-Main-7/INFO]: [OptiFine] BetterGrass: Parsing default configuration optifine/bettergrass.properties
+[04:30:44] [Worker-Main-7/INFO]: [OptiFine] Mipmap levels: 4
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Multitexture: false
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Sprite size: 64
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Mipmap levels: 6
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Multitexture: false
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Sprite size: 64
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Mipmap levels: 6
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Multitexture: false
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Sprite size: 64
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Mipmap levels: 6
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Multitexture: false
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Sprite size: 64
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Mipmap levels: 6
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Multitexture: false
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Sprite size: 64
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Mipmap levels: 6
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Multitexture: false
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Sprite size: 64
+[04:30:45] [Worker-Main-7/INFO]: [OptiFine] Mipmap levels: 6
+[04:30:45] [main/INFO]: OpenAL initialized.
+[04:30:45] [main/INFO]: Sound engine started
+[04:30:45] [main/INFO]: Created: 2048x1024x4 minecraft:textures/atlas/blocks.png-atlas
+[04:30:45] [main/INFO]: [OptiFine] Animated sprites: 47
+[04:30:45] [main/INFO]: Created: 256x128x4 minecraft:textures/atlas/signs.png-atlas
+[04:30:45] [main/INFO]: [OptiFine] Animated sprites: 0
+[04:30:45] [main/INFO]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[04:30:45] [main/INFO]: [OptiFine] Animated sprites: 0
+[04:30:45] [main/INFO]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[04:30:45] [main/INFO]: [OptiFine] Animated sprites: 0
+[04:30:45] [main/INFO]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[04:30:45] [main/INFO]: [OptiFine] Animated sprites: 0
+[04:30:45] [main/INFO]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[04:30:45] [main/INFO]: [OptiFine] Animated sprites: 0
+[04:30:45] [main/INFO]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[04:30:45] [main/INFO]: [OptiFine] Animated sprites: 0
+[04:30:46] [main/INFO]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[04:30:46] [main/INFO]: [OptiFine] Animated sprites: 0
+[04:30:46] [main/INFO]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[04:30:46] [main/INFO]: [OptiFine] Animated sprites: 0
+[04:30:46] [main/INFO]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[04:30:46] [main/INFO]: [OptiFine] Animated sprites: 0
+[04:30:46] [main/INFO]: [OptiFine] *** Reloading custom textures ***
+[04:30:46] [main/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@23938bf7
+[04:30:46] [main/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@68378acc
+[04:30:46] [main/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@5ea73927
+[04:30:49] [main/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@6f49a5f8
+[04:30:49] [main/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@c4c4852
+[04:30:49] [main/WARN]: [OptiFine] Unknown resource pack type: net.minecraft.client.resources.LegacyResourcePackWrapper@30cf61ca
+[04:30:49] [main/INFO]: [OptiFine] Disable Forge light pipeline
+[04:30:52] [main/WARN]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[04:30:52] [main/WARN]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[04:30:52] [main/WARN]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[04:30:52] [main/WARN]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[04:30:52] [main/WARN]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[04:30:52] [main/INFO]: Reloading ResourceManager: Default
+[04:30:53] [main/INFO]: Loaded 7 recipes
+[04:30:54] [main/INFO]: Loaded 927 advancements
+[04:30:55] [main/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[04:30:55] [Server thread/INFO]: Starting integrated minecraft server version 1.16.5
+[04:30:55] [Server thread/INFO]: Generating keypair
+[04:30:55] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[04:30:56] [main/INFO]: Preparing spawn area: 0%
+[04:30:56] [main/INFO]: Preparing spawn area: 0%
+[04:30:56] [main/INFO]: Preparing spawn area: 0%
+[04:30:59] [main/INFO]: Preparing spawn area: 83%
+[04:30:59] [main/INFO]: Preparing spawn area: 83%
+[04:30:59] [main/INFO]: Preparing spawn area: 83%
+[04:30:59] [main/INFO]: Preparing spawn area: 83%
+[04:30:59] [main/INFO]: Preparing spawn area: 83%
+[04:30:59] [main/INFO]: Preparing spawn area: 83%
+[04:31:00] [main/INFO]: Preparing spawn area: 84%
+[04:31:00] [main/INFO]: Preparing spawn area: 97%
+[04:31:01] [main/INFO]: Time elapsed: 5452 ms
+[04:31:01] [Server thread/INFO]: Changing view distance to 4, from 10
+[04:31:01] [Server thread/INFO]: halaldeveloper[local:E:ca64c369] logged in with entity id 140 at (315.96015213098, 84.23111522099065, -498.0567788383346)
+[04:31:01] [Server thread/INFO]: halaldeveloper joined the game
+[04:31:02] [Server thread/INFO]: Saving and pausing game...
+[04:31:02] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:31:02] [main/INFO]: Loaded 50 advancements
+[04:31:03] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:31:03] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:31:05] [main/INFO]: [CHAT] §b[Expensive] §fLoaded!
+[04:31:05] [main/INFO]: [CHAT] §b[Expensive] §fКонфигурация sa была загружена!
+[04:31:05] [Server thread/INFO]: Saving and pausing game...
+[04:31:05] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:31:05] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:31:05] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:31:15] [Server thread/INFO]: Saving and pausing game...
+[04:31:15] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:31:15] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:31:15] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:31:18] [Server thread/INFO]: Saving and pausing game...
+[04:31:18] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:31:18] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:31:18] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:31:22] [Server thread/INFO]: Saving and pausing game...
+[04:31:22] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:31:22] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:31:22] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:31:24] [Server thread/INFO]: Saving and pausing game...
+[04:31:24] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:31:24] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:31:24] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:31:25] [Server thread/INFO]: Saving and pausing game...
+[04:31:25] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:31:25] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:31:25] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:33:39] [Server thread/INFO]: Saving and pausing game...
+[04:33:39] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:33:39] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:33:39] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:33:40] [Server thread/INFO]: Saving and pausing game...
+[04:33:40] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:33:40] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:33:40] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:33:42] [Server thread/INFO]: Saving and pausing game...
+[04:33:42] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:33:42] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:33:42] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:33:43] [Server thread/INFO]: Saving and pausing game...
+[04:33:43] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:33:43] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:33:43] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:33:46] [Server thread/INFO]: Saving and pausing game...
+[04:33:46] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:33:46] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:33:46] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:33:48] [Server thread/INFO]: Saving and pausing game...
+[04:33:48] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:33:48] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:33:48] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:33:48] [Server thread/INFO]: Saving and pausing game...
+[04:33:48] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:33:48] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:33:48] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:33:49] [Server thread/INFO]: Saving and pausing game...
+[04:33:49] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:33:49] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:33:49] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:33:50] [Server thread/INFO]: Saving and pausing game...
+[04:33:50] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:33:50] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:33:50] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:33:52] [Server thread/INFO]: Saving and pausing game...
+[04:33:52] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:33:52] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:33:52] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:33:53] [Server thread/INFO]: Saving and pausing game...
+[04:33:53] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:33:53] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:33:53] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:34:00] [Server thread/INFO]: Saving and pausing game...
+[04:34:00] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:34:00] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:34:00] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:34:01] [Server thread/INFO]: Saving and pausing game...
+[04:34:01] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:34:01] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:34:01] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:34:04] [Server thread/INFO]: Saving and pausing game...
+[04:34:04] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:34:04] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:34:04] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:34:04] [Server thread/INFO]: Saving and pausing game...
+[04:34:04] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:34:04] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:34:04] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:34:05] [Server thread/INFO]: Saving and pausing game...
+[04:34:05] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:34:05] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:34:05] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:34:09] [Server thread/INFO]: Saving and pausing game...
+[04:34:09] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:34:09] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:34:09] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:34:25] [Server thread/INFO]: Saving and pausing game...
+[04:34:25] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:34:26] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:34:26] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:34:30] [Server thread/INFO]: Saving and pausing game...
+[04:34:30] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:34:30] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:34:30] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:34:49] [Server thread/INFO]: Saving and pausing game...
+[04:34:49] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:34:49] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:34:49] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:36:17] [Server thread/INFO]: Saving and pausing game...
+[04:36:17] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:36:17] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:36:17] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:36:20] [Server thread/INFO]: Saving and pausing game...
+[04:36:20] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:36:20] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:36:20] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:36:33] [Server thread/INFO]: Saving and pausing game...
+[04:36:33] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:36:33] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:36:33] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:36:39] [Server thread/INFO]: Saving and pausing game...
+[04:36:39] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:36:39] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:36:39] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:36:42] [Server thread/INFO]: Saving and pausing game...
+[04:36:42] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:36:42] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:36:42] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:36:43] [Server thread/INFO]: Saving and pausing game...
+[04:36:43] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:36:43] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:36:43] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:36:57] [Server thread/INFO]: Saving and pausing game...
+[04:36:57] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:36:57] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:36:57] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:36:57] [Server thread/INFO]: Saving and pausing game...
+[04:36:57] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:36:57] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:36:57] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:37:01] [Server thread/INFO]: Saving and pausing game...
+[04:37:01] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:37:02] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:37:02] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:37:02] [Server thread/INFO]: Saving and pausing game...
+[04:37:02] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:37:02] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:37:02] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:37:20] [Server thread/INFO]: Saving and pausing game...
+[04:37:20] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:37:20] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:37:20] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:38:30] [Server thread/INFO]: Saving and pausing game...
+[04:38:30] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:38:30] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:38:30] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:38:46] [Server thread/INFO]: Saving and pausing game...
+[04:38:46] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:38:46] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:38:46] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:38:49] [Server thread/INFO]: Saving and pausing game...
+[04:38:49] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:38:49] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:38:49] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[04:39:24] [Server thread/INFO]: Saving and pausing game...
+[04:39:24] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[04:39:24] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[04:39:24] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end

@@ -1,0 +1,44 @@
+/*
+ * Decompiled with CFR 0.153-SNAPSHOT (d6f6758-dirty).
+ */
+package via.netty.handler;
+
+import com.viaversion.viaversion.util.PipelineUtil;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.handler.codec.MessageToByteEncoder;
+import io.netty.handler.codec.MessageToMessageDecoder;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
+
+public class CommonTransformer {
+    public static void decompress(ChannelHandlerContext ctx, ByteBuf buf) {
+        ChannelHandler handler = ctx.pipeline().get("decompress");
+        try {
+            List decoded = handler instanceof MessageToMessageDecoder ? PipelineUtil.callDecode((MessageToMessageDecoder)handler, ctx, buf) : PipelineUtil.callDecode((ByteToMessageDecoder)handler, ctx, buf);
+            ByteBuf decompressed = (ByteBuf) decoded.get(0);
+            try {
+                buf.clear().writeBytes(decompressed);
+            } finally {
+                decompressed.release();
+            }
+        } catch (Exception e) {
+            if (e instanceof InvocationTargetException) {
+                throw new RuntimeException(e.getCause());
+            }
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void compress(ChannelHandlerContext ctx, ByteBuf buf) throws Exception {
+        ByteBuf compressed = ctx.alloc().buffer();
+        try {
+            PipelineUtil.callEncode((MessageToByteEncoder)ctx.pipeline().get("compress"), ctx, buf, compressed);
+            buf.clear().writeBytes(compressed);
+        } finally {
+            compressed.release();
+        }
+    }
+}
