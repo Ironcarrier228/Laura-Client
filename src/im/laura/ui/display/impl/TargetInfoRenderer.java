@@ -109,7 +109,7 @@ public class TargetInfoRenderer implements ElementRenderer {
 
             Style style = Laura.getInstance().getStyleManager().getCurrentStyle();
 
-            final ResourceLocation logo = new ResourceLocation("expensive/images/hud/hearth.png");
+            final ResourceLocation logo = new ResourceLocation("laura", "textures/hud/heart.png");
 
             DisplayUtils.drawImage(logo, posX + headSize + spacing + spacing + 63.75f, posY + height - spacing * 2
                     - 10, iconSizeX, iconSizeY,

@@ -72,7 +72,7 @@ public class BlockHighlight extends Function {
         // Рисуем заливку
         if (showFill.get()) {
             Color fillColor = new Color(blockColor.get(), true);
-            fillColor = new Color(fillColor.getRed(), fillColor.getGreen(), fillColor.getBlue(), fillAlpha.get());
+            fillColor = new Color(fillColor.getRed(), fillColor.getGreen(), fillColor.getBlue(), (int) (float) fillAlpha.get());
             DisplayUtils.drawFilledBox(bb, fillColor);
         }
 
