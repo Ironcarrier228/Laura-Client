@@ -105,7 +105,6 @@ public class FunctionRegistry {
     private ElytraTarget elytraTarget;
     private BowAimbot bowAimbot;
     private Fullbright fullbright;
-    private Chams chams;
     private Trajectories trajectories;
     private VisualRange visualRange;
     private LogoutSpots logoutSpots;
@@ -113,7 +112,6 @@ public class FunctionRegistry {
     private BlockHighlight blockHighlight;
     private Search search;
     private HoleESP holeESP;
-    private SkeletonESP skeletonESP;
     private GlowESP glowESP;
     private AntiAim antiAim;
     private AutoSex autoSex;
@@ -213,7 +211,6 @@ public class FunctionRegistry {
                 boatFly = new BoatFly(),
                 bowAimbot = new BowAimbot(),
                 fullbright = new Fullbright(),
-                chams = new Chams(),
                 trajectories = new Trajectories(),
                 visualRange = new VisualRange(),
                 logoutSpots = new LogoutSpots(),
@@ -221,7 +218,6 @@ public class FunctionRegistry {
                 blockHighlight = new BlockHighlight(),
                 search = new Search(),
                 holeESP = new HoleESP(),
-                skeletonESP = new SkeletonESP(),
                 glowESP = new GlowESP(),
                 antiAim = new AntiAim(),
                 autoSex = new AutoSex(),
