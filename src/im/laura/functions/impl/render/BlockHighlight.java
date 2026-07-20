@@ -1,9 +1,8 @@
 package im.laura.functions.impl.render;
 
-// noinspection GuavaUnstableApiUsed,GuavaEventBusSubscriptionHasCorrectArgumentCount
 import com.google.common.eventbus.Subscribe;
 import com.mojang.blaze3d.systems.RenderSystem;
-import im.laura.events.EventDisplay;
+import im.laura.events.WorldEvent;
 import im.laura.functions.api.Category;
 import im.laura.functions.api.Function;
 import im.laura.functions.api.FunctionRegister;
@@ -16,6 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.vector.Vector3d;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
@@ -35,14 +35,12 @@ public class BlockHighlight extends Function {
         addSettings(blockColor, outlineColor, fillAlpha, showOutline, showFill, lineWidth);
     }
 
-    @SuppressWarnings({"Guava", "BetaApi"})
     @Subscribe
-    public void onRender(EventDisplay e) {
-        if (mc.player == null || mc.world == null || e.getType() != EventDisplay.Type.POST) {
+    public void onRenderWorld(WorldEvent e) {
+        if (mc.player == null || mc.world == null) {
             return;
         }
 
-        // Получаем блок, на который смотрит игрок
         RayTraceResult result = mc.objectMouseOver;
         if (result == null || result.getType() != RayTraceResult.Type.BLOCK) {
             return;
@@ -60,28 +58,36 @@ public class BlockHighlight extends Function {
 
     @SuppressWarnings("deprecation")
     private void renderBlockHighlight(BlockPos pos) {
-        RenderSystem.pushMatrix();
+        Vector3d renderPos = mc.gameRenderer.getActiveRenderInfo().getProjectedView();
 
+        AxisAlignedBB bb = new AxisAlignedBB(
+                pos.getX() - renderPos.getX(),
+                pos.getY() - renderPos.getY(),
+                pos.getZ() - renderPos.getZ(),
+                pos.getX() + 1 - renderPos.getX(),
+                pos.getY() + 1 - renderPos.getY(),
+                pos.getZ() + 1 - renderPos.getZ()
+        );
+
+        RenderSystem.pushMatrix();
         RenderSystem.enableBlend();
         RenderSystem.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         RenderSystem.disableTexture();
+        RenderSystem.disableDepthTest();
         RenderSystem.lineWidth(lineWidth.get());
 
-        AxisAlignedBB bb = new AxisAlignedBB(pos);
-
-        // Рисуем заливку
         if (showFill.get()) {
             Color fillColor = new Color(blockColor.get(), true);
             fillColor = new Color(fillColor.getRed(), fillColor.getGreen(), fillColor.getBlue(), (int) (float) fillAlpha.get());
             DisplayUtils.drawFilledBox(bb, fillColor);
         }
 
-        // Рисуем контур
         if (showOutline.get()) {
             Color outline = new Color(outlineColor.get(), true);
             DisplayUtils.drawOutlinedBox(bb, outline);
         }
 
+        RenderSystem.enableDepthTest();
         RenderSystem.enableTexture();
         RenderSystem.disableBlend();
         RenderSystem.popMatrix();
