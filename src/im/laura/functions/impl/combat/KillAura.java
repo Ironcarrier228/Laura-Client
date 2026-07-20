@@ -30,9 +30,13 @@ import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.container.ClickType;
+import net.minecraft.network.play.client.CHeldItemChangePacket;
+import net.minecraft.network.play.client.CPlayerPacket;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Hand;
+import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.SwordItem;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.util.math.RayTraceResult;
@@ -40,26 +44,34 @@ import net.minecraft.util.math.vector.Vector2f;
 import net.minecraft.util.math.vector.Vector3d;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import static java.lang.Math.hypot;
 import static net.minecraft.util.math.MathHelper.clamp;
 import static net.minecraft.util.math.MathHelper.wrapDegrees;
 
+@SuppressWarnings({"unused", "SameParameterValue", "UnstableApiUsage"})
 @FunctionRegister(name = "KillAura", type = Category.Combat)
-@SuppressWarnings({"unused", "SameParameterValue"})
 public class KillAura extends Function {
+
     @Getter
-    private final ModeSetting type = new ModeSetting("Тип", "Плавная", 
-            "Плавная", "Резкая", "Snap", "Интеллектуальная", "Matrix", "Экспоненциальная", "Human", "Silent");
-    
+    private final ModeSetting type = new ModeSetting("Тип", "Плавная",
+            "Плавная", "Резкая", "Snap", "Интеллектуальная", "Matrix",
+            "Экспоненциальная", "Human", "Silent", "Predictive", "SmoothAccel", "Jitter");
+
     private final SliderSetting attackRange = new SliderSetting("Дистанция атаки", 3f, 3f, 6f, 0.1f);
     @Getter
     private final SliderSetting rotationRange = new SliderSetting("Дистанция ротации", 1f, 0.5f, 3f, 0.1f);
     @Getter
     private final SliderSetting elytraRange = new SliderSetting("Элитра ротация", 10f, 1f, 30f, 0.1f);
+    private final SliderSetting fov = new SliderSetting("FOV", 180f, 30f, 360f, 1f);
+    private final SliderSetting switchDelay = new SliderSetting("Задержка свитча", 0f, 0f, 1000f, 50f);
+    private final SliderSetting multiTargetCount = new SliderSetting("Мульти-таргеты", 1, 1, 5, 1);
+    private final SliderSetting predictionTicks = new SliderSetting("Предикция тиков", 3, 0, 20, 1);
 
     final ModeListSetting targets = new ModeListSetting("Таргеты",
             new BooleanSetting("Игроки", true),
@@ -68,7 +80,8 @@ public class KillAura extends Function {
             new BooleanSetting("Животные", false),
             new BooleanSetting("Друзья", false),
             new BooleanSetting("Голые невидимки", true),
-            new BooleanSetting("Невидимки", true));
+            new BooleanSetting("Невидимки", true),
+            new BooleanSetting("Спящие", false));
 
     @Getter
     final ModeListSetting options = new ModeListSetting("Опции",
@@ -82,26 +95,45 @@ public class KillAura extends Function {
             new BooleanSetting("RayTrace проверка", true),
             new BooleanSetting("Silent Aim", false),
             new BooleanSetting("Human Rotation", true),
-            new BooleanSetting("Пост-ротация", true));
+            new BooleanSetting("Пост-ротация", true),
+            new BooleanSetting("Предикция движения", true),
+            new BooleanSetting("Умный выбор точки", true),
+            new BooleanSetting("Авто-оружие", true),
+            new BooleanSetting("Мульти-таргет", false),
+            new BooleanSetting("Ротация через пакеты", false),
+            new BooleanSetting("Ignore Walls (RayCast)", false),
+            new BooleanSetting("Jitter на атаку", false),
+            new BooleanSetting("Не атаковать в воде", true),
+            new BooleanSetting("Не атаковать при полёте", false));
 
     final ModeSetting serverMode = new ModeSetting("Режим сервера", "Vanilla",
-            "Vanilla", "FunTime", "SkyTime", "HollyWorld", "ReallyWorld", "SpookyTime", 
-            "Matrix", "Vulcan", "Grim", "NCP", "Watchdog", "Watchdog-Tap");
+            "Vanilla", "FunTime", "SkyTime", "HollyWorld", "ReallyWorld", "SpookyTime",
+            "Matrix", "Vulcan", "Grim", "NCP", "Watchdog", "Watchdog-Tap", "Freaky", "Virus");
 
-    final ModeSetting correctionType = new ModeSetting("Тип коррекции", "Незаметный", 
-            "Незаметный", "Сфокусированный", "Пенить", "Smooth");
+    final ModeSetting correctionType = new ModeSetting("Тип коррекции", "Незаметный",
+            "Незаметный", "Сфокусированный", "Пенить", "Smooth", "ACS");
+
+    final ModeSetting aimPoint = new ModeSetting("Точка прицеливания", "Авто",
+            "Авто", "Голова", "Тело", "Ноги", "Ближе к земле", "Дальше от земли");
+
+    final ModeSetting weaponPriority = new ModeSetting("Приоритет оружия", "Меч",
+            "Меч", "Топор", "Авто-урон");
 
     @Getter
     private final StopWatch stopWatch = new StopWatch();
     private Vector2f rotateVector = new Vector2f(0, 0);
     @Getter
     private LivingEntity target;
+    @Getter
+    private final List<LivingEntity> multiTargets = new CopyOnWriteArrayList<>();
     private Entity selected;
 
     int ticks = 0;
     boolean isRotated;
+    private int currentMultiTargetIndex = 0;
+    private long lastSwitchTime = 0;
+    private LivingEntity lastTarget = null;
 
-    // Для обходов
     private final Random random = new Random();
     private long lastAttackTime = 0;
     private long humanReactionDelay = 0;
@@ -110,15 +142,27 @@ public class KillAura extends Function {
     private boolean isPostRotating = false;
     private long postRotationStartTime = 0;
 
-    // Gaussian random для human-like ротации
-    private double nextGaussian = 0;
+    private double nextGaussianValue = 0;
     private boolean haveNextGaussian = false;
+
+    private final Vector3d[] positionHistory = new Vector3d[20];
+    private Vector3d predictedPosition = null;
+    private int historyIndex = 0;
+
+    private float currentYawSpeed = 0;
+    private float currentPitchSpeed = 0;
+
+    private float jitterOffset = 0;
+    private float acsCorrection = 0;
 
     final AutoPotion autoPotion;
 
     public KillAura(AutoPotion autoPotion) {
         this.autoPotion = autoPotion;
-        addSettings(type, attackRange, rotationRange, elytraRange, targets, options, serverMode, correctionType);
+        addSettings(type, attackRange, rotationRange, elytraRange, fov, switchDelay,
+                multiTargetCount, predictionTicks, targets, options, serverMode,
+                correctionType, aimPoint, weaponPriority);
+        Arrays.fill(positionHistory, Vector3d.ZERO);
     }
 
     @Subscribe
@@ -128,65 +172,106 @@ public class KillAura extends Function {
                 LivingEntity nearestTarget = getNearestValidTarget();
                 if (nearestTarget != null && nearestTarget != target) {
                     target = nearestTarget;
-                    Vector3d vec = nearestTarget.getPositionVec().subtract(mc.player.getEyePosition(1.0F));
-                    float yaw = (float) MathHelper.wrapDegrees(Math.toDegrees(Math.atan2(vec.z, vec.x)) - 90);
+                    Vector3d vec = getAimPoint(nearestTarget).subtract(mc.player.getEyePosition(1.0F));
+                    float yaw = (float) wrapDegrees(Math.toDegrees(Math.atan2(vec.z, vec.x)) - 90);
                     float pitch = (float) (-Math.toDegrees(Math.atan2(vec.y, hypot(vec.x, vec.z))));
                     rotateVector = new Vector2f(yaw, pitch);
                     mc.player.rotationYawOffset = yaw;
                 }
                 MoveUtils.fixMovement(eventInput, rotateVector.x);
-            } else if (correctionType.is("Незаметный")) {
+            } else if (correctionType.is("ACS")) {
+                MoveUtils.fixMovement(eventInput, rotateVector.x + acsCorrection);
+            } else {
                 MoveUtils.fixMovement(eventInput, rotateVector.x);
-            } else if (correctionType.is("Сфокусированный")) {
-                MoveUtils.fixMovement(eventInput, rotateVector.x);
-            } else if (correctionType.is("Smooth")) {
-                // Плавная коррекция движения
-                float smoothedYaw = smoothRotation(mc.player.rotationYaw, rotateVector.x, 10.0f);
-                MoveUtils.fixMovement(eventInput, smoothedYaw);
             }
         }
     }
 
     @Subscribe
     public void onUpdate(EventUpdate e) {
-        // Режим "Пенить" всегда переключается между целями
-        if (correctionType.is("Пенить")) {
-            updateTarget();
-            LivingEntity nearestTarget = getNearestValidTarget();
-            if (nearestTarget != null && nearestTarget != target) {
-                target = nearestTarget;
+        int maxTargets = multiTargetCount.get().intValue();
+        long switchDelayMs = switchDelay.get().longValue();
+        int predictTicks = predictionTicks.get().intValue();
+
+        if (options.getValueByName("Мульти-таргет").get()) {
+            updateMultiTargets(maxTargets);
+
+            if (multiTargets.isEmpty()) {
+                reset();
+                return;
             }
-        } else if (options.getValueByName("Фокусировать одну цель").get() && (target == null || !isValid(target)) || !options.getValueByName("Фокусировать одну цель").get()) {
-            updateTarget();
+
+            long currentTime = System.currentTimeMillis();
+            if (currentTime - lastSwitchTime > switchDelayMs ||
+                    !isValid(multiTargets.get(currentMultiTargetIndex))) {
+
+                lastSwitchTime = currentTime;
+                lastTarget = target;
+
+                for (int i = 0; i < multiTargets.size(); i++) {
+                    currentMultiTargetIndex = (currentMultiTargetIndex + 1) % multiTargets.size();
+                    if (isValid(multiTargets.get(currentMultiTargetIndex))) {
+                        break;
+                    }
+                }
+                target = multiTargets.get(currentMultiTargetIndex);
+            }
+        } else {
+            if (correctionType.is("Пенить")) {
+                updateTarget();
+                LivingEntity nearestTarget = getNearestValidTarget();
+                if (nearestTarget != null && nearestTarget != target) {
+                    target = nearestTarget;
+                }
+            } else if (options.getValueByName("Фокусировать одну цель").get() && (target == null || !isValid(target))
+                    || !options.getValueByName("Фокусировать одну цель").get()) {
+                updateTarget();
+            }
         }
 
-        // Пост-ротация (возврат взгляда после атаки)
+        if (target != null) {
+            updatePositionHistory(target);
+            predictedPosition = options.getValueByName("Предикция движения").get()
+                    ? predictPosition(target, predictTicks)
+                    : null;
+        }
+
         if (options.getValueByName("Пост-ротация").get() && isPostRotating) {
             handlePostRotation();
+        }
+
+        if (correctionType.is("ACS")) {
+            updateACSCorrection();
         }
 
         if (target != null && !(autoPotion.isState() && autoPotion.isActive())) {
             isRotated = false;
 
-            // Human-like задержка перед атакой
             long delay = getAttackDelay();
             if (options.getValueByName("Human Rotation").get()) {
                 delay += humanReactionDelay;
             }
 
+            if (lastTarget != target && switchDelayMs > 0) {
+                delay += switchDelayMs;
+            }
+
             if (shouldPlayerFalling() && (System.currentTimeMillis() - lastAttackTime >= delay)) {
+                if (options.getValueByName("Авто-оружие").get()) {
+                    autoWeaponSwap();
+                }
+
                 updateAttack();
                 lastAttackTime = System.currentTimeMillis();
-                
-                // Генерируем новую human-like задержку
+
                 if (options.getValueByName("Human Rotation").get()) {
-                    humanReactionDelay = 150 + random.nextInt(150); // 150-300ms человеческая реакция
+                    humanReactionDelay = 150 + random.nextInt(150);
                     isPostRotating = true;
                     postRotationStartTime = System.currentTimeMillis();
                     postRotationYaw = rotateVector.x;
                     postRotationPitch = rotateVector.y;
                 }
-                
+
                 ticks = 2;
             }
 
@@ -204,63 +289,26 @@ public class KillAura extends Function {
                 } else {
                     reset();
                 }
-            } else if (type.is("Human")) {
-                // Human режим - максимально естественная ротация
+            } else if (type.is("Predictive")) {
                 if (!isRotated) {
-                    updateRotation(false, 60, 30);
+                    updateRotationPredictive(false, 70, 35);
                 }
-            } else if (type.is("Silent")) {
-                // Silent Aim - только пакеты, без визуальной ротации
+            } else if (type.is("SmoothAccel")) {
                 if (!isRotated) {
-                    updateRotation(false, 50, 25);
+                    updateRotationSmoothAccel(false, 100, 50);
                 }
-            } else {
+            } else if (type.is("Jitter")) {
                 if (!isRotated) {
-                    updateRotation(false, 80, 35);
+                    updateRotationJitter(false, 80, 40);
                 }
+            } else if (!isRotated) {
+                updateRotation(false, 80, 35);
             }
 
         } else {
             stopWatch.setLastMS(0);
             reset();
         }
-    }
-
-    private void handlePostRotation() {
-        // Плавный возврат взгляда после атаки
-        long elapsed = System.currentTimeMillis() - postRotationStartTime;
-        if (elapsed > 300) { // 300ms на пост-ротацию
-            isPostRotating = false;
-            return;
-        }
-
-        float progress = (float) elapsed / 300f;
-        float originalYaw = mc.player.rotationYaw;
-        float originalPitch = mc.player.rotationPitch;
-
-        // Интерполяция обратно к нормальному углу
-        float targetYaw = originalYaw + (postRotationYaw - originalYaw) * (1 - progress);
-        float targetPitch = originalPitch + (postRotationPitch - originalPitch) * (1 - progress);
-
-        rotateVector = new Vector2f(targetYaw, targetPitch);
-    }
-
-    private long getAttackDelay() {
-        // Задержки для разных серверов с обходом античитов
-        return switch (serverMode.get()) {
-            case "FunTime" -> 480 + random.nextInt(70);
-            case "SkyTime" -> 420 + random.nextInt(80);
-            case "HollyWorld" -> 500 + random.nextInt(80);
-            case "ReallyWorld" -> 520 + random.nextInt(60);
-            case "SpookyTime" -> 400 + random.nextInt(100);
-            case "Matrix" -> 450 + random.nextInt(90);
-            case "Vulcan" -> 470 + random.nextInt(75);
-            case "Grim" -> 380 + random.nextInt(60);
-            case "NCP" -> 500 + random.nextInt(50);
-            case "Watchdog" -> 450 + random.nextInt(100);
-            case "Watchdog-Tap" -> 500 + random.nextInt(80); // Tap-boost режим
-            default -> 500;
-        };
     }
 
     @Subscribe
@@ -270,9 +318,17 @@ public class KillAura extends Function {
         float yaw = rotateVector.x;
         float pitch = rotateVector.y;
 
-        // Silent Aim - ротация только для сервера
-        if (options.getValueByName("Silent Aim").get() && type.is("Silent")) {
-            // Отправляем пакеты с ротацией, но визуально не поворачиваемся
+        if (options.getValueByName("Jitter на атаку").get() && type.is("Jitter")) {
+            yaw += jitterOffset;
+            pitch += (random.nextFloat() - 0.5f) * 2f;
+        }
+
+        if (options.getValueByName("Ротация через пакеты").get() &&
+                (type.is("Silent") || serverMode.is("Matrix") || serverMode.is("Vulcan"))) {
+            mc.player.connection.sendPacket(new CPlayerPacket.RotationPacket(yaw, pitch, mc.player.isOnGround()));
+            e.setYaw(mc.player.rotationYaw);
+            e.setPitch(mc.player.rotationPitch);
+        } else if (options.getValueByName("Silent Aim").get() && type.is("Silent")) {
             e.setYaw(yaw);
             e.setPitch(pitch);
         } else {
@@ -284,166 +340,295 @@ public class KillAura extends Function {
         }
     }
 
-    private void updateTarget() {
-        List<LivingEntity> targets = new ArrayList<>();
+    private void updatePositionHistory(LivingEntity entity) {
+        positionHistory[historyIndex % 20] = entity.getPositionVec();
+        historyIndex++;
+    }
 
-        for (Entity entity : mc.world.getAllEntities()) {
-            if (entity instanceof LivingEntity living && isValid(living)) {
-                // RayTrace проверка
-                if (options.getValueByName("RayTrace проверка").get()) {
-                    if (!canSeeEntity(living)) {
-                        continue;
-                    }
-                }
-                targets.add(living);
+    private Vector3d predictPosition(LivingEntity entity, int ticksAhead) {
+        if (ticksAhead <= 0 || historyIndex < 3) {
+            return entity.getPositionVec();
+        }
+
+        int samples = Math.min(historyIndex, 10);
+        Vector3d totalVelocity = Vector3d.ZERO;
+
+        for (int i = 1; i < samples; i++) {
+            int current = (historyIndex - i) % 20;
+            int previous = (historyIndex - i - 1) % 20;
+
+            if (!positionHistory[current].equals(Vector3d.ZERO) && !positionHistory[previous].equals(Vector3d.ZERO)) {
+                totalVelocity = totalVelocity.add(positionHistory[current].subtract(positionHistory[previous]));
             }
         }
 
-        if (targets.isEmpty()) {
-            target = null;
-            return;
+        Vector3d averageVelocity = totalVelocity.scale(1.0 / (samples - 1));
+
+        double gravityCompensation = 0;
+        if (!entity.isOnGround() && !entity.isInWater()) {
+            gravityCompensation = -0.08 * ticksAhead * ticksAhead * 0.5;
         }
 
-        if (targets.size() == 1) {
-            target = targets.get(0);
-            return;
-        }
-
-        // Умная сортировка с приоритетами
-        targets.sort(Comparator.comparingDouble(this::getTargetPriority).reversed());
-
-        target = targets.get(0);
-    }
-
-    /**
-     * Приоритет цели - умный выбор
-     */
-    private double getTargetPriority(LivingEntity entity) {
-        double priority = 0;
-
-        // Приоритет по расстоянию (ближе = выше приоритет)
         double distance = mc.player.getDistance(entity);
-        priority += (10.0 - Math.min(distance, 10.0)) * 2.0;
+        double falloff = Math.max(0.3, 1.0 - (distance / 20.0));
 
-        // Приоритет по видимости (RayTrace)
-        if (canSeeEntity(entity)) {
-            priority += 15.0;
-        }
-
-        // Приоритет по углу обзора (в поле зрения = выше приоритет)
-        float angleToEntity = getAngleToEntity(entity);
-        if (angleToEntity < 90) {
-            priority += (90 - angleToEntity) * 0.1;
-        }
-
-        // Приоритет по броне (меньше брони = выше приоритет)
-        if (entity instanceof PlayerEntity) {
-            priority += (10.0 - getEntityArmor((PlayerEntity) entity)) * 0.5;
-        }
-
-        // Приоритет по HP (меньше HP = выше приоритет)
-        double health = getEntityHealth(entity);
-        priority += (20.0 - Math.min(health, 20.0)) * 0.3;
-
-        return priority;
+        return entity.getPositionVec()
+                .add(averageVelocity.scale(ticksAhead * falloff))
+                .add(0, gravityCompensation, 0);
     }
 
-    /**
-     * Получить угол между взглядом игрока и сущностью
-     */
-    private float getAngleToEntity(LivingEntity entity) {
-        Vector3d playerLook = mc.player.getLook(1.0F);
-        Vector3d toEntity = entity.getPositionVec().subtract(mc.player.getEyePosition(1.0F)).normalize();
-        
-        double dot = playerLook.dotProduct(toEntity);
-        return (float) Math.toDegrees(Math.acos(Math.max(-1.0, Math.min(1.0, dot))));
+    private Vector3d getAimPoint(LivingEntity entity) {
+        Vector3d basePos = predictedPosition != null ? predictedPosition : entity.getPositionVec();
+
+        double heightOffset = switch (aimPoint.get()) {
+            case "Голова" -> entity.getEyeHeight() * 0.9;
+            case "Тело" -> entity.getEyeHeight() * 0.5;
+            case "Ноги" -> entity.getEyeHeight() * 0.1;
+            case "Ближе к земле" -> {
+                if (mc.player.getPosYEye() > entity.getPosYEye()) {
+                    yield entity.getEyeHeight() * 0.3;
+                } else {
+                    yield entity.getEyeHeight() * 0.7;
+                }
+            }
+            case "Дальше от земли" -> {
+                if (mc.player.getPosYEye() < entity.getPosYEye()) {
+                    yield entity.getEyeHeight() * 0.8;
+                } else {
+                    yield entity.getEyeHeight() * 0.2;
+                }
+            }
+            default -> options.getValueByName("Умный выбор точки").get()
+                    ? getSmartAimPoint(entity)
+                    : entity.getEyeHeight() * 0.5;
+        };
+
+        return basePos.add(0, heightOffset, 0);
     }
 
-    /**
-     * RayTrace проверка видимости сущности
-     */
-    private boolean canSeeEntity(LivingEntity entity) {
-        if (mc.player == null || entity == null) return false;
+    private double getSmartAimPoint(LivingEntity entity) {
+        double playerEye = mc.player.getPosYEye();
+        double targetEye = entity.getPosYEye() + entity.getEyeHeight();
+        double targetFeet = entity.getPosY();
 
-        Vector3d eyePos = mc.player.getEyePosition(1.0F);
-        Vector3d entityPos = entity.getPositionVec().add(0, entity.getEyeHeight() / 2, 0);
+        if (playerEye > targetEye) {
+            double heightDiff = playerEye - targetEye;
+            return heightDiff > 2.0 ? entity.getEyeHeight() * 0.2 : entity.getEyeHeight() * 0.4;
+        }
 
-        // Проверка через RayTraceContext - только блоки
-        RayTraceContext context = new RayTraceContext(
-            eyePos,
-            entityPos,
-            RayTraceContext.BlockMode.COLLIDER,
-            RayTraceContext.FluidMode.NONE,
-            mc.player
-        );
-        
-        RayTraceResult rayTrace = mc.world.rayTraceBlocks(context);
+        if (playerEye < targetFeet) {
+            return entity.getEyeHeight() * 0.8;
+        }
 
-        // Если не попали в блок - сущность видна
-        return rayTrace.getType() == RayTraceResult.Type.MISS;
+        return entity.getEyeHeight() * 0.5;
     }
 
-    /**
-     * Получить ближайшую валидную цель (для режима "Пенить")
-     */
-    private LivingEntity getNearestValidTarget() {
-        LivingEntity nearest = null;
-        double nearestDistance = Double.MAX_VALUE;
+    private void updateMultiTargets(int maxTargets) {
+        List<LivingEntity> validTargets = new ArrayList<>();
 
         for (Entity entity : mc.world.getAllEntities()) {
             if (entity instanceof LivingEntity living && isValid(living)) {
-                // RayTrace проверка
-                if (options.getValueByName("RayTrace проверка").get()) {
-                    if (!canSeeEntity(living)) {
-                        continue;
-                    }
+                if (options.getValueByName("RayTrace проверка").get() &&
+                        !options.getValueByName("Ignore Walls (RayCast)").get()) {
+                    if (!canSeeEntity(living)) continue;
                 }
-                
-                double dist = mc.player.getDistance(living);
-                if (dist < nearestDistance) {
-                    nearestDistance = dist;
-                    nearest = living;
-                }
+                validTargets.add(living);
             }
         }
 
-        return nearest;
+        validTargets.sort(Comparator.comparingDouble(this::getTargetPriority).reversed());
+
+        multiTargets.clear();
+        for (int i = 0; i < Math.min(validTargets.size(), maxTargets); i++) {
+            multiTargets.add(validTargets.get(i));
+        }
+
+        if (multiTargets.isEmpty()) {
+            target = null;
+        } else if (target == null || !multiTargets.contains(target)) {
+            target = multiTargets.get(0);
+            currentMultiTargetIndex = 0;
+        }
     }
 
-    float lastYaw, lastPitch;
+    private void autoWeaponSwap() {
+        int currentSlot = mc.player.inventory.currentItem;
+        int bestSlot = -1;
+        double bestDamage = getWeaponDamage(mc.player.getHeldItemMainhand());
 
-    private void updateRotation(boolean attack, float rotationYawSpeed, float rotationPitchSpeed) {
-        Vector3d vec = target.getPositionVec().add(0, clamp(mc.player.getPosYEye() - target.getPosY(),
-                        0, target.getHeight() * (mc.player.getDistanceEyePos(target) / attackRange.get())), 0)
-                .subtract(mc.player.getEyePosition(1.0F));
+        for (int i = 0; i < 9; i++) {
+            ItemStack stack = mc.player.inventory.getStackInSlot(i);
+            double damage = getWeaponDamage(stack);
 
+            if (target instanceof PlayerEntity targetPlayer && targetPlayer.isBlocking() &&
+                    stack.getItem() instanceof AxeItem) {
+                damage += 10;
+            }
+
+            if (damage > bestDamage) {
+                bestDamage = damage;
+                bestSlot = i;
+            }
+        }
+
+        if (bestSlot != -1 && bestSlot != currentSlot) {
+            mc.player.connection.sendPacket(new CHeldItemChangePacket(bestSlot));
+            mc.player.inventory.currentItem = bestSlot;
+        }
+    }
+
+    private double getWeaponDamage(ItemStack stack) {
+        if (stack.isEmpty()) return 0;
+
+        if (stack.getItem() instanceof SwordItem sword) {
+            double damage = sword.getAttackDamage();
+            damage += EnchantmentHelper.getEnchantmentLevel(Enchantments.SHARPNESS, stack) * 0.5;
+            damage += EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_ASPECT, stack) * 1.5;
+            return damage;
+        }
+
+        if (stack.getItem() instanceof AxeItem axe) {
+            double damage = axe.getAttackDamage();
+            damage += EnchantmentHelper.getEnchantmentLevel(Enchantments.SHARPNESS, stack) * 0.5;
+            return damage;
+        }
+
+        return 0;
+    }
+
+    private void updateRotationPredictive(boolean attack, float rotationYawSpeed, float rotationPitchSpeed) {
+        Vector3d vec = getAimPoint(target).subtract(mc.player.getEyePosition(1.0F));
         isRotated = true;
 
-        float yawToTarget = (float) MathHelper.wrapDegrees(Math.toDegrees(Math.atan2(vec.z, vec.x)) - 90);
-        float pitchToTarget = (float) (-Math.toDegrees(Math.atan2(vec.y, hypot(vec.x, vec.z))));
+        float[] rotations = calculateRotations(vec, rotationYawSpeed, rotationPitchSpeed);
+        float yawToTarget = rotations[0];
+        float pitchToTarget = rotations[1];
 
-        // Human-like ротация с гауссовским шумом
-        if (options.getValueByName("Human Rotation").get() || shouldApplyRotationRandomness()) {
-            float noiseYaw = (float) nextGaussian() * getRotationRandomness();
-            float noisePitch = (float) nextGaussian() * getRotationRandomness() * 0.5f;
-            yawToTarget += noiseYaw;
-            pitchToTarget += noisePitch;
+        float yawDelta = wrapDegrees(yawToTarget - rotateVector.x);
+        float pitchDelta = wrapDegrees(pitchToTarget - rotateVector.y);
+
+        double targetSpeed = getTargetSpeed(target);
+        float speedBoost = (float) Math.min(targetSpeed * 0.5, 2.0f);
+
+        float speedMultiplier = getRotationSpeedMultiplier() * (1.0f + speedBoost);
+        float clampedYaw = clampAbs(yawDelta, 0.5f, rotationYawSpeed * speedMultiplier);
+        float clampedPitch = clampAbs(pitchDelta, 0.5f, rotationPitchSpeed * speedMultiplier);
+
+        float yaw = rotateVector.x + Math.signum(yawDelta) * clampedYaw;
+        float pitch = clamp(rotateVector.y + Math.signum(pitchDelta) * clampedPitch, -89.0F, 89.0F);
+
+        applyGCD(yaw, pitch);
+    }
+
+    private void updateRotationSmoothAccel(boolean attack, float maxYawSpeed, float maxPitchSpeed) {
+        Vector3d vec = getAimPoint(target).subtract(mc.player.getEyePosition(1.0F));
+        isRotated = true;
+
+        float[] rotations = calculateRotations(vec, maxYawSpeed, maxPitchSpeed);
+        float yawToTarget = rotations[0];
+        float pitchToTarget = rotations[1];
+
+        float yawDelta = wrapDegrees(yawToTarget - rotateVector.x);
+        float pitchDelta = wrapDegrees(pitchToTarget - rotateVector.y);
+
+        float accelFactor = 0.15f;
+        float decelerationFactor = 0.08f;
+
+        float targetYawSpeed = Math.min(Math.abs(yawDelta) * 0.8f, maxYawSpeed) * getRotationSpeedMultiplier();
+        float targetPitchSpeed = Math.min(Math.abs(pitchDelta) * 0.8f, maxPitchSpeed) * getRotationSpeedMultiplier();
+
+        if (Math.abs(yawDelta) > 5) {
+            currentYawSpeed = Math.min(currentYawSpeed + targetYawSpeed * accelFactor, targetYawSpeed);
+        } else {
+            currentYawSpeed = Math.max(currentYawSpeed - currentYawSpeed * decelerationFactor, 1.0f);
         }
 
-        // Дополнительное микро-дрожание для обхода
+        if (Math.abs(pitchDelta) > 3) {
+            currentPitchSpeed = Math.min(currentPitchSpeed + targetPitchSpeed * accelFactor, targetPitchSpeed);
+        } else {
+            currentPitchSpeed = Math.max(currentPitchSpeed - currentPitchSpeed * decelerationFactor, 0.5f);
+        }
+
+        float yaw = rotateVector.x + Math.signum(yawDelta) * currentYawSpeed;
+        float pitch = clamp(rotateVector.y + Math.signum(pitchDelta) * currentPitchSpeed, -89.0F, 89.0F);
+
+        applyGCD(yaw, pitch);
+    }
+
+    private void updateRotationJitter(boolean attack, float rotationYawSpeed, float rotationPitchSpeed) {
+        Vector3d vec = getAimPoint(target).subtract(mc.player.getEyePosition(1.0F));
+        isRotated = true;
+
+        float[] rotations = calculateRotations(vec, rotationYawSpeed, rotationPitchSpeed);
+        float yawToTarget = rotations[0];
+        float pitchToTarget = rotations[1];
+
+        float yawDelta = wrapDegrees(yawToTarget - rotateVector.x);
+        float pitchDelta = wrapDegrees(pitchToTarget - rotateVector.y);
+
+        float speedMultiplier = getRotationSpeedMultiplier();
+        float clampedYaw = clampAbs(yawDelta, 2.0f, rotationYawSpeed * speedMultiplier);
+        float clampedPitch = clampAbs(pitchDelta, 1.0f, rotationPitchSpeed * speedMultiplier);
+
+        jitterOffset = (random.nextFloat() - 0.5f) * 4f;
+        float jitterPitch = (random.nextFloat() - 0.5f) * 2f;
+
+        float yaw = rotateVector.x + Math.signum(yawDelta) * clampedYaw + jitterOffset;
+        float pitch = clamp(rotateVector.y + Math.signum(pitchDelta) * clampedPitch + jitterPitch, -89.0F, 89.0F);
+
+        applyGCD(yaw, pitch);
+    }
+
+    private float[] calculateRotations(Vector3d vec, float maxYawSpeed, float maxPitchSpeed) {
+        float yawToTarget = (float) wrapDegrees(Math.toDegrees(Math.atan2(vec.z, vec.x)) - 90);
+        float pitchToTarget = (float) (-Math.toDegrees(Math.atan2(vec.y, hypot(vec.x, vec.z))));
+
+        if (options.getValueByName("Human Rotation").get() || shouldApplyRotationRandomness()) {
+            yawToTarget += (float) nextGaussian() * getRotationRandomness();
+            pitchToTarget += (float) nextGaussian() * getRotationRandomness() * 0.5f;
+        }
+
         if (shouldApplyMicroShake()) {
             yawToTarget += (random.nextFloat() - 0.5f) * getMicroShakeAmount();
             pitchToTarget += (random.nextFloat() - 0.5f) * getMicroShakeAmount() * 0.3f;
         }
 
-        float yawDelta = (wrapDegrees(yawToTarget - rotateVector.x));
-        float pitchDelta = (wrapDegrees(pitchToTarget - rotateVector.y));
+        return new float[]{yawToTarget, pitchToTarget};
+    }
+
+    private float clampAbs(float value, float min, float max) {
+        return Math.min(Math.max(Math.abs(value), min), max);
+    }
+
+    private void applyGCD(float yaw, float pitch) {
+        float gcd = SensUtils.getGCDValue();
+        yaw -= (yaw - rotateVector.x) % gcd;
+        pitch -= (pitch - rotateVector.y) % gcd;
+
+        rotateVector = new Vector2f(yaw, pitch);
+        if (options.getValueByName("Коррекция движения").get()) {
+            mc.player.rotationYawOffset = yaw;
+        }
+    }
+
+    private void updateRotation(boolean attack, float rotationYawSpeed, float rotationPitchSpeed) {
+        Vector3d vec = getAimPoint(target).subtract(mc.player.getEyePosition(1.0F));
+        isRotated = true;
+
+        float[] rotations = calculateRotations(vec, rotationYawSpeed, rotationPitchSpeed);
+        float yawToTarget = rotations[0];
+        float pitchToTarget = rotations[1];
+
+        float yawDelta = wrapDegrees(yawToTarget - rotateVector.x);
+        float pitchDelta = wrapDegrees(pitchToTarget - rotateVector.y);
+
+        float speedMultiplier = getRotationSpeedMultiplier();
+        float microShake = shouldApplyMicroShake() ? (random.nextFloat() - 0.5f) * getMicroShakeAmount() : 0;
 
         switch (type.get()) {
             case "Плавная" -> {
-                float speedMultiplier = getRotationSpeedMultiplier();
-                float clampedYaw = Math.min(Math.max(Math.abs(yawDelta), 0.5f), rotationYawSpeed * speedMultiplier);
-                float clampedPitch = Math.min(Math.max(Math.abs(pitchDelta), 0.5f), rotationPitchSpeed * speedMultiplier);
+                float clampedYaw = clampAbs(yawDelta, 0.5f, rotationYawSpeed * speedMultiplier);
+                float clampedPitch = clampAbs(pitchDelta, 0.5f, rotationPitchSpeed * speedMultiplier);
 
                 if (attack && selected != target && options.getValueByName("Ускорять ротацию при атаке").get()) {
                     clampedPitch = Math.max(Math.abs(pitchDelta), 1.0f);
@@ -451,47 +636,21 @@ public class KillAura extends Function {
                     clampedPitch /= 3f;
                 }
 
-                // Добавляем микро-дрожание для некоторых серверов
-                float microShake = (random.nextFloat() - 0.5f) * getMicroShakeAmount();
-                float yaw = rotateVector.x + (yawDelta > 0 ? clampedYaw : -clampedYaw) + microShake;
-                
-                // Плавная ротация на 360 градусов без ограничений по pitch
-                float pitch = rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch);
-
-                float gcd = SensUtils.getGCDValue();
-                yaw -= (yaw - rotateVector.x) % gcd;
-                pitch -= (pitch - rotateVector.y) % gcd;
-
-                rotateVector = new Vector2f(yaw, pitch);
-                lastYaw = clampedYaw;
-                lastPitch = clampedPitch;
-                if (options.getValueByName("Коррекция движения").get()) {
-                    mc.player.rotationYawOffset = yaw;
-                }
+                float yaw = rotateVector.x + Math.signum(yawDelta) * clampedYaw + microShake;
+                float pitch = rotateVector.y + Math.signum(pitchDelta) * clampedPitch;
+                applyGCD(yaw, pitch);
             }
             case "Резкая" -> {
-                float speedMultiplier = getRotationSpeedMultiplier();
-                float clampedYaw = Math.min(Math.max(Math.abs(yawDelta), 5.0f), rotationYawSpeed * 1.5f * speedMultiplier);
-                float clampedPitch = Math.min(Math.max(Math.abs(pitchDelta), 3.0f), rotationPitchSpeed * 1.3f * speedMultiplier);
+                float clampedYaw = clampAbs(yawDelta, 5.0f, rotationYawSpeed * 1.5f * speedMultiplier);
+                float clampedPitch = clampAbs(pitchDelta, 3.0f, rotationPitchSpeed * 1.3f * speedMultiplier);
 
-                float yaw = rotateVector.x + (yawDelta > 0 ? clampedYaw : -clampedYaw);
-                float pitch = clamp(rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch), -89.0F, 89.0F);
-
-                float gcd = SensUtils.getGCDValue();
-                yaw -= (yaw - rotateVector.x) % gcd;
-                pitch -= (pitch - rotateVector.y) % gcd;
-
-                rotateVector = new Vector2f(yaw, pitch);
-                lastYaw = clampedYaw;
-                lastPitch = clampedPitch;
-                if (options.getValueByName("Коррекция движения").get()) {
-                    mc.player.rotationYawOffset = yaw;
-                }
+                float yaw = rotateVector.x + Math.signum(yawDelta) * clampedYaw;
+                float pitch = clamp(rotateVector.y + Math.signum(pitchDelta) * clampedPitch, -89.0F, 89.0F);
+                applyGCD(yaw, pitch);
             }
             case "Snap" -> {
-                float speedMultiplier = getRotationSpeedMultiplier();
-                float clampedYaw = Math.min(Math.max(Math.abs(yawDelta), 0.2f), rotationYawSpeed * speedMultiplier);
-                float clampedPitch = Math.min(Math.max(Math.abs(pitchDelta), 0.2f), rotationPitchSpeed * speedMultiplier);
+                float clampedYaw = clampAbs(yawDelta, 0.2f, rotationYawSpeed * speedMultiplier);
+                float clampedPitch = clampAbs(pitchDelta, 0.2f, rotationPitchSpeed * speedMultiplier);
 
                 if (attack && selected != target && options.getValueByName("Ускорять ротацию при атаке").get()) {
                     clampedPitch = Math.max(Math.abs(pitchDelta), 0f);
@@ -499,26 +658,16 @@ public class KillAura extends Function {
                     clampedPitch /= 3f;
                 }
 
-                float yaw = rotateVector.x + (yawDelta > 0 ? clampedYaw : -clampedYaw);
-                float pitch = clamp(rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch), -360.0F, 360.0F);
-
-                float gcd = SensUtils.getGCDValue();
-                yaw -= (yaw - rotateVector.x) % gcd;
-                pitch -= (pitch - rotateVector.y) % gcd;
-
-                rotateVector = new Vector2f(yaw, pitch);
-                lastYaw = clampedYaw;
-                lastPitch = clampedPitch;
-                if (options.getValueByName("Коррекция движения").get()) {
-                    mc.player.rotationYawOffset = yaw;
-                }
+                float yaw = rotateVector.x + Math.signum(yawDelta) * clampedYaw;
+                float pitch = clamp(rotateVector.y + Math.signum(pitchDelta) * clampedPitch, -360.0F, 360.0F);
+                applyGCD(yaw, pitch);
             }
             case "Интеллектуальная" -> {
                 double distance = mc.player.getDistance(target);
-                float speedMultiplier = (float) Math.min(distance / 3.0, 1.5) * getRotationSpeedMultiplier();
+                float distMultiplier = (float) Math.min(distance / 3.0, 1.5);
 
-                float clampedYaw = Math.min(Math.max(Math.abs(yawDelta), 0.5f), rotationYawSpeed * speedMultiplier);
-                float clampedPitch = Math.min(Math.max(Math.abs(pitchDelta), 0.5f), rotationPitchSpeed * speedMultiplier);
+                float clampedYaw = clampAbs(yawDelta, 0.5f, rotationYawSpeed * distMultiplier * speedMultiplier);
+                float clampedPitch = clampAbs(pitchDelta, 0.5f, rotationPitchSpeed * distMultiplier * speedMultiplier);
 
                 if (attack && selected != target && options.getValueByName("Ускорять ротацию при атаке").get()) {
                     clampedPitch = Math.max(Math.abs(pitchDelta), 1.0f);
@@ -526,26 +675,15 @@ public class KillAura extends Function {
                     clampedPitch /= 2f;
                 }
 
-                float yaw = rotateVector.x + (yawDelta > 0 ? clampedYaw : -clampedYaw);
-                float pitch = clamp(rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch), -89.0F, 89.0F);
-
-                float gcd = SensUtils.getGCDValue();
-                yaw -= (yaw - rotateVector.x) % gcd;
-                pitch -= (pitch - rotateVector.y) % gcd;
-
-                rotateVector = new Vector2f(yaw, pitch);
-                lastYaw = clampedYaw;
-                lastPitch = clampedPitch;
-                if (options.getValueByName("Коррекция движения").get()) {
-                    mc.player.rotationYawOffset = yaw;
-                }
+                float yaw = rotateVector.x + Math.signum(yawDelta) * clampedYaw;
+                float pitch = clamp(rotateVector.y + Math.signum(pitchDelta) * clampedPitch, -89.0F, 89.0F);
+                applyGCD(yaw, pitch);
             }
             case "Matrix" -> {
                 float randomFactor = 0.8f + random.nextFloat() * 0.4f;
-                float speedMultiplier = getRotationSpeedMultiplier();
 
-                float clampedYaw = Math.min(Math.max(Math.abs(yawDelta), 1.0f), rotationYawSpeed * randomFactor * speedMultiplier);
-                float clampedPitch = Math.min(Math.max(Math.abs(pitchDelta), 1.0f), rotationPitchSpeed * randomFactor * speedMultiplier);
+                float clampedYaw = clampAbs(yawDelta, 1.0f, rotationYawSpeed * randomFactor * speedMultiplier);
+                float clampedPitch = clampAbs(pitchDelta, 1.0f, rotationPitchSpeed * randomFactor * speedMultiplier);
 
                 if (attack && selected != target && options.getValueByName("Ускорять ротацию при атаке").get()) {
                     clampedPitch = Math.max(Math.abs(pitchDelta), 1.0f);
@@ -553,32 +691,18 @@ public class KillAura extends Function {
                     clampedPitch /= 3f;
                 }
 
-                float microShake = (random.nextFloat() - 0.5f) * getMicroShakeAmount();
-
-                float yaw = rotateVector.x + (yawDelta > 0 ? clampedYaw : -clampedYaw) + microShake;
-                float pitch = clamp(rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch), -89.0F, 89.0F);
-
-                float gcd = SensUtils.getGCDValue();
-                yaw -= (yaw - rotateVector.x) % gcd;
-                pitch -= (pitch - rotateVector.y) % gcd;
-
-                rotateVector = new Vector2f(yaw, pitch);
-                lastYaw = clampedYaw;
-                lastPitch = clampedPitch;
-                if (options.getValueByName("Коррекция движения").get()) {
-                    mc.player.rotationYawOffset = yaw;
-                }
+                float yaw = rotateVector.x + Math.signum(yawDelta) * clampedYaw + microShake;
+                float pitch = clamp(rotateVector.y + Math.signum(pitchDelta) * clampedPitch, -89.0F, 89.0F);
+                applyGCD(yaw, pitch);
             }
             case "Экспоненциальная" -> {
                 float yawProgress = 1.0f - (Math.abs(yawDelta) / 180.0f);
                 float pitchProgress = 1.0f - (Math.abs(pitchDelta) / 90.0f);
+                float yawAccel = yawProgress * yawProgress;
+                float pitchAccel = pitchProgress * pitchProgress;
 
-                float yawAccel = (float) Math.pow(yawProgress, 2);
-                float pitchAccel = (float) Math.pow(pitchProgress, 2);
-
-                float speedMultiplier = getRotationSpeedMultiplier();
-                float clampedYaw = Math.min(Math.max(Math.abs(yawDelta), 0.5f), rotationYawSpeed * (1.0f + yawAccel) * speedMultiplier);
-                float clampedPitch = Math.min(Math.max(Math.abs(pitchDelta), 0.5f), rotationPitchSpeed * (1.0f + pitchAccel) * speedMultiplier);
+                float clampedYaw = clampAbs(yawDelta, 0.5f, rotationYawSpeed * (1.0f + yawAccel) * speedMultiplier);
+                float clampedPitch = clampAbs(pitchDelta, 0.5f, rotationPitchSpeed * (1.0f + pitchAccel) * speedMultiplier);
 
                 if (attack && selected != target && options.getValueByName("Ускорять ротацию при атаке").get()) {
                     clampedPitch = Math.max(Math.abs(pitchDelta), 1.0f);
@@ -586,54 +710,25 @@ public class KillAura extends Function {
                     clampedPitch /= 2.5f;
                 }
 
-                float microShake = (random.nextFloat() - 0.5f) * getMicroShakeAmount();
-                float yaw = rotateVector.x + (yawDelta > 0 ? clampedYaw : -clampedYaw) + microShake;
-                float pitch = clamp(rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch), -89.0F, 89.0F);
-
-                float gcd = SensUtils.getGCDValue();
-                yaw -= (yaw - rotateVector.x) % gcd;
-                pitch -= (pitch - rotateVector.y) % gcd;
-
-                rotateVector = new Vector2f(yaw, pitch);
-                lastYaw = clampedYaw;
-                lastPitch = clampedPitch;
-                if (options.getValueByName("Коррекция движения").get()) {
-                    mc.player.rotationYawOffset = yaw;
-                }
+                float yaw = rotateVector.x + Math.signum(yawDelta) * clampedYaw + microShake;
+                float pitch = clamp(rotateVector.y + Math.signum(pitchDelta) * clampedPitch, -89.0F, 89.0F);
+                applyGCD(yaw, pitch);
             }
             case "Human" -> {
-                // Human режим - максимально естественная ротация
-                float speedMultiplier = 0.7f + random.nextFloat() * 0.3f; // 0.7-1.0
-                float clampedYaw = Math.min(Math.max(Math.abs(yawDelta), 2.0f), rotationYawSpeed * speedMultiplier);
-                float clampedPitch = Math.min(Math.max(Math.abs(pitchDelta), 1.5f), rotationPitchSpeed * speedMultiplier);
+                float humanSpeed = 0.7f + random.nextFloat() * 0.3f;
+                float clampedYaw = clampAbs(yawDelta, 2.0f, rotationYawSpeed * humanSpeed);
+                float clampedPitch = clampAbs(pitchDelta, 1.5f, rotationPitchSpeed * humanSpeed);
 
-                // Замедление к концу для естественности
-                if (Math.abs(yawDelta) < 10) {
-                    clampedYaw *= 0.5f;
-                }
-                if (Math.abs(pitchDelta) < 5) {
-                    clampedPitch *= 0.5f;
-                }
+                if (Math.abs(yawDelta) < 10) clampedYaw *= 0.5f;
+                if (Math.abs(pitchDelta) < 5) clampedPitch *= 0.5f;
 
-                float yaw = rotateVector.x + (yawDelta > 0 ? clampedYaw : -clampedYaw);
-                float pitch = clamp(rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch), -89.0F, 89.0F);
-
-                float gcd = SensUtils.getGCDValue();
-                yaw -= (yaw - rotateVector.x) % gcd;
-                pitch -= (pitch - rotateVector.y) % gcd;
-
-                rotateVector = new Vector2f(yaw, pitch);
-                lastYaw = clampedYaw;
-                lastPitch = clampedPitch;
-                if (options.getValueByName("Коррекция движения").get()) {
-                    mc.player.rotationYawOffset = yaw;
-                }
+                float yaw = rotateVector.x + Math.signum(yawDelta) * clampedYaw;
+                float pitch = clamp(rotateVector.y + Math.signum(pitchDelta) * clampedPitch, -89.0F, 89.0F);
+                applyGCD(yaw, pitch);
             }
-            case "Silent" -> {
-                // Silent Aim - только для сервера
-                float speedMultiplier = getRotationSpeedMultiplier() * 0.9f;
-                float clampedYaw = Math.min(Math.max(Math.abs(yawDelta), 1.0f), rotationYawSpeed * speedMultiplier);
-                float clampedPitch = Math.min(Math.max(Math.abs(pitchDelta), 1.0f), rotationPitchSpeed * speedMultiplier);
+            default -> {
+                float clampedYaw = clampAbs(yawDelta, 1.0f, rotationYawSpeed * speedMultiplier * 0.9f);
+                float clampedPitch = clampAbs(pitchDelta, 1.0f, rotationPitchSpeed * speedMultiplier * 0.9f);
 
                 if (attack && selected != target && options.getValueByName("Ускорять ротацию при атаке").get()) {
                     clampedPitch = Math.max(Math.abs(pitchDelta), 1.0f);
@@ -641,28 +736,67 @@ public class KillAura extends Function {
                     clampedPitch /= 3f;
                 }
 
-                float yaw = rotateVector.x + (yawDelta > 0 ? clampedYaw : -clampedYaw);
-                float pitch = clamp(rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch), -89.0F, 89.0F);
-
-                float gcd = SensUtils.getGCDValue();
-                yaw -= (yaw - rotateVector.x) % gcd;
-                pitch -= (pitch - rotateVector.y) % gcd;
-
-                rotateVector = new Vector2f(yaw, pitch);
-                lastYaw = clampedYaw;
-                lastPitch = clampedPitch;
-                // Silent Aim не меняет rotationYawOffset
+                float yaw = rotateVector.x + Math.signum(yawDelta) * clampedYaw;
+                float pitch = clamp(rotateVector.y + Math.signum(pitchDelta) * clampedPitch, -89.0F, 89.0F);
+                applyGCD(yaw, pitch);
             }
         }
     }
 
-    /**
-     * Гауссовский случайный шум для human-like ротации
-     */
+    private void updateACSCorrection() {
+        if (target == null) {
+            acsCorrection = 0;
+            return;
+        }
+
+        float yawToTarget = (float) wrapDegrees(Math.toDegrees(
+                Math.atan2(target.getPosY() - mc.player.getPosYEye(),
+                        hypot(target.getPosX() - mc.player.getPosX(),
+                                target.getPosZ() - mc.player.getPosZ()))) * -1);
+
+        float targetCorrection = yawToTarget * 0.1f;
+        acsCorrection += (targetCorrection - acsCorrection) * 0.15f;
+    }
+
+    private void handlePostRotation() {
+        long elapsed = System.currentTimeMillis() - postRotationStartTime;
+        if (elapsed > 300) {
+            isPostRotating = false;
+            return;
+        }
+
+        float progress = easeOutCubic((float) elapsed / 300f);
+
+        float currentYaw = mc.player.rotationYaw;
+        float currentPitch = mc.player.rotationPitch;
+
+        float targetYaw = currentYaw + (postRotationYaw - currentYaw) * (1 - progress);
+        float targetPitch = currentPitch + (postRotationPitch - currentPitch) * (1 - progress);
+
+        rotateVector = new Vector2f(targetYaw, targetPitch);
+    }
+
+    private float easeOutCubic(float t) {
+        return 1 - (float) Math.pow(1 - t, 3);
+    }
+
+    private double getTargetSpeed(LivingEntity entity) {
+        if (historyIndex < 2) return 0;
+
+        int current = (historyIndex - 1) % 20;
+        int previous = (historyIndex - 2) % 20;
+
+        if (positionHistory[current].equals(Vector3d.ZERO) || positionHistory[previous].equals(Vector3d.ZERO)) {
+            return 0;
+        }
+
+        return positionHistory[current].distanceTo(positionHistory[previous]);
+    }
+
     private double nextGaussian() {
         if (haveNextGaussian) {
             haveNextGaussian = false;
-            return nextGaussian;
+            return nextGaussianValue;
         } else {
             double v1, v2, s;
             do {
@@ -670,30 +804,46 @@ public class KillAura extends Function {
                 v2 = 2 * random.nextDouble() - 1;
                 s = v1 * v1 + v2 * v2;
             } while (s >= 1 || s == 0);
-            
+
             double multiplier = Math.sqrt(-2.0 * Math.log(s) / s);
-            nextGaussian = v1 * multiplier;
+            nextGaussianValue = v1 * multiplier;
             haveNextGaussian = true;
             return v2 * multiplier;
         }
     }
 
-    private boolean shouldApplyRotationRandomness() {
+    private long getAttackDelay() {
         return switch (serverMode.get()) {
-            case "SkyTime", "SpookyTime", "ReallyWorld", "Matrix", "Vulcan", "Grim", "NCP" -> true;
-            case "Watchdog" -> true;
-            case "Watchdog-Tap" -> true;
-            default -> false;
+            case "FunTime" -> 480L + random.nextInt(70);
+            case "SkyTime" -> 420L + random.nextInt(80);
+            case "HollyWorld" -> 500L + random.nextInt(80);
+            case "ReallyWorld" -> 520L + random.nextInt(60);
+            case "SpookyTime" -> 400L + random.nextInt(100);
+            case "Matrix" -> 450L + random.nextInt(90);
+            case "Vulcan" -> 470L + random.nextInt(75);
+            case "Grim" -> 380L + random.nextInt(60);
+            case "NCP" -> 500L + random.nextInt(50);
+            case "Watchdog" -> 450L + random.nextInt(100);
+            case "Watchdog-Tap" -> 500L + random.nextInt(80);
+            case "Freaky" -> 350L + random.nextInt(100);
+            case "Virus" -> 400L + random.nextInt(120);
+            default -> 500L;
         };
     }
 
+    private boolean shouldApplyRotationRandomness() {
+        String mode = serverMode.get();
+        return mode.equals("SkyTime") || mode.equals("SpookyTime") || mode.equals("ReallyWorld")
+                || mode.equals("Matrix") || mode.equals("Vulcan") || mode.equals("Grim")
+                || mode.equals("NCP") || mode.equals("Watchdog") || mode.equals("Watchdog-Tap")
+                || mode.equals("Freaky") || mode.equals("Virus");
+    }
+
     private boolean shouldApplyMicroShake() {
-        return switch (serverMode.get()) {
-            case "Matrix", "Vulcan", "SkyTime", "SpookyTime", "Grim" -> true;
-            case "Watchdog" -> true;
-            case "Watchdog-Tap" -> true;
-            default -> false;
-        };
+        String mode = serverMode.get();
+        return mode.equals("Matrix") || mode.equals("Vulcan") || mode.equals("SkyTime")
+                || mode.equals("SpookyTime") || mode.equals("Grim") || mode.equals("Watchdog")
+                || mode.equals("Watchdog-Tap") || mode.equals("Freaky");
     }
 
     private float getRotationRandomness() {
@@ -705,26 +855,10 @@ public class KillAura extends Function {
             case "Vulcan" -> 0.5f;
             case "Grim" -> 0.7f;
             case "NCP" -> 0.4f;
-            case "Watchdog" -> 0.9f;
-            case "Watchdog-Tap" -> 0.9f;
+            case "Watchdog", "Watchdog-Tap" -> 0.9f;
+            case "Freaky" -> 1.1f;
+            case "Virus" -> 0.6f;
             default -> 0.0f;
-        };
-    }
-
-    public String getServerBypassDescription() {
-        return switch (serverMode.get()) {
-            case "FunTime" -> "Обход: Random delay 480-550ms + sprint keep";
-            case "SkyTime" -> "Обход: Fast attack 420-500ms + gaussian rotation";
-            case "HollyWorld" -> "Обход: Strict rotation 500-580ms + sprint keep";
-            case "ReallyWorld" -> "Обход: Strict anti-cheat 520-580ms + minimal randomness";
-            case "SpookyTime" -> "Обход: Aggressive 400-500ms + high randomness";
-            case "Matrix" -> "Обход: Matrix mode 450-540ms + micro shake";
-            case "Vulcan" -> "Обход: Vulcan mode 470-545ms + low randomness";
-            case "Grim" -> "Обход: GrimAC 380-440ms + smooth rotation";
-            case "NCP" -> "Обход: NCP strict 500-550ms + low randomness";
-            case "Watchdog" -> "Обход: Watchdog 450-550ms + gaussian rotation";
-            case "Watchdog-Tap" -> "Обход: Watchdog TAP 500-580ms + human delay";
-            default -> "Обход: Vanilla 500ms";
         };
     }
 
@@ -733,14 +867,14 @@ public class KillAura extends Function {
             case "SkyTime" -> 1.3f;
             case "SpookyTime" -> 1.4f;
             case "FunTime" -> 1.1f;
-            case "HollyWorld" -> 1.0f;
             case "ReallyWorld" -> 0.9f;
             case "Matrix" -> 1.0f;
             case "Vulcan" -> 0.95f;
             case "Grim" -> 1.2f;
             case "NCP" -> 0.85f;
-            case "Watchdog" -> 1.05f;
-            case "Watchdog-Tap" -> 1.05f;
+            case "Watchdog", "Watchdog-Tap" -> 1.05f;
+            case "Freaky" -> 1.3f;
+            case "Virus" -> 0.9f;
             default -> 1.0f;
         };
     }
@@ -749,13 +883,156 @@ public class KillAura extends Function {
         return switch (serverMode.get()) {
             case "Matrix" -> 0.4f;
             case "Vulcan" -> 0.2f;
-            case "SkyTime" -> 0.3f;
-            case "SpookyTime" -> 0.3f;
+            case "SkyTime", "SpookyTime" -> 0.3f;
             case "Grim" -> 0.25f;
-            case "Watchdog" -> 0.35f;
-            case "Watchdog-Tap" -> 0.35f;
+            case "Watchdog", "Watchdog-Tap" -> 0.35f;
+            case "Freaky" -> 0.45f;
             default -> 0.0f;
         };
+    }
+
+    public String getServerBypassDescription() {
+        return switch (serverMode.get()) {
+            case "FunTime" -> "Random delay 480-550ms + sprint keep";
+            case "SkyTime" -> "Fast attack 420-500ms + normal rotation";
+            case "HollyWorld" -> "Strict rotation 500-580ms + sprint keep";
+            case "ReallyWorld" -> "Strict anti-cheat 520-580ms + minimal randomness";
+            case "SpookyTime" -> "Aggressive 400-500ms + high randomness";
+            case "Matrix" -> "Matrix mode 450-540ms + micro shake + packet rotation";
+            case "Vulcan" -> "Vulcan mode 470-545ms + low randomness + packet rotation";
+            case "Grim" -> "GrimAC 380-440ms + smooth rotation";
+            case "NCP" -> "NCP strict 500-550ms + low randomness";
+            case "Watchdog" -> "Watchdog 450-550ms + normal rotation";
+            case "Watchdog-Tap" -> "Watchdog TAP 500-580ms + human delay";
+            case "Freaky" -> "Freaky 350-450ms + high randomness + micro shake";
+            case "Virus" -> "Virus 400-520ms + low randomness";
+            default -> "Vanilla 500ms";
+        };
+    }
+
+    private void updateTarget() {
+        List<LivingEntity> targetList = new ArrayList<>();
+        float fovValue = fov.get();
+
+        for (Entity entity : mc.world.getAllEntities()) {
+            if (entity instanceof LivingEntity living && isValid(living)) {
+                float angle = getAngleToEntity(living);
+                if (angle > fovValue) continue;
+
+                if (options.getValueByName("RayTrace проверка").get() &&
+                        !options.getValueByName("Ignore Walls (RayCast)").get()) {
+                    if (!canSeeEntity(living)) continue;
+                }
+                targetList.add(living);
+            }
+        }
+
+        if (targetList.isEmpty()) {
+            target = null;
+            return;
+        }
+
+        if (targetList.size() == 1) {
+            target = targetList.get(0);
+            return;
+        }
+
+        targetList.sort(Comparator.comparingDouble(this::getTargetPriority).reversed());
+        target = targetList.get(0);
+    }
+
+    private double getTargetPriority(LivingEntity entity) {
+        double priority = 0;
+
+        double distance = mc.player.getDistance(entity);
+        priority += (10.0 - Math.min(distance, 10.0)) * 2.0;
+
+        if (canSeeEntity(entity)) {
+            priority += 15.0;
+        }
+
+        float angleToEntity = getAngleToEntity(entity);
+        if (angleToEntity < 90) {
+            priority += (90 - angleToEntity) * 0.1;
+        }
+
+        if (entity instanceof PlayerEntity player) {
+            priority += (10.0 - getEntityArmor(player)) * 0.5;
+
+            if (isLookingAtUs(player)) {
+                priority += 8.0;
+            }
+
+            double hpPercent = entity.getHealth() / entity.getMaxHealth();
+            if (hpPercent < 0.3) {
+                priority += 10.0;
+            } else if (hpPercent < 0.6) {
+                priority += 5.0;
+            }
+
+            if (player.isBlocking()) {
+                priority -= 3.0;
+            }
+        }
+
+        double health = getEntityHealth(entity);
+        priority += (20.0 - Math.min(health, 20.0)) * 0.3;
+
+        return priority;
+    }
+
+    private boolean isLookingAtUs(PlayerEntity entity) {
+        Vector3d theirLook = entity.getLook(1.0F);
+        Vector3d toUs = mc.player.getPositionVec().subtract(entity.getPositionVec()).normalize();
+        double dot = theirLook.dotProduct(toUs);
+        return dot > 0.8;
+    }
+
+    private float getAngleToEntity(LivingEntity entity) {
+        Vector3d playerLook = mc.player.getLook(1.0F);
+        Vector3d toEntity = entity.getPositionVec().subtract(mc.player.getEyePosition(1.0F)).normalize();
+        double dot = playerLook.dotProduct(toEntity);
+        return (float) Math.toDegrees(Math.acos(Math.max(-1.0, Math.min(1.0, dot))));
+    }
+
+    private boolean canSeeEntity(LivingEntity entity) {
+        if (mc.player == null || entity == null) return false;
+
+        Vector3d eyePos = mc.player.getEyePosition(1.0F);
+        Vector3d entityPos = getAimPoint(entity);
+
+        RayTraceContext context = new RayTraceContext(
+                eyePos,
+                entityPos,
+                RayTraceContext.BlockMode.COLLIDER,
+                RayTraceContext.FluidMode.NONE,
+                mc.player
+        );
+
+        RayTraceResult rayTrace = mc.world.rayTraceBlocks(context);
+        return rayTrace.getType() == RayTraceResult.Type.MISS;
+    }
+
+    private LivingEntity getNearestValidTarget() {
+        LivingEntity nearest = null;
+        double nearestDistance = Double.MAX_VALUE;
+
+        for (Entity entity : mc.world.getAllEntities()) {
+            if (entity instanceof LivingEntity living && isValid(living)) {
+                if (options.getValueByName("RayTrace проверка").get() &&
+                        !options.getValueByName("Ignore Walls (RayCast)").get()) {
+                    if (!canSeeEntity(living)) continue;
+                }
+
+                double dist = mc.player.getDistance(living);
+                if (dist < nearestDistance) {
+                    nearestDistance = dist;
+                    nearest = living;
+                }
+            }
+        }
+
+        return nearest;
     }
 
     private void updateAttack() {
@@ -766,7 +1043,7 @@ public class KillAura extends Function {
         }
 
         if ((selected == null || selected != target) && !mc.player.isElytraFlying()) {
-            if (CombatAdapter.isStrictAntiCheat()) {
+            if (isStrictAntiCheat()) {
                 return;
             }
         }
@@ -790,30 +1067,37 @@ public class KillAura extends Function {
     }
 
     private boolean isStrictAntiCheat() {
-        return switch (serverMode.get()) {
-            case "ReallyWorld", "HollyWorld", "Vulcan", "NCP", "Grim", "Watchdog", "Watchdog-Tap" -> true;
-            default -> false;
-        };
+        String mode = serverMode.get();
+        return mode.equals("ReallyWorld") || mode.equals("HollyWorld") || mode.equals("Vulcan")
+                || mode.equals("NCP") || mode.equals("Grim") || mode.equals("Watchdog")
+                || mode.equals("Watchdog-Tap") || mode.equals("Virus");
     }
 
     private boolean shouldKeepSprint() {
-        return switch (serverMode.get()) {
-            case "FunTime", "SkyTime", "HollyWorld", "SpookyTime", "Watchdog", "Watchdog-Tap" -> true;
-            default -> false;
-        };
+        String mode = serverMode.get();
+        return mode.equals("FunTime") || mode.equals("SkyTime") || mode.equals("HollyWorld")
+                || mode.equals("SpookyTime") || mode.equals("Watchdog") || mode.equals("Watchdog-Tap")
+                || mode.equals("Freaky");
     }
 
     private boolean shouldPlayerFalling() {
-        boolean cancelReason = (mc.player.isInWater() && mc.player.areEyesInFluid(FluidTags.WATER))
-                || mc.player.isInLava()
-                || mc.player.isOnLadder()
-                || mc.player.isPassenger()
-                || mc.player.abilities.isFlying;
+        if (options.getValueByName("Не атаковать в воде").get() &&
+                mc.player.isInWater() && mc.player.areEyesInFluid(FluidTags.WATER)) {
+            return false;
+        }
 
-        if (cancelReason) return false;
+        if (options.getValueByName("Не атаковать при полёте").get() && mc.player.isElytraFlying()) {
+            return false;
+        }
 
-        float attackStrength = CombatAdapter.getAttackCooldown(options.getValueByName("Синхронизировать атаку с ТПС").get()
-                ? Laura.getInstance().getTpsCalc().getAdjustTicks() : 1.5f);
+        if (mc.player.isInLava() || mc.player.isOnLadder()
+                || mc.player.isPassenger() || mc.player.abilities.isFlying) {
+            return false;
+        }
+
+        float attackStrength = CombatAdapter.getAttackCooldown(
+                options.getValueByName("Синхронизировать атаку с ТПС").get()
+                        ? Laura.getInstance().getTpsCalc().getAdjustTicks() : 1.5f);
 
         if (attackStrength < 0.92f) {
             return false;
@@ -831,64 +1115,48 @@ public class KillAura extends Function {
         if (entity.ticksExisted < 3) return false;
         if (CombatAdapter.getDistance(entity) > attackRange.get()) return false;
 
-        if (entity instanceof PlayerEntity p) {
-            if (AntiBot.isBot(entity)) {
+        if (entity instanceof PlayerEntity player) {
+            if (AntiBot.isBot(entity)) return false;
+            if (!targets.getValueByName("Друзья").get() && FriendStorage.isFriend(player.getName().getString())) {
                 return false;
             }
-            if (!targets.getValueByName("Друзья").get() && FriendStorage.isFriend(p.getName().getString())) {
-                return false;
-            }
-            if (p.getName().getString().equalsIgnoreCase(mc.player.getName().getString())) return false;
+            if (player.getName().getString().equalsIgnoreCase(mc.player.getName().getString())) return false;
+            if (!targets.getValueByName("Спящие").get() && player.isSleeping()) return false;
         }
 
-        if (entity instanceof PlayerEntity && !targets.getValueByName("Игроки").get()) {
-            return false;
-        }
-        if (entity instanceof PlayerEntity && entity.getTotalArmorValue() == 0 && !targets.getValueByName("Голые").get()) {
-            return false;
-        }
-        if (entity instanceof PlayerEntity && entity.isInvisible() && entity.getTotalArmorValue() == 0 && !targets.getValueByName("Голые невидимки").get()) {
-            return false;
-        }
-        if (entity instanceof PlayerEntity && entity.isInvisible() && !targets.getValueByName("Невидимки").get()) {
-            return false;
-        }
-
-        if (entity instanceof MonsterEntity && !targets.getValueByName("Мобы").get()) {
-            return false;
-        }
-        if (entity instanceof AnimalEntity && !targets.getValueByName("Животные").get()) {
-            return false;
-        }
+        if (entity instanceof PlayerEntity && !targets.getValueByName("Игроки").get()) return false;
+        if (entity instanceof PlayerEntity && entity.getTotalArmorValue() == 0 && !targets.getValueByName("Голые").get()) return false;
+        if (entity instanceof PlayerEntity && entity.isInvisible() && entity.getTotalArmorValue() == 0 && !targets.getValueByName("Голые невидимки").get()) return false;
+        if (entity instanceof PlayerEntity && entity.isInvisible() && !targets.getValueByName("Невидимки").get()) return false;
+        if (entity instanceof MonsterEntity && !targets.getValueByName("Мобы").get()) return false;
+        if (entity instanceof AnimalEntity && !targets.getValueByName("Животные").get()) return false;
 
         return !entity.isInvulnerable() && entity.isAlive() && !(entity instanceof ArmorStandEntity);
     }
 
-    private void breakShieldPlayer(PlayerEntity entity) {
-        if (entity.isBlocking()) {
-            int invSlot = InventoryUtil.getInstance().getAxeInInventory(false);
-            int hotBarSlot = InventoryUtil.getInstance().getAxeInInventory(true);
+    private void breakShieldPlayer(PlayerEntity player) {
+        if (!player.isBlocking()) return;
 
-            if (hotBarSlot == -1 && invSlot != -1) {
-                int bestSlot = InventoryUtil.getInstance().findBestSlotInHotBar();
-                mc.playerController.windowClick(0, invSlot, 0, ClickType.PICKUP, mc.player);
-                mc.playerController.windowClick(0, bestSlot + 36, 0, ClickType.PICKUP, mc.player);
+        int hotBarSlot = InventoryUtil.getInstance().getAxeInInventory(true);
+        int invSlot = InventoryUtil.getInstance().getAxeInInventory(false);
 
-                mc.player.connection.sendPacket(new net.minecraft.network.play.client.CHeldItemChangePacket(bestSlot));
-                mc.playerController.attackEntity(mc.player, entity);
-                mc.player.swingArm(Hand.MAIN_HAND);
-                mc.player.connection.sendPacket(new net.minecraft.network.play.client.CHeldItemChangePacket(mc.player.inventory.currentItem));
+        if (hotBarSlot == -1 && invSlot != -1) {
+            int bestSlot = InventoryUtil.getInstance().findBestSlotInHotBar();
+            mc.playerController.windowClick(0, invSlot, 0, ClickType.PICKUP, mc.player);
+            mc.playerController.windowClick(0, bestSlot + 36, 0, ClickType.PICKUP, mc.player);
 
-                mc.playerController.windowClick(0, bestSlot + 36, 0, ClickType.PICKUP, mc.player);
-                mc.playerController.windowClick(0, invSlot, 0, ClickType.PICKUP, mc.player);
-            }
+            mc.player.connection.sendPacket(new CHeldItemChangePacket(bestSlot));
+            mc.playerController.attackEntity(mc.player, player);
+            mc.player.swingArm(Hand.MAIN_HAND);
+            mc.player.connection.sendPacket(new CHeldItemChangePacket(mc.player.inventory.currentItem));
 
-            if (hotBarSlot != -1) {
-                mc.player.connection.sendPacket(new net.minecraft.network.play.client.CHeldItemChangePacket(hotBarSlot));
-                mc.playerController.attackEntity(mc.player, entity);
-                mc.player.swingArm(Hand.MAIN_HAND);
-                mc.player.connection.sendPacket(new net.minecraft.network.play.client.CHeldItemChangePacket(mc.player.inventory.currentItem));
-            }
+            mc.playerController.windowClick(0, bestSlot + 36, 0, ClickType.PICKUP, mc.player);
+            mc.playerController.windowClick(0, invSlot, 0, ClickType.PICKUP, mc.player);
+        } else if (hotBarSlot != -1) {
+            mc.player.connection.sendPacket(new CHeldItemChangePacket(hotBarSlot));
+            mc.playerController.attackEntity(mc.player, player);
+            mc.player.swingArm(Hand.MAIN_HAND);
+            mc.player.connection.sendPacket(new CHeldItemChangePacket(mc.player.inventory.currentItem));
         }
     }
 
@@ -897,17 +1165,9 @@ public class KillAura extends Function {
             CombatAdapter.resetYawOffset();
         }
         rotateVector = new Vector2f(mc.player.rotationYaw, mc.player.rotationPitch);
-    }
-
-    /**
-     * Плавная интерполяция угла
-     */
-    private float smoothRotation(float current, float target, float maxChange) {
-        float delta = wrapDegrees(target - current);
-        if (Math.abs(delta) > maxChange) {
-            delta = maxChange * Math.signum(delta);
-        }
-        return wrapDegrees(current + delta);
+        currentYawSpeed = 0;
+        currentPitchSpeed = 0;
+        jitterOffset = 0;
     }
 
     @Override
@@ -915,10 +1175,15 @@ public class KillAura extends Function {
         super.onEnable();
         reset();
         target = null;
+        multiTargets.clear();
         lastAttackTime = 0;
         humanReactionDelay = 0;
         isPostRotating = false;
         haveNextGaussian = false;
+        currentYawSpeed = 0;
+        currentPitchSpeed = 0;
+        historyIndex = 0;
+        Arrays.fill(positionHistory, Vector3d.ZERO);
         return false;
     }
 
@@ -928,40 +1193,33 @@ public class KillAura extends Function {
         reset();
         stopWatch.setLastMS(0);
         target = null;
+        multiTargets.clear();
         isPostRotating = false;
         return false;
     }
 
-    private double getEntityArmor(PlayerEntity entityPlayer2) {
-        double d2 = 0.0;
-        for (int i2 = 0; i2 < 4; ++i2) {
-            ItemStack is = entityPlayer2.inventory.armorInventory.get(i2);
-            if (is.isEmpty() || !(is.getItem() instanceof net.minecraft.item.ArmorItem)) continue;
-            d2 += getProtectionLvl(is);
+    private double getEntityArmor(PlayerEntity player) {
+        double armor = 0.0;
+        for (int i = 0; i < 4; i++) {
+            ItemStack stack = player.inventory.armorInventory.get(i);
+            if (!stack.isEmpty() && stack.getItem() instanceof net.minecraft.item.ArmorItem armorItem) {
+                armor += getProtectionLevel(stack, armorItem);
+            }
         }
-        return d2;
+        return armor;
     }
 
-    private double getProtectionLvl(ItemStack stack) {
-        if (stack.isEmpty() || !(stack.getItem() instanceof net.minecraft.item.ArmorItem i)) {
-            return 0;
-        }
-        double damageReduceAmount = i.getDamageReduceAmount();
+    private double getProtectionLevel(ItemStack stack, net.minecraft.item.ArmorItem armorItem) {
+        double reduction = armorItem.getDamageReduceAmount();
         if (stack.isEnchanted()) {
-            damageReduceAmount += (double) EnchantmentHelper.getEnchantmentLevel(Enchantments.PROTECTION, stack) * 0.25;
+            reduction += EnchantmentHelper.getEnchantmentLevel(Enchantments.PROTECTION, stack) * 0.25;
         }
-        return damageReduceAmount;
+        return reduction;
     }
 
-    private double getEntityHealth(LivingEntity ent) {
-        if (!CombatAdapter.isAlive(ent)) {
-            return 0.0;
-        }
-
-        float health = CombatAdapter.getHealth(ent);
-        float absorption = CombatAdapter.getAbsorption(ent);
-
-        return health + absorption;
+    private double getEntityHealth(LivingEntity entity) {
+        if (!CombatAdapter.isAlive(entity)) return 0.0;
+        return CombatAdapter.getHealth(entity) + CombatAdapter.getAbsorption(entity);
     }
 
     public LivingEntity getCurrentTarget() {
@@ -970,24 +1228,15 @@ public class KillAura extends Function {
 
     public String getTargetHealthFormatted() {
         if (target == null) return "0.0";
-
-        double totalHealth = getEntityHealth(target);
-        return String.format("%.1f", totalHealth);
+        return String.format("%.1f", getEntityHealth(target));
     }
 
     public float getTargetHealthPercent() {
         if (target == null) return 0.0f;
-
-        float health = target.getHealth();
-        float maxHealth = target.getMaxHealth();
-        float absorption = target.getAbsorptionAmount();
-
-        return Math.min(1.0f, (health + absorption) / maxHealth);
+        return Math.min(1.0f, (target.getHealth() + target.getAbsorptionAmount()) / target.getMaxHealth());
     }
 
-    public void pause() {
-        // Метод для временной паузы ауры (заглушка)
-    }
+    public void pause() {}
 
     public float getAttackCooldown() {
         return CombatAdapter.getAttackCooldown(1.5f);
