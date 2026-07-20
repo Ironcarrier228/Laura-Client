@@ -110,7 +110,6 @@ public class FunctionRegistry {
     private VisualRange visualRange;
     private LogoutSpots logoutSpots;
     private Nametags nametags;
-    private CameraClip cameraClip;
     private BlockHighlight blockHighlight;
     private Search search;
     private HoleESP holeESP;
