@@ -14,7 +14,7 @@ reducedDebugInfo:true
 snooperEnabled:false
 showSubtitles:false
 touchscreen:true
-fullscreen:true
+fullscreen:false
 bobView:false
 toggleCrouch:false
 toggleSprint:false
