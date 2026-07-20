@@ -10,6 +10,7 @@ import im.laura.events.EventCancelOverlay;
 import im.laura.functions.api.FunctionRegistry;
 import im.laura.functions.impl.combat.NoEntityTrace;
 import im.laura.functions.impl.misc.BetterMinecraft;
+import im.laura.functions.impl.render.AspectRatio;
 import im.laura.functions.impl.render.GlassHand;
 import im.laura.ui.mainmenu.MainScreen;
 import net.minecraft.block.BlockState;
@@ -631,11 +632,22 @@ public class GameRenderer implements IResourceManagerReloadListener, AutoCloseab
             matrixstack.scale(this.cameraZoom, this.cameraZoom, 1.0F);
         }
 
+        // --- Custom aspect ratio (stretched res) ---
+        float aspect = (float) this.mc.getMainWindow().getFramebufferWidth()
+                / (float) this.mc.getMainWindow().getFramebufferHeight();
+
+        FunctionRegistry functionRegistry = Laura.getInstance().getFunctionRegistry();
+        AspectRatio aspectRatioModule = functionRegistry.getAspectRatio();
+
+        if (aspectRatioModule != null && aspectRatioModule.isState()) {
+            aspect = aspectRatioModule.ratio.get();
+        }
+        // --- end custom aspect ratio ---
+
         matrixstack.getLast().getMatrix()
                 .mul(Matrix4f
                         .perspective(this.getFOVModifier(activeRenderInfoIn, partialTicks, useFovSetting),
-                                (float) this.mc.getMainWindow().getFramebufferWidth()
-                                        / (float) this.mc.getMainWindow().getFramebufferHeight(),
+                                aspect,
                                 0.05F, this.clipDistance));
         return matrixstack.getLast().getMatrix();
     }
