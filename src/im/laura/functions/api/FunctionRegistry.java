@@ -218,7 +218,6 @@ public class FunctionRegistry {
                 visualRange = new VisualRange(),
                 logoutSpots = new LogoutSpots(),
                 nametags = new Nametags(),
-                cameraClip = new CameraClip(),
                 blockHighlight = new BlockHighlight(),
                 search = new Search(),
                 holeESP = new HoleESP(),
