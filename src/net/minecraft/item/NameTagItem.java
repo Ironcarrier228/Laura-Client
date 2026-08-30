@@ -30,9 +30,12 @@ public class NameTagItem extends Item
                 }
 
                 stack.shrink(1);
+                return ActionResultType.func_233537_a_(false);
             }
-
-            return ActionResultType.func_233537_a_(playerIn.world.isRemote);
+            else
+            {
+                return ActionResultType.PASS;
+            }
         }
         else
         {
