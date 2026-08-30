@@ -1,0 +1,7 @@
+# ViaVersion Main Config
+checkforupdates: true
+send-supported-versions: false
+block-versions: []
+block-protocols: []
+block-disconnect-msg: You are using an unsupported Minecraft version!
+reload-disconnect-msg: Server reload, please rejoin!
