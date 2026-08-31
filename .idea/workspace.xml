@@ -9,7 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72bda3b3-5c95-44c6-bcf5-5b0a63d33bac" name="Changes" comment="Removed trash files" />
+    <list default="true" id="72bda3b3-5c95-44c6-bcf5-5b0a63d33bac" name="Changes" comment="Removed .jar from .gitignore">
+      <change beforePath="$PROJECT_DIR$/.idea/Laura Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Laura Client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/im/laura/functions/impl/render/Nametags.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/im/laura/functions/impl/render/Nametags.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,14 +54,21 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/мой диск/Laura-Client&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Facets&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15429688&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Minecraft Localization&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\мой диск\Laura-Client" />
+      <recent name="D:\мой диск\Laura-Client\out" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Start" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Start" />
       <module name="Laura Client" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -94,7 +106,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788090086149</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Removed .jar from .gitignore">
+      <option name="closed" value="true" />
+      <created>1788090310796</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1788090310796</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -111,7 +131,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value=" Fix NameTagItem interaction logic&#10;&#10;  - Moved return statement inside the inner if block so ActionResultType is only&#10;    returned when the target is alive and not on a client world&#10;  - Changed return value to func_233537_a_(false) since we already verify !isRemote&#10;  - Added else clause to return PASS when target is not alive or on client world" />
     <MESSAGE value="Removed trash files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed trash files" />
+    <MESSAGE value="Removed .jar from .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed .jar from .gitignore" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
