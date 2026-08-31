@@ -1,7 +1,5 @@
 build/
 crash-reports/
-libraries/
-lib/
 *.exe
 logs/
 saves/
