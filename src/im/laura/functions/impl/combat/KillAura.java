@@ -52,9 +52,10 @@ import static net.minecraft.util.math.MathHelper.wrapDegrees;
 @SuppressWarnings({"unused", "SameParameterValue"})
 public class KillAura extends Function {
     @Getter
-    private final ModeSetting type = new ModeSetting("Тип", "Плавная", 
-            "Плавная", "Резкая", "Snap", "Интеллектуальная", "Matrix", "Экспоненциальная", "Human", "Silent");
-    
+    private final ModeSetting type = new ModeSetting("Тип", "Плавная",
+            "Плавная", "Резкая", "Snap", "Интеллектуальная", "Matrix", "Экспоненциальная", "Human", "Silent",
+            "Ступенчатая", "Инерционная", "Безье", "Предиктивная");
+
     private final SliderSetting attackRange = new SliderSetting("Дистанция атаки", 3f, 3f, 6f, 0.1f);
     @Getter
     private final SliderSetting rotationRange = new SliderSetting("Дистанция ротации", 1f, 0.5f, 3f, 0.1f);
@@ -85,10 +86,10 @@ public class KillAura extends Function {
             new BooleanSetting("Пост-ротация", true));
 
     final ModeSetting serverMode = new ModeSetting("Режим сервера", "Vanilla",
-            "Vanilla", "FunTime", "SkyTime", "HollyWorld", "ReallyWorld", "SpookyTime", 
+            "Vanilla", "FunTime", "SkyTime", "HollyWorld", "ReallyWorld", "SpookyTime",
             "Matrix", "Vulcan", "Grim", "NCP", "Watchdog", "Watchdog-Tap");
 
-    final ModeSetting correctionType = new ModeSetting("Тип коррекции", "Незаметный", 
+    final ModeSetting correctionType = new ModeSetting("Тип коррекции", "Незаметный",
             "Незаметный", "Сфокусированный", "Пенить", "Smooth");
 
     @Getter
@@ -113,6 +114,17 @@ public class KillAura extends Function {
     // Gaussian random для human-like ротации
     private double nextGaussian = 0;
     private boolean haveNextGaussian = false;
+
+    // === состояние новых режимов ===
+    private float angVelYaw = 0;          // Инерционная
+    private float angVelPitch = 0;
+    private int stepHoldTicks = 0;        // Ступенчатая
+    private boolean bezierActive = false; // Безье
+    private float bezierT = 0;
+    private float bezierStartYaw = 0;
+    private float bezierStartPitch = 0;
+    private float bezierCtrlYaw = 0;
+    private float bezierCtrlPitch = 0;
 
     final AutoPotion autoPotion;
 
@@ -140,7 +152,6 @@ public class KillAura extends Function {
             } else if (correctionType.is("Сфокусированный")) {
                 MoveUtils.fixMovement(eventInput, rotateVector.x);
             } else if (correctionType.is("Smooth")) {
-                // Плавная коррекция движения
                 float smoothedYaw = smoothRotation(mc.player.rotationYaw, rotateVector.x, 10.0f);
                 MoveUtils.fixMovement(eventInput, smoothedYaw);
             }
@@ -149,26 +160,37 @@ public class KillAura extends Function {
 
     @Subscribe
     public void onUpdate(EventUpdate e) {
-        // Режим "Пенить" всегда переключается между целями
+        // фикс: защита от NPE при выходе из мира
+        if (mc.player == null || mc.world == null) {
+            target = null;
+            selected = null;
+            isPostRotating = false;
+            return;
+        }
+
         if (correctionType.is("Пенить")) {
             updateTarget();
             LivingEntity nearestTarget = getNearestValidTarget();
             if (nearestTarget != null && nearestTarget != target) {
                 target = nearestTarget;
             }
-        } else if (options.getValueByName("Фокусировать одну цель").get() && (target == null || !isValid(target)) || !options.getValueByName("Фокусировать одну цель").get()) {
+        } else if (options.getValueByName("Фокусировать одну цель").get() && (target == null || !isValid(target))
+                || !options.getValueByName("Фокусировать одну цель").get()) {
             updateTarget();
         }
 
-        // Пост-ротация (возврат взгляда после атаки)
-        if (options.getValueByName("Пост-ротация").get() && isPostRotating) {
-            handlePostRotation();
+        // Пост-ротация: идёт ДО основной ротации (раньше её результат сразу затирался)
+        if (isPostRotating) {
+            if (options.getValueByName("Пост-ротация").get()) {
+                handlePostRotation();
+            } else {
+                isPostRotating = false; // фикс: не зависаем, если опцию выключили посреди возврата
+            }
         }
 
         if (target != null && !(autoPotion.isState() && autoPotion.isActive())) {
             isRotated = false;
 
-            // Human-like задержка перед атакой
             long delay = getAttackDelay();
             if (options.getValueByName("Human Rotation").get()) {
                 delay += humanReactionDelay;
@@ -177,18 +199,22 @@ public class KillAura extends Function {
             if (shouldPlayerFalling() && (System.currentTimeMillis() - lastAttackTime >= delay)) {
                 updateAttack();
                 lastAttackTime = System.currentTimeMillis();
-                
-                // Генерируем новую human-like задержку
+
                 if (options.getValueByName("Human Rotation").get()) {
-                    humanReactionDelay = 150 + random.nextInt(150); // 150-300ms человеческая реакция
+                    humanReactionDelay = 150 + random.nextInt(150);
+                }
+                // фикс: пост-ротация привязана к своей опции, а не к Human Rotation
+                if (options.getValueByName("Пост-ротация").get()) {
                     isPostRotating = true;
                     postRotationStartTime = System.currentTimeMillis();
                     postRotationYaw = rotateVector.x;
                     postRotationPitch = rotateVector.y;
                 }
-                
                 ticks = 2;
             }
+
+            // фикс: во время возврата взгляда не перезаписываем ротацию к цели
+            if (isPostRotating) return;
 
             if (type.is("Snap")) {
                 if (ticks > 0) {
@@ -205,48 +231,53 @@ public class KillAura extends Function {
                     reset();
                 }
             } else if (type.is("Human")) {
-                // Human режим - максимально естественная ротация
                 if (!isRotated) {
                     updateRotation(false, 60, 30);
                 }
             } else if (type.is("Silent")) {
-                // Silent Aim - только пакеты, без визуальной ротации
                 if (!isRotated) {
                     updateRotation(false, 50, 25);
                 }
             } else {
+                // Плавная, Интеллектуальная, Matrix, Экспоненциальная,
+                // Ступенчатая, Инерционная, Безье, Предиктивная
                 if (!isRotated) {
                     updateRotation(false, 80, 35);
                 }
             }
-
         } else {
             stopWatch.setLastMS(0);
-            reset();
+            // фикс: даём пост-ротации доиграть, а не сбрасываем мгновенно
+            if (!isPostRotating) {
+                reset();
+            }
         }
     }
 
     private void handlePostRotation() {
-        // Плавный возврат взгляда после атаки
         long elapsed = System.currentTimeMillis() - postRotationStartTime;
-        if (elapsed > 300) { // 300ms на пост-ротацию
+        if (elapsed > 300) {
             isPostRotating = false;
             return;
         }
 
         float progress = (float) elapsed / 300f;
-        float originalYaw = mc.player.rotationYaw;
-        float originalPitch = mc.player.rotationPitch;
+        float eased = progress * progress * (3f - 2f * progress); // smoothstep — плавный старт и финиш
 
-        // Интерполяция обратно к нормальному углу
-        float targetYaw = originalYaw + (postRotationYaw - originalYaw) * (1 - progress);
-        float targetPitch = originalPitch + (postRotationPitch - originalPitch) * (1 - progress);
+        float cameraYaw = mc.player.rotationYaw;
+        float cameraPitch = mc.player.rotationPitch;
 
-        rotateVector = new Vector2f(targetYaw, targetPitch);
+        // фикс: wrapDegrees — возврат по кратчайшей дуге (раньше мог крутиться через 180°)
+        float yaw = postRotationYaw + wrapDegrees(cameraYaw - postRotationYaw) * eased;
+        float pitch = postRotationPitch + (cameraPitch - postRotationPitch) * eased;
+
+        rotateVector = new Vector2f(yaw, pitch);
+        if (options.getValueByName("Коррекция движения").get()) {
+            mc.player.rotationYawOffset = yaw;
+        }
     }
 
     private long getAttackDelay() {
-        // Задержки для разных серверов с обходом античитов
         return switch (serverMode.get()) {
             case "FunTime" -> 480 + random.nextInt(70);
             case "SkyTime" -> 420 + random.nextInt(80);
@@ -258,21 +289,19 @@ public class KillAura extends Function {
             case "Grim" -> 380 + random.nextInt(60);
             case "NCP" -> 500 + random.nextInt(50);
             case "Watchdog" -> 450 + random.nextInt(100);
-            case "Watchdog-Tap" -> 500 + random.nextInt(80); // Tap-boost режим
+            case "Watchdog-Tap" -> 500 + random.nextInt(80);
             default -> 500;
         };
     }
 
     @Subscribe
-    private void onWalking(EventMotion e) {
+    public void onWalking(EventMotion e) { // фикс: public — EventBus гарантированно видит метод
         if (target == null || autoPotion.isState() && autoPotion.isActive()) return;
 
         float yaw = rotateVector.x;
         float pitch = rotateVector.y;
 
-        // Silent Aim - ротация только для сервера
         if (options.getValueByName("Silent Aim").get() && type.is("Silent")) {
-            // Отправляем пакеты с ротацией, но визуально не поворачиваемся
             e.setYaw(yaw);
             e.setPitch(pitch);
         } else {
@@ -289,7 +318,6 @@ public class KillAura extends Function {
 
         for (Entity entity : mc.world.getAllEntities()) {
             if (entity instanceof LivingEntity living && isValid(living)) {
-                // RayTrace проверка
                 if (options.getValueByName("RayTrace проверка").get()) {
                     if (!canSeeEntity(living)) {
                         continue;
@@ -309,96 +337,73 @@ public class KillAura extends Function {
             return;
         }
 
-        // Умная сортировка с приоритетами
         targets.sort(Comparator.comparingDouble(this::getTargetPriority).reversed());
-
         target = targets.get(0);
     }
 
-    /**
-     * Приоритет цели - умный выбор
-     */
     private double getTargetPriority(LivingEntity entity) {
         double priority = 0;
 
-        // Приоритет по расстоянию (ближе = выше приоритет)
         double distance = mc.player.getDistance(entity);
         priority += (10.0 - Math.min(distance, 10.0)) * 2.0;
 
-        // Приоритет по видимости (RayTrace)
         if (canSeeEntity(entity)) {
             priority += 15.0;
         }
 
-        // Приоритет по углу обзора (в поле зрения = выше приоритет)
         float angleToEntity = getAngleToEntity(entity);
         if (angleToEntity < 90) {
             priority += (90 - angleToEntity) * 0.1;
         }
 
-        // Приоритет по броне (меньше брони = выше приоритет)
         if (entity instanceof PlayerEntity) {
             priority += (10.0 - getEntityArmor((PlayerEntity) entity)) * 0.5;
         }
 
-        // Приоритет по HP (меньше HP = выше приоритет)
         double health = getEntityHealth(entity);
         priority += (20.0 - Math.min(health, 20.0)) * 0.3;
 
         return priority;
     }
 
-    /**
-     * Получить угол между взглядом игрока и сущностью
-     */
     private float getAngleToEntity(LivingEntity entity) {
         Vector3d playerLook = mc.player.getLook(1.0F);
         Vector3d toEntity = entity.getPositionVec().subtract(mc.player.getEyePosition(1.0F)).normalize();
-        
+
         double dot = playerLook.dotProduct(toEntity);
         return (float) Math.toDegrees(Math.acos(Math.max(-1.0, Math.min(1.0, dot))));
     }
 
-    /**
-     * RayTrace проверка видимости сущности
-     */
     private boolean canSeeEntity(LivingEntity entity) {
         if (mc.player == null || entity == null) return false;
 
         Vector3d eyePos = mc.player.getEyePosition(1.0F);
         Vector3d entityPos = entity.getPositionVec().add(0, entity.getEyeHeight() / 2, 0);
 
-        // Проверка через RayTraceContext - только блоки
         RayTraceContext context = new RayTraceContext(
-            eyePos,
-            entityPos,
-            RayTraceContext.BlockMode.COLLIDER,
-            RayTraceContext.FluidMode.NONE,
-            mc.player
+                eyePos,
+                entityPos,
+                RayTraceContext.BlockMode.COLLIDER,
+                RayTraceContext.FluidMode.NONE,
+                mc.player
         );
-        
-        RayTraceResult rayTrace = mc.world.rayTraceBlocks(context);
 
-        // Если не попали в блок - сущность видна
+        RayTraceResult rayTrace = mc.world.rayTraceBlocks(context);
         return rayTrace.getType() == RayTraceResult.Type.MISS;
     }
 
-    /**
-     * Получить ближайшую валидную цель (для режима "Пенить")
-     */
     private LivingEntity getNearestValidTarget() {
         LivingEntity nearest = null;
         double nearestDistance = Double.MAX_VALUE;
 
         for (Entity entity : mc.world.getAllEntities()) {
             if (entity instanceof LivingEntity living && isValid(living)) {
-                // RayTrace проверка
                 if (options.getValueByName("RayTrace проверка").get()) {
                     if (!canSeeEntity(living)) {
                         continue;
                     }
                 }
-                
+
                 double dist = mc.player.getDistance(living);
                 if (dist < nearestDistance) {
                     nearestDistance = dist;
@@ -422,15 +427,11 @@ public class KillAura extends Function {
         float yawToTarget = (float) MathHelper.wrapDegrees(Math.toDegrees(Math.atan2(vec.z, vec.x)) - 90);
         float pitchToTarget = (float) (-Math.toDegrees(Math.atan2(vec.y, hypot(vec.x, vec.z))));
 
-        // Human-like ротация с гауссовским шумом
         if (options.getValueByName("Human Rotation").get() || shouldApplyRotationRandomness()) {
-            float noiseYaw = (float) nextGaussian() * getRotationRandomness();
-            float noisePitch = (float) nextGaussian() * getRotationRandomness() * 0.5f;
-            yawToTarget += noiseYaw;
-            pitchToTarget += noisePitch;
+            yawToTarget += (float) nextGaussian() * getRotationRandomness();
+            pitchToTarget += (float) nextGaussian() * getRotationRandomness() * 0.5f;
         }
 
-        // Дополнительное микро-дрожание для обхода
         if (shouldApplyMicroShake()) {
             yawToTarget += (random.nextFloat() - 0.5f) * getMicroShakeAmount();
             pitchToTarget += (random.nextFloat() - 0.5f) * getMicroShakeAmount() * 0.3f;
@@ -451,23 +452,13 @@ public class KillAura extends Function {
                     clampedPitch /= 3f;
                 }
 
-                // Добавляем микро-дрожание для некоторых серверов
                 float microShake = (random.nextFloat() - 0.5f) * getMicroShakeAmount();
                 float yaw = rotateVector.x + (yawDelta > 0 ? clampedYaw : -clampedYaw) + microShake;
-                
-                // Плавная ротация на 360 градусов без ограничений по pitch
                 float pitch = rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch);
 
-                float gcd = SensUtils.getGCDValue();
-                yaw -= (yaw - rotateVector.x) % gcd;
-                pitch -= (pitch - rotateVector.y) % gcd;
-
-                rotateVector = new Vector2f(yaw, pitch);
+                applyRotation(yaw, pitch, false); // без клампа pitch, как в оригинале
                 lastYaw = clampedYaw;
                 lastPitch = clampedPitch;
-                if (options.getValueByName("Коррекция движения").get()) {
-                    mc.player.rotationYawOffset = yaw;
-                }
             }
             case "Резкая" -> {
                 float speedMultiplier = getRotationSpeedMultiplier();
@@ -475,18 +466,11 @@ public class KillAura extends Function {
                 float clampedPitch = Math.min(Math.max(Math.abs(pitchDelta), 3.0f), rotationPitchSpeed * 1.3f * speedMultiplier);
 
                 float yaw = rotateVector.x + (yawDelta > 0 ? clampedYaw : -clampedYaw);
-                float pitch = clamp(rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch), -89.0F, 89.0F);
+                float pitch = rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch);
 
-                float gcd = SensUtils.getGCDValue();
-                yaw -= (yaw - rotateVector.x) % gcd;
-                pitch -= (pitch - rotateVector.y) % gcd;
-
-                rotateVector = new Vector2f(yaw, pitch);
+                applyRotation(yaw, pitch, true);
                 lastYaw = clampedYaw;
                 lastPitch = clampedPitch;
-                if (options.getValueByName("Коррекция движения").get()) {
-                    mc.player.rotationYawOffset = yaw;
-                }
             }
             case "Snap" -> {
                 float speedMultiplier = getRotationSpeedMultiplier();
@@ -500,18 +484,11 @@ public class KillAura extends Function {
                 }
 
                 float yaw = rotateVector.x + (yawDelta > 0 ? clampedYaw : -clampedYaw);
-                float pitch = clamp(rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch), -360.0F, 360.0F);
+                float pitch = rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch);
 
-                float gcd = SensUtils.getGCDValue();
-                yaw -= (yaw - rotateVector.x) % gcd;
-                pitch -= (pitch - rotateVector.y) % gcd;
-
-                rotateVector = new Vector2f(yaw, pitch);
+                applyRotation(yaw, pitch, false); // оригинал допускал pitch ±360
                 lastYaw = clampedYaw;
                 lastPitch = clampedPitch;
-                if (options.getValueByName("Коррекция движения").get()) {
-                    mc.player.rotationYawOffset = yaw;
-                }
             }
             case "Интеллектуальная" -> {
                 double distance = mc.player.getDistance(target);
@@ -527,18 +504,11 @@ public class KillAura extends Function {
                 }
 
                 float yaw = rotateVector.x + (yawDelta > 0 ? clampedYaw : -clampedYaw);
-                float pitch = clamp(rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch), -89.0F, 89.0F);
+                float pitch = rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch);
 
-                float gcd = SensUtils.getGCDValue();
-                yaw -= (yaw - rotateVector.x) % gcd;
-                pitch -= (pitch - rotateVector.y) % gcd;
-
-                rotateVector = new Vector2f(yaw, pitch);
+                applyRotation(yaw, pitch, true);
                 lastYaw = clampedYaw;
                 lastPitch = clampedPitch;
-                if (options.getValueByName("Коррекция движения").get()) {
-                    mc.player.rotationYawOffset = yaw;
-                }
             }
             case "Matrix" -> {
                 float randomFactor = 0.8f + random.nextFloat() * 0.4f;
@@ -556,25 +526,18 @@ public class KillAura extends Function {
                 float microShake = (random.nextFloat() - 0.5f) * getMicroShakeAmount();
 
                 float yaw = rotateVector.x + (yawDelta > 0 ? clampedYaw : -clampedYaw) + microShake;
-                float pitch = clamp(rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch), -89.0F, 89.0F);
+                float pitch = rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch);
 
-                float gcd = SensUtils.getGCDValue();
-                yaw -= (yaw - rotateVector.x) % gcd;
-                pitch -= (pitch - rotateVector.y) % gcd;
-
-                rotateVector = new Vector2f(yaw, pitch);
+                applyRotation(yaw, pitch, true);
                 lastYaw = clampedYaw;
                 lastPitch = clampedPitch;
-                if (options.getValueByName("Коррекция движения").get()) {
-                    mc.player.rotationYawOffset = yaw;
-                }
             }
             case "Экспоненциальная" -> {
                 float yawProgress = 1.0f - (Math.abs(yawDelta) / 180.0f);
                 float pitchProgress = 1.0f - (Math.abs(pitchDelta) / 90.0f);
 
-                float yawAccel = (float) Math.pow(yawProgress, 2);
-                float pitchAccel = (float) Math.pow(pitchProgress, 2);
+                float yawAccel = yawProgress * yawProgress;
+                float pitchAccel = pitchProgress * pitchProgress;
 
                 float speedMultiplier = getRotationSpeedMultiplier();
                 float clampedYaw = Math.min(Math.max(Math.abs(yawDelta), 0.5f), rotationYawSpeed * (1.0f + yawAccel) * speedMultiplier);
@@ -588,49 +551,28 @@ public class KillAura extends Function {
 
                 float microShake = (random.nextFloat() - 0.5f) * getMicroShakeAmount();
                 float yaw = rotateVector.x + (yawDelta > 0 ? clampedYaw : -clampedYaw) + microShake;
-                float pitch = clamp(rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch), -89.0F, 89.0F);
+                float pitch = rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch);
 
-                float gcd = SensUtils.getGCDValue();
-                yaw -= (yaw - rotateVector.x) % gcd;
-                pitch -= (pitch - rotateVector.y) % gcd;
-
-                rotateVector = new Vector2f(yaw, pitch);
+                applyRotation(yaw, pitch, true);
                 lastYaw = clampedYaw;
                 lastPitch = clampedPitch;
-                if (options.getValueByName("Коррекция движения").get()) {
-                    mc.player.rotationYawOffset = yaw;
-                }
             }
             case "Human" -> {
-                // Human режим - максимально естественная ротация
-                float speedMultiplier = 0.7f + random.nextFloat() * 0.3f; // 0.7-1.0
+                float speedMultiplier = 0.7f + random.nextFloat() * 0.3f;
                 float clampedYaw = Math.min(Math.max(Math.abs(yawDelta), 2.0f), rotationYawSpeed * speedMultiplier);
                 float clampedPitch = Math.min(Math.max(Math.abs(pitchDelta), 1.5f), rotationPitchSpeed * speedMultiplier);
 
-                // Замедление к концу для естественности
-                if (Math.abs(yawDelta) < 10) {
-                    clampedYaw *= 0.5f;
-                }
-                if (Math.abs(pitchDelta) < 5) {
-                    clampedPitch *= 0.5f;
-                }
+                if (Math.abs(yawDelta) < 10) clampedYaw *= 0.5f;
+                if (Math.abs(pitchDelta) < 5) clampedPitch *= 0.5f;
 
                 float yaw = rotateVector.x + (yawDelta > 0 ? clampedYaw : -clampedYaw);
-                float pitch = clamp(rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch), -89.0F, 89.0F);
+                float pitch = rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch);
 
-                float gcd = SensUtils.getGCDValue();
-                yaw -= (yaw - rotateVector.x) % gcd;
-                pitch -= (pitch - rotateVector.y) % gcd;
-
-                rotateVector = new Vector2f(yaw, pitch);
+                applyRotation(yaw, pitch, true);
                 lastYaw = clampedYaw;
                 lastPitch = clampedPitch;
-                if (options.getValueByName("Коррекция движения").get()) {
-                    mc.player.rotationYawOffset = yaw;
-                }
             }
             case "Silent" -> {
-                // Silent Aim - только для сервера
                 float speedMultiplier = getRotationSpeedMultiplier() * 0.9f;
                 float clampedYaw = Math.min(Math.max(Math.abs(yawDelta), 1.0f), rotationYawSpeed * speedMultiplier);
                 float clampedPitch = Math.min(Math.max(Math.abs(pitchDelta), 1.0f), rotationPitchSpeed * speedMultiplier);
@@ -642,23 +584,141 @@ public class KillAura extends Function {
                 }
 
                 float yaw = rotateVector.x + (yawDelta > 0 ? clampedYaw : -clampedYaw);
-                float pitch = clamp(rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch), -89.0F, 89.0F);
+                float pitch = rotateVector.y + (pitchDelta > 0 ? clampedPitch : -clampedPitch);
 
-                float gcd = SensUtils.getGCDValue();
-                yaw -= (yaw - rotateVector.x) % gcd;
-                pitch -= (pitch - rotateVector.y) % gcd;
-
-                rotateVector = new Vector2f(yaw, pitch);
+                applyRotation(yaw, pitch, true);
                 lastYaw = clampedYaw;
                 lastPitch = clampedPitch;
-                // Silent Aim не меняет rotationYawOffset
+            }
+            // ================== НОВЫЕ РЕЖИМЫ ==================
+            case "Ступенчатая" -> {
+                // Дискретные шаги с паузами — имитация реальных движений мыши
+                if (stepHoldTicks > 0) {
+                    stepHoldTicks--;
+                    lastYaw = 0;
+                    lastPitch = 0;
+                } else {
+                    float speedMultiplier = getRotationSpeedMultiplier();
+                    float yawStep = Math.abs(yawDelta) * (0.22f + random.nextFloat() * 0.18f);
+                    float pitchStep = Math.abs(pitchDelta) * (0.26f + random.nextFloat() * 0.18f);
+                    yawStep = Math.min(Math.max(yawStep, 0.5f), rotationYawSpeed * speedMultiplier);
+                    pitchStep = Math.min(Math.max(pitchStep, 0.5f), rotationPitchSpeed * speedMultiplier);
+
+                    float yaw = rotateVector.x + (yawDelta > 0 ? yawStep : -yawStep);
+                    float pitch = rotateVector.y + (pitchDelta > 0 ? pitchStep : -pitchStep);
+
+                    applyRotation(yaw, pitch, true);
+                    stepHoldTicks = random.nextInt(3); // пауза 0-2 тика между шагами
+                    lastYaw = yawStep;
+                    lastPitch = pitchStep;
+                }
+            }
+            case "Инерционная" -> {
+                // Угловая скорость: разгон, торможение, лёгкий перелёт с возвратом
+                float speedMultiplier = getRotationSpeedMultiplier();
+                float accelYaw = rotationYawSpeed * 0.35f * speedMultiplier;
+                float accelPitch = rotationPitchSpeed * 0.30f * speedMultiplier;
+
+                angVelYaw += (yawDelta > 0 ? accelYaw : -accelYaw);
+                angVelPitch += (pitchDelta > 0 ? accelPitch : -accelPitch);
+
+                angVelYaw *= 0.86f;
+                angVelPitch *= 0.86f;
+
+                // не быстрее максимальной скорости режима
+                angVelYaw = clamp(angVelYaw, -rotationYawSpeed * speedMultiplier, rotationYawSpeed * speedMultiplier);
+                angVelPitch = clamp(angVelPitch, -rotationPitchSpeed * speedMultiplier, rotationPitchSpeed * speedMultiplier);
+
+                // не дальше ~10% оставшегося пути (перелёт допустим, дальше затухает)
+                angVelYaw = clamp(angVelYaw, -Math.abs(yawDelta) * 1.1f, Math.abs(yawDelta) * 1.1f);
+                angVelPitch = clamp(angVelPitch, -Math.abs(pitchDelta) * 1.1f, Math.abs(pitchDelta) * 1.1f);
+
+                float yaw = rotateVector.x + angVelYaw;
+                float pitch = rotateVector.y + angVelPitch;
+
+                applyRotation(yaw, pitch, true);
+                lastYaw = Math.abs(angVelYaw);
+                lastPitch = Math.abs(angVelPitch);
+            }
+            case "Безье" -> {
+                // Кривая Безье: разгон-торможение по слегка изогнутой дуге
+                boolean needNewCurve = !bezierActive || bezierT >= 1f || Math.abs(yawDelta) > 70f;
+                if (needNewCurve) {
+                    if (Math.abs(yawDelta) < 4f && Math.abs(pitchDelta) < 4f) {
+                        // финальное дотягивание без новой кривой
+                        applyRotation(rotateVector.x + yawDelta * 0.7f,
+                                rotateVector.y + pitchDelta * 0.7f, true);
+                        lastYaw = Math.abs(yawDelta);
+                        lastPitch = Math.abs(pitchDelta);
+                        return;
+                    }
+                    bezierStartYaw = rotateVector.x;
+                    bezierStartPitch = rotateVector.y;
+                    bezierCtrlYaw = bezierStartYaw + yawDelta * 0.65f + (random.nextFloat() - 0.5f) * 6f;
+                    bezierCtrlPitch = bezierStartPitch + pitchDelta * 0.65f + (random.nextFloat() - 0.5f) * 2f;
+                    bezierT = 0f;
+                    bezierActive = true;
+                }
+
+                bezierT = Math.min(1f, bezierT + 0.14f * getRotationSpeedMultiplier());
+                float t = bezierT * bezierT * (3f - 2f * bezierT); // smoothstep
+                float u = 1f - t;
+
+                float yaw = u * u * bezierStartYaw + 2f * u * t * bezierCtrlYaw + t * t * yawToTarget;
+                float pitch = u * u * bezierStartPitch + 2f * u * t * bezierCtrlPitch + t * t * pitchToTarget;
+
+                float yawMove = wrapDegrees(yaw - rotateVector.x);
+                float pitchMove = pitch - rotateVector.y;
+                applyRotation(yaw, pitch, true);
+                lastYaw = Math.abs(yawMove);
+                lastPitch = Math.abs(pitchMove);
+            }
+            case "Предиктивная" -> {
+                // Упреждение: целимся туда, где цель БУДЕТ, а не где она сейчас
+                Vector3d motion = target.getMotion();
+                double dist = mc.player.getDistance(target);
+                double leadTicks = Math.min(6.0, Math.max(0.0, dist * 0.35)); // до ~6 тиков упреждения
+                Vector3d pvec = vec.add(motion.scale(leadTicks));
+
+                float pYawToTarget = (float) wrapDegrees(Math.toDegrees(Math.atan2(pvec.z, pvec.x)) - 90);
+                float pPitchToTarget = (float) (-Math.toDegrees(Math.atan2(pvec.y, hypot(pvec.x, pvec.z))));
+
+                float pYawDelta = wrapDegrees(pYawToTarget - rotateVector.x);
+                float pPitchDelta = wrapDegrees(pPitchToTarget - rotateVector.y);
+
+                float speedMultiplier = getRotationSpeedMultiplier();
+                float clampedYaw = Math.min(Math.max(Math.abs(pYawDelta), 0.5f), rotationYawSpeed * speedMultiplier);
+                float clampedPitch = Math.min(Math.max(Math.abs(pPitchDelta), 0.5f), rotationPitchSpeed * speedMultiplier);
+                clampedPitch /= 3f;
+
+                float yaw = rotateVector.x + (pYawDelta > 0 ? clampedYaw : -clampedYaw);
+                float pitch = rotateVector.y + (pPitchDelta > 0 ? clampedPitch : -clampedPitch);
+
+                applyRotation(yaw, pitch, true);
+                lastYaw = clampedYaw;
+                lastPitch = clampedPitch;
             }
         }
     }
 
     /**
-     * Гауссовский случайный шум для human-like ротации
+     * Общая финализация ротации: GCD-коррекция, кламп pitch, смещение движения.
+     * Раньше этот код копипастился в каждом режиме (и местами расходился).
      */
+    private void applyRotation(float yaw, float pitch, boolean clampPitch) {
+        if (clampPitch) {
+            pitch = clamp(pitch, -89.0F, 89.0F);
+        }
+        float gcd = SensUtils.getGCDValue();
+        yaw -= (yaw - rotateVector.x) % gcd;
+        pitch -= (pitch - rotateVector.y) % gcd;
+
+        rotateVector = new Vector2f(yaw, pitch);
+        if (options.getValueByName("Коррекция движения").get() && !type.is("Silent")) {
+            mc.player.rotationYawOffset = yaw;
+        }
+    }
+
     private double nextGaussian() {
         if (haveNextGaussian) {
             haveNextGaussian = false;
@@ -670,7 +730,7 @@ public class KillAura extends Function {
                 v2 = 2 * random.nextDouble() - 1;
                 s = v1 * v1 + v2 * v2;
             } while (s >= 1 || s == 0);
-            
+
             double multiplier = Math.sqrt(-2.0 * Math.log(s) / s);
             nextGaussian = v1 * multiplier;
             haveNextGaussian = true;
@@ -893,15 +953,18 @@ public class KillAura extends Function {
     }
 
     private void reset() {
+        if (mc.player == null) {
+            rotateVector = new Vector2f(0, 0);
+            return;
+        }
         if (options.getValueByName("Коррекция движения").get()) {
             CombatAdapter.resetYawOffset();
         }
         rotateVector = new Vector2f(mc.player.rotationYaw, mc.player.rotationPitch);
+        angVelYaw = 0; // инерция глохнет, когда цели нет
+        angVelPitch = 0;
     }
 
-    /**
-     * Плавная интерполяция угла
-     */
     private float smoothRotation(float current, float target, float maxChange) {
         float delta = wrapDegrees(target - current);
         if (Math.abs(delta) > maxChange) {
@@ -919,6 +982,7 @@ public class KillAura extends Function {
         humanReactionDelay = 0;
         isPostRotating = false;
         haveNextGaussian = false;
+        resetRotationState();
         return false;
     }
 
@@ -929,7 +993,16 @@ public class KillAura extends Function {
         stopWatch.setLastMS(0);
         target = null;
         isPostRotating = false;
+        resetRotationState();
         return false;
+    }
+
+    private void resetRotationState() {
+        angVelYaw = 0;
+        angVelPitch = 0;
+        stepHoldTicks = 0;
+        bezierActive = false;
+        bezierT = 0;
     }
 
     private double getEntityArmor(PlayerEntity entityPlayer2) {
