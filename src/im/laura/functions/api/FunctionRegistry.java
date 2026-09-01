@@ -114,7 +114,6 @@ public class FunctionRegistry {
     private BlockHighlight blockHighlight;
     private Search search;
     private HoleESP holeESP;
-    private SkeletonESP skeletonESP;
     private GlowESP glowESP;
     private AntiAim antiAim;
     private AutoSex autoSex;
@@ -223,7 +222,6 @@ public class FunctionRegistry {
                 blockHighlight = new BlockHighlight(),
                 search = new Search(),
                 holeESP = new HoleESP(),
-                skeletonESP = new SkeletonESP(),
                 glowESP = new GlowESP(),
                 antiAim = new AntiAim(),
                 autoSex = new AutoSex(),

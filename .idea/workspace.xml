@@ -9,8 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72bda3b3-5c95-44c6-bcf5-5b0a63d33bac" name="Changes" comment="fix(render): fix Nametags visual rendering&#10;&#10;- Fix unreadable font size (scale*50 produced ~1.5px text)&#10;- Fix drawRect: use MatrixStack matrix, POSITION_COLOR format,&#10;  reset GL state after rendering (was breaking subsequent draws)&#10;- Remove unsupported §-color codes from rendered text&#10;- Replace &quot;Масштаб&quot; slider with &quot;Размер шрифта&quot; (pixel-based)&#10;- Render health as colored bar + value next to name&#10;- Implement armor bar (setting was unused before)&#10;- Compact info line: distance / ping / invisibility&#10;- Add null-check for mc.getConnection() before ping lookup&#10;- Sort entities far-to-near, skip off-screen tags">
+    <list default="true" id="72bda3b3-5c95-44c6-bcf5-5b0a63d33bac" name="Changes" comment="Removed unused SkeletonESP because I think it useless">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/im/laura/functions/api/FunctionRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/im/laura/functions/api/FunctionRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/im/laura/functions/impl/render/Chams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/im/laura/functions/impl/render/Chams.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +131,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788197639715</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Removed unused SkeletonESP because I think it useless">
+      <option name="closed" value="true" />
+      <created>1788244548476</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1788244548477</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,7 +158,8 @@
     <MESSAGE value="Removed trash files" />
     <MESSAGE value="Removed .jar from .gitignore" />
     <MESSAGE value="fix(render): fix Nametags visual rendering&#10;&#10;- Fix unreadable font size (scale*50 produced ~1.5px text)&#10;- Fix drawRect: use MatrixStack matrix, POSITION_COLOR format,&#10;  reset GL state after rendering (was breaking subsequent draws)&#10;- Remove unsupported §-color codes from rendered text&#10;- Replace &quot;Масштаб&quot; slider with &quot;Размер шрифта&quot; (pixel-based)&#10;- Render health as colored bar + value next to name&#10;- Implement armor bar (setting was unused before)&#10;- Compact info line: distance / ping / invisibility&#10;- Add null-check for mc.getConnection() before ping lookup&#10;- Sort entities far-to-near, skip off-screen tags" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(render): fix Nametags visual rendering&#10;&#10;- Fix unreadable font size (scale*50 produced ~1.5px text)&#10;- Fix drawRect: use MatrixStack matrix, POSITION_COLOR format,&#10;  reset GL state after rendering (was breaking subsequent draws)&#10;- Remove unsupported §-color codes from rendered text&#10;- Replace &quot;Масштаб&quot; slider with &quot;Размер шрифта&quot; (pixel-based)&#10;- Render health as colored bar + value next to name&#10;- Implement armor bar (setting was unused before)&#10;- Compact info line: distance / ping / invisibility&#10;- Add null-check for mc.getConnection() before ping lookup&#10;- Sort entities far-to-near, skip off-screen tags" />
+    <MESSAGE value="Removed unused SkeletonESP because I think it useless" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unused SkeletonESP because I think it useless" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
