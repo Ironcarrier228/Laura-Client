@@ -3,8 +3,6 @@ crash-reports/
 *.exe
 logs/
 saves/
-screenshots/
-resourcepacks/
 shaderpacks/
 server-resource-packs/
 usercache.json
@@ -12,5 +10,4 @@ servers.dat
 servers.dat_old
 options.txt
 optionsof.txt
-loader_config.json
 .idea/
