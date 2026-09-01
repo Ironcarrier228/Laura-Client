@@ -125,6 +125,7 @@ public class FunctionRegistry {
     private KTLeave ktLeave;
     private Teleport teleport;
     private Jesus jesus;
+    private ArmorHUD armorhud;
 
     public void init() {
         registerAll(
@@ -233,7 +234,8 @@ public class FunctionRegistry {
                 ktLeave = new KTLeave(),
                 teleport = new Teleport(),
                 jesus = new Jesus(),
-                noEventDelay = new NoEventDelay()
+                noEventDelay = new NoEventDelay(),
+                armorhud = new ArmorHUD()
         );
 
         Laura.getInstance().getEventBus().register(this);

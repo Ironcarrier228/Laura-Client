@@ -9,14 +9,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72bda3b3-5c95-44c6-bcf5-5b0a63d33bac" name="Changes" comment="adds screenshots and loader_config.json">
+    <list default="true" id="72bda3b3-5c95-44c6-bcf5-5b0a63d33bac" name="Changes" comment="fix(render): fix LogoutSpots not working&#10;&#10;- Fix detection: EventEntityLeave fired on ANY entity removal&#10;  (render distance, dimension change), not only logouts.&#10;  Replaced with world+tablist comparison: player gone from world&#10;  AND tablist = logout; gone from world but still in tablist =&#10;  just out of render distance (10s timeout)&#10;- NPC detection: players without a server list entry are ignored&#10;  (no false spots from fake players)&#10;- Spot removed + chat message when logged-out player rejoins&#10;- Fix rendering: world-space DisplayUtils boxes were invisible in&#10;  the 2D POST overlay (same issue as HoleESP); switched to&#10;  ProjectionUtil projected rendering (fill + outline)&#10;- Fix text: NPE when projection returns null, unreadable 0.5f font&#10;  size, unrenderable §-color codes replaced with per-segment colors&#10;- Safe GL state save/restore, error counter with auto-disable">
+      <change afterPath="$PROJECT_DIR$/src/im/laura/functions/impl/render/ArmorHUD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/im/laura/functions/impl/render/LogoutSpots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/im/laura/functions/impl/render/LogoutSpots.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/im/laura/functions/api/FunctionRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/im/laura/functions/api/FunctionRegistry.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -170,7 +178,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788249133791</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="fix(render): fix LogoutSpots not working&#10;&#10;- Fix detection: EventEntityLeave fired on ANY entity removal&#10;  (render distance, dimension change), not only logouts.&#10;  Replaced with world+tablist comparison: player gone from world&#10;  AND tablist = logout; gone from world but still in tablist =&#10;  just out of render distance (10s timeout)&#10;- NPC detection: players without a server list entry are ignored&#10;  (no false spots from fake players)&#10;- Spot removed + chat message when logged-out player rejoins&#10;- Fix rendering: world-space DisplayUtils boxes were invisible in&#10;  the 2D POST overlay (same issue as HoleESP); switched to&#10;  ProjectionUtil projected rendering (fill + outline)&#10;- Fix text: NPE when projection returns null, unreadable 0.5f font&#10;  size, unrenderable §-color codes replaced with per-segment colors&#10;- Safe GL state save/restore, error counter with auto-disable">
+      <option name="closed" value="true" />
+      <created>1788247765528</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1788247765532</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -194,7 +210,8 @@
     <MESSAGE value="fix(render): repair Nametags, HoleESP and Chams modules&#10;&#10;Nametags:&#10;- Fix unreadable font size (scale*50 produced ~1.5px text)&#10;- Fix drawRect: use MatrixStack matrix, POSITION_COLOR format,&#10;  reset GL state after rendering&#10;- Strip unsupported §-color codes from rendered text&#10;- Replace &quot;Масштаб&quot; slider with pixel-based &quot;Размер шрифта&quot; setting&#10;- Render health as colored bar + value next to name, add armor bar&#10;- Compact info line (distance / ping / invisibility)&#10;- Null-safe ping lookup, far-to-near sorting, off-screen culling&#10;&#10;HoleESP:&#10;- Fix boxes being invisible: world-space DisplayUtils rendering&#10;  never worked in the 2D POST overlay; switched to&#10;  ProjectionUtil-based projected rendering&#10;- Fix hole classification: bedrock floor + obsidian walls is a&#10;  safe obsidian hole, not unsafe&#10;- Throttle scanning to once per 5 ticks, circular scan area&#10;- fillAlpha only affects fill, outline uses full color alpha&#10;- Auto-detect projection coordinate space (GUI vs framebuffer)&#10;- Debug setting: chat stats + test overlay&#10;&#10;Chams:&#10;- Fix crash: IRenderTypeBuffer wrapper was never finished, leaving&#10;  the shared Tessellator buffer in &quot;building&quot; state -&gt; &quot;Already&#10;  building&quot; IllegalStateException on next frame&#10;- Replace broken PlayerModel rendering (invisible in GUI matrix)&#10;  with projected 2D hitbox boxes (fill + wireframe)&#10;- Reset stuck RenderSystem color, interpolate hitbox position&#10;- Error counter with auto-disable after repeated failures instead&#10;  of hard crash&#10;&#10;Shared: safe GL state save/restore (depth, cull, depthMask, blend,&#10;line width) across all three modules." />
     <MESSAGE value="change .gitignore add screenshots directory and restore loader_version.json" />
     <MESSAGE value="adds screenshots and loader_config.json" />
-    <option name="LAST_COMMIT_MESSAGE" value="adds screenshots and loader_config.json" />
+    <MESSAGE value="fix(render): fix LogoutSpots not working&#10;&#10;- Fix detection: EventEntityLeave fired on ANY entity removal&#10;  (render distance, dimension change), not only logouts.&#10;  Replaced with world+tablist comparison: player gone from world&#10;  AND tablist = logout; gone from world but still in tablist =&#10;  just out of render distance (10s timeout)&#10;- NPC detection: players without a server list entry are ignored&#10;  (no false spots from fake players)&#10;- Spot removed + chat message when logged-out player rejoins&#10;- Fix rendering: world-space DisplayUtils boxes were invisible in&#10;  the 2D POST overlay (same issue as HoleESP); switched to&#10;  ProjectionUtil projected rendering (fill + outline)&#10;- Fix text: NPE when projection returns null, unreadable 0.5f font&#10;  size, unrenderable §-color codes replaced with per-segment colors&#10;- Safe GL state save/restore, error counter with auto-disable" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(render): fix LogoutSpots not working&#10;&#10;- Fix detection: EventEntityLeave fired on ANY entity removal&#10;  (render distance, dimension change), not only logouts.&#10;  Replaced with world+tablist comparison: player gone from world&#10;  AND tablist = logout; gone from world but still in tablist =&#10;  just out of render distance (10s timeout)&#10;- NPC detection: players without a server list entry are ignored&#10;  (no false spots from fake players)&#10;- Spot removed + chat message when logged-out player rejoins&#10;- Fix rendering: world-space DisplayUtils boxes were invisible in&#10;  the 2D POST overlay (same issue as HoleESP); switched to&#10;  ProjectionUtil projected rendering (fill + outline)&#10;- Fix text: NPE when projection returns null, unreadable 0.5f font&#10;  size, unrenderable §-color codes replaced with per-segment colors&#10;- Safe GL state save/restore, error counter with auto-disable" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
