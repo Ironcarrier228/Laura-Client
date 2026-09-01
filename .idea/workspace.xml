@@ -10,9 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72bda3b3-5c95-44c6-bcf5-5b0a63d33bac" name="Changes" comment="fix(render): fix Nametags visual rendering&#10;&#10;- Fix unreadable font size (scale*50 produced ~1.5px text)&#10;- Fix drawRect: use MatrixStack matrix, POSITION_COLOR format,&#10;  reset GL state after rendering (was breaking subsequent draws)&#10;- Remove unsupported §-color codes from rendered text&#10;- Replace &quot;Масштаб&quot; slider with &quot;Размер шрифта&quot; (pixel-based)&#10;- Render health as colored bar + value next to name&#10;- Implement armor bar (setting was unused before)&#10;- Compact info line: distance / ping / invisibility&#10;- Add null-check for mc.getConnection() before ping lookup&#10;- Sort entities far-to-near, skip off-screen tags">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/im/laura/functions/impl/render/HoleESP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/im/laura/functions/impl/render/HoleESP.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +59,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\мой диск\Laura-Client\" />
+      <recent name="D:\мой диск\Laura-Client\release" />
       <recent name="D:\мой диск\Laura-Client" />
       <recent name="D:\мой диск\Laura-Client\out" />
     </key>
@@ -121,7 +121,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788194047920</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix(render): fix Nametags visual rendering&#10;&#10;- Fix unreadable font size (scale*50 produced ~1.5px text)&#10;- Fix drawRect: use MatrixStack matrix, POSITION_COLOR format,&#10;  reset GL state after rendering (was breaking subsequent draws)&#10;- Remove unsupported §-color codes from rendered text&#10;- Replace &quot;Масштаб&quot; slider with &quot;Размер шрифта&quot; (pixel-based)&#10;- Render health as colored bar + value next to name&#10;- Implement armor bar (setting was unused before)&#10;- Compact info line: distance / ping / invisibility&#10;- Add null-check for mc.getConnection() before ping lookup&#10;- Sort entities far-to-near, skip off-screen tags">
+      <option name="closed" value="true" />
+      <created>1788197639713</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1788197639715</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
